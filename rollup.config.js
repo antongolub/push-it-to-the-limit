@@ -9,7 +9,7 @@ export default {
   output: {
     file: 'dist/bundle.js',
     format: 'umd',
-    name: 'primitive-storage'
+    name: 'push-it-to-the-limit'
   },
   plugins: [
     flow(),

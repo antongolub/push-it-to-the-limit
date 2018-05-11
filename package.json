@@ -1,7 +1,7 @@
 {
   "name": "@antongolub/push-it-to-the-limit",
   "version": "0.0.0",
-  "description": "Delay wrappers for common purposes.",
+  "description": "Delay wrappers for common purposes",
   "main": "dist/bundle.es5.js",
   "scripts": {
     "flow": "flow",
