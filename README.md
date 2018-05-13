@@ -32,15 +32,26 @@ Returns the function that invokes origin fn at most once per a period.
 ```javascript
     import {throttle} from 'push-it-to-the-limit'
     const throttled = throttle(v => v, 100)
-    
+
     throttled('foo')  // 'foo'
     throttled('bar')  // 'foo'
-    
+
     // 100 ms later
     throttled('baz')  // 'baz'
 ```
 
 #### `debounce`
+`Debounce` groups multiple sequential calls in a single one with the last passed args.
+```javascript
+    import {debounce} from 'push-it-to-the-limit'
+    const debounced = debounce(v => v, 100)
+    
+    const bar = await debounced('foo')  // promise
+    const baz = await debounced('bar')  // promise
+        
+    baz === 'foo' // true
+    baz === bar   // true
+```
 
 #### `ratelimit`
 

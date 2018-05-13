@@ -9,8 +9,16 @@ describe('delay', () => {
     expect(() => delay({})).toThrow('Target must be a function')
   })
 
-  it('returns a promise', () => {
-    expect(delay(() => {}, 10)()).toEqual(expect.any(Promise))
+  it('returns a promise', done => {
+    let foo
+
+    expect(delay(() => { foo = 'bar' }, 10)()).toEqual(expect.any(Promise))
+    setTimeout(() => {
+      expect(foo).toBe('bar')
+      done()
+    }, 10)
+
+    expect(foo).toBeUndefined()
   })
 
   it('passes args to origin fn', async () => {
