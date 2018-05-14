@@ -1,3 +1,3 @@
 // @flow
 
-export default function debounce() {}
+export default function debounce () {}

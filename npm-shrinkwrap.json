@@ -1,5 +1,5 @@
 {
-  "name": "@antongolub/push-it-to-the-limit",
+  "name": "push-it-to-the-limit",
   "version": "0.0.0",
   "lockfileVersion": 1,
   "requires": true,
@@ -777,9 +777,9 @@
       }
     },
     "@octokit/rest": {
-      "version": "15.4.0",
-      "resolved": "https://registry.npmjs.org/@octokit/rest/-/rest-15.4.0.tgz",
-      "integrity": "sha512-cmDdt71Kufz0AZt/EPlJbce9NDhoc9ggJm9P7h6Y+WOds19Q6vBJAPApKTIpN4VpnvwB1XHEOdmqP7gZdPCNKw==",
+      "version": "15.4.1",
+      "resolved": "https://registry.npmjs.org/@octokit/rest/-/rest-15.4.1.tgz",
+      "integrity": "sha512-Jn185ySmzBPOQA86rz+DrV4PQbj0sM5H+vGD2LJwPPhJV+Tt2a6uKQLkGH1GC7DYTRzrAexCQOvQP2HG6P1t8Q==",
       "dev": true,
       "requires": {
         "before-after-hook": "^1.1.0",
@@ -832,9 +832,9 @@
       "dev": true
     },
     "@semantic-release/git": {
-      "version": "4.0.3",
-      "resolved": "https://registry.npmjs.org/@semantic-release/git/-/git-4.0.3.tgz",
-      "integrity": "sha512-XvW9mq4eegS5kQ4nNbgQjMC6AOO+9Oy6H+8iRTPCRkpJElhtecPUu/gqriZXEF/qqGXF891JKA3onCUjEwwWuQ==",
+      "version": "5.0.0",
+      "resolved": "https://registry.npmjs.org/@semantic-release/git/-/git-5.0.0.tgz",
+      "integrity": "sha512-LGpm9CgHvfuCYp4UshNhZVwbc6SD5NyNePvx9KZwvVdKskee2tMyBcAFDo0/pssXjBJ/W3lriE2ypGUCY5o1Vw==",
       "dev": true,
       "requires": {
         "@semantic-release/error": "^2.1.0",
@@ -1134,9 +1134,9 @@
       }
     },
     "@semantic-release/github": {
-      "version": "4.2.15",
-      "resolved": "https://registry.npmjs.org/@semantic-release/github/-/github-4.2.15.tgz",
-      "integrity": "sha512-4U4TV6rWGhIr8bTeX7agCnXP35bQYbVFOjgSfylhZdenmqSLGqZ69J5+uOK6bRQBvwOp731n8LkmMCJeEk2EWQ==",
+      "version": "4.2.16",
+      "resolved": "https://registry.npmjs.org/@semantic-release/github/-/github-4.2.16.tgz",
+      "integrity": "sha512-SuaBvUf7l3RwqdxBKyRSPZnSckEMB0EqBu6658x41hivJXn7KdJnH/EcKNzMeKu8zFJ6a8DrXTY71APVKE3wHg==",
       "dev": true,
       "requires": {
         "@octokit/rest": "^15.2.0",
@@ -4837,9 +4837,9 @@
       }
     },
     "flow-bin": {
-      "version": "0.71.0",
-      "resolved": "https://registry.npmjs.org/flow-bin/-/flow-bin-0.71.0.tgz",
-      "integrity": "sha512-xGGsRBs3OPzzP2wE6i09BpeDmIBROmikEHoeV6SFgwZPEQ2hWUi+lcVN8BfUStmjdpC/l4XZqLOsLhWHsgZngw==",
+      "version": "0.72.0",
+      "resolved": "https://registry.npmjs.org/flow-bin/-/flow-bin-0.72.0.tgz",
+      "integrity": "sha1-EgURgPstt8y3KP7+Z8d+lV6SpE0=",
       "dev": true
     },
     "flow-coverage-report": {
@@ -9742,9 +9742,9 @@
       "dev": true
     },
     "semantic-release": {
-      "version": "15.4.0",
-      "resolved": "https://registry.npmjs.org/semantic-release/-/semantic-release-15.4.0.tgz",
-      "integrity": "sha512-6HQbyRcsUXWXgmVSy4X9RP1PppLJDRJQa7aKzuBfJJptmkfv28Rb0EsDZbFVGmF2DVMOqtLsdTkjUZHGInOwPw==",
+      "version": "15.4.1",
+      "resolved": "https://registry.npmjs.org/semantic-release/-/semantic-release-15.4.1.tgz",
+      "integrity": "sha512-mUAjrB39e/D720kDZFPrKEHukwsUnr8kLgXQXexjGbsmTt3RheBOIeIH7j4yKqyn/gDJb6MxMLfeU6Yu22z92w==",
       "dev": true,
       "requires": {
         "@semantic-release/commit-analyzer": "^5.0.0",
