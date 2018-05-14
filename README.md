@@ -44,13 +44,11 @@ Returns the function that invokes origin fn at most once per a period.
 `Debounce` groups multiple sequential calls in a single one with the last passed args.
 ```javascript
     import {debounce} from 'push-it-to-the-limit'
-    const debounced = debounce(v => v, 100)
-    
-    const bar = await debounced('foo')  // promise
-    const baz = await debounced('bar')  // promise
+    const debounced = debounce(v => v, 1)
+    const [foo, bar] = await Promise.all([debounced('baz'), debounced('qux')])
         
-    baz === 'foo' // true
-    baz === bar   // true
+    foo === 'qux' // true
+    bar === bar   // true
 ```
 
 #### `ratelimit`
