@@ -1,6 +1,6 @@
 {
   "name": "push-it-to-the-limit",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Delay wrappers for common purposes",
   "main": "dist/bundle.es5.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "test_with_report": "npm test && npm run codeclimate_push && npm run coveralls_push",
     "codeclimate_push": "codeclimate-test-reporter < ./coverage/lcov.info",
     "coveralls_push": "cat ./coverage/lcov.info | coveralls",
-    "build": "npm run build_with_rollup",
+    "build": "npm run build_with_rollup && npm run build_with_babel",
     "build_with_babel": "BABEL_ENV=production babel src --out-dir dist",
     "build_with_rollup": "npm run rollup && npm run bundle_to_es5",
     "rollup": "rollup -c",
