@@ -21,7 +21,11 @@ export default function debounce (fn: ITarget, delay: number, context?: IAny): F
       })
     }
 
-    timeout = setTimeout(() => _resolve(fn.call(context, ...args)), delay)
+    timeout = setTimeout(() => {
+      promise = null
+      timeout = null
+      _resolve(fn.call(context, ...args))
+    }, delay)
 
     return promise
   }

@@ -89,14 +89,44 @@ Have a look at this [ratelimit](https://github.com/wankdanker/node-function-rate
 ```
 It's 10 requests per second and 200 requests per minute.
 
-
-#### `swaplimit`
+#### `stabilize`
 — Why not just use `debounce`?  
-— Debounced fn awaits some time before it invokes the origin function, so if , target fn would never been called.  
+— Debounced fn awaits some time before it invokes the origin function, so if ..., target fn would never been called.  
 — But here's `ratelimit`, isn't it?  
 — Ratelimit "expands" the calls timeline to match frequency limit.  
 — ...  
 — This wrapper swaps some calls like `throttle`, but guarantees that target fn would be called at least every `n` ms.
+
+```javascript
+    const fn = v => v
+    const stable = stabilize(fn, 100)
+
+    for (let y = 0; y < 10; y++) {
+      (x => {
+        setTimeout(() => {
+          const start = Date.now()
+
+          stable(x)
+            .then(v => {
+              console.log('x=', x, 'value=', v, 'delay=', (Date.now() - start))
+            })
+        }, x * 20 )
+      })(y)
+    }
+ 
+ /** stdout
+    x= 0 value= 5 delay= 103
+    x= 1 value= 5 delay= 94
+    x= 2 value= 5 delay= 72
+    x= 3 value= 5 delay= 58
+    x= 4 value= 5 delay= 35
+    x= 5 value= 5 delay= 19
+    x= 6 value= 9 delay= 103
+    x= 7 value= 9 delay= 85
+    x= 8 value= 9 delay= 66
+    x= 9 value= 9 delay= 48
+  */
+```
 
 #### Notes and refs
 * [The differences between `throttle` and `debounce`](https://css-tricks.com/debouncing-throttling-explained-examples/).
