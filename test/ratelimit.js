@@ -1,4 +1,4 @@
-import ratelimit from '../src/ratelimit'
+import {ratelimit} from '../src'
 
 describe('ratelimit', () => {
   it('wrapper returns function', () => {
@@ -41,6 +41,8 @@ describe('ratelimit', () => {
       if (x === 9) {
         done()
       }
+
+      return x
     }, limit)
 
     for (let y = 0; y < 10; y++) {

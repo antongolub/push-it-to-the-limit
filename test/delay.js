@@ -1,4 +1,4 @@
-import delay from '../src/delay'
+import {delay} from '../src'
 
 describe('delay', () => {
   it('wrapper returns function', () => {

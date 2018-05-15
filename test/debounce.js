@@ -1,4 +1,4 @@
-import debounce from '../src/debounce'
+import {debounce} from '../src'
 
 describe('debounce', () => {
   it('wrapper returns function', () => {

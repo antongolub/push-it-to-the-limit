@@ -1,8 +1,8 @@
-import {delay, throttle, debounce} from '../src'
+import {delay, throttle, debounce, ratelimit} from '../src'
 
 describe('index', () => {
   it('exposes factories', () => {
-    const cases = [delay, throttle, debounce]
+    const cases = [delay, throttle, debounce, ratelimit]
 
     cases.forEach(factory => {
       expect(factory).toEqual(expect.any(Function))
