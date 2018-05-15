@@ -6,8 +6,8 @@ import {assertFn} from './assert'
 export default function debounce (fn: ITarget, delay: number, context?: IAny): Function {
   assertFn(fn)
 
-  let timeout: TimeoutID
-  let promise: Promise<IAny>
+  let timeout: ?TimeoutID
+  let promise: ?Promise<IAny>
   let _resolve: Function
 
   return (...args: IAny[]): Promise<IAny> => {

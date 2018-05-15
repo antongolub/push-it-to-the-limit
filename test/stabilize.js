@@ -1,4 +1,3 @@
-// 
 import {stabilize} from '../src'
 
 describe('stabilize', () => {
@@ -25,10 +24,10 @@ describe('stabilize', () => {
 
           stable(x)
             .then(v => {
-             // console.log('x=', x, 'value=', v, 'delay=', (Date.now() - start))
-             expect(v).toBe(expected)
+              // console.log('x=', x, 'value=', v, 'delay=', (Date.now() - start))
+              expect(v).toBe(expected)
             })
-        }, x * 20 )
+        }, x * 20)
       })(y)
     }
 

@@ -6,8 +6,7 @@ import {assertFn} from './assert'
 export default function stabilize (fn: ITarget, delay: number, context?: IAny): Function {
   assertFn(fn)
 
-  let timeout: TimeoutID
-  let promise: Promise<IAny>
+  let promise: ?Promise<IAny>
   let lastArgs: IAny[]
 
   return (...args: IAny[]): Promise<IAny> => {
@@ -15,7 +14,7 @@ export default function stabilize (fn: ITarget, delay: number, context?: IAny): 
 
     if (!promise) {
       promise = new Promise(resolve => {
-        timeout = setTimeout(() => {
+        setTimeout(() => {
           promise = null
           resolve(fn.call(context, ...lastArgs))
         }, delay)

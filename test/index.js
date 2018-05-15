@@ -1,8 +1,8 @@
-import {delay, throttle, debounce, ratelimit} from '../src'
+import {delay, throttle, debounce, ratelimit, stabilize} from '../dist/bundle.es5'
 
 describe('index', () => {
   it('exposes factories', () => {
-    const cases = [delay, throttle, debounce, ratelimit]
+    const cases = [delay, throttle, debounce, ratelimit, stabilize]
 
     cases.forEach(factory => {
       expect(factory).toEqual(expect.any(Function))
