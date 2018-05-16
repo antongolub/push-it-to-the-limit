@@ -1,3 +1,11 @@
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.0.0...v1.1.0) (2018-05-16)
+
+
+### Features
+
+* add `repeat` wrapper ([726b4cd](https://github.com/antongolub/push-it-to-the-limit/commit/726b4cd))
+
 <a name="1.0.0"></a>
 # 1.0.0 (2018-05-15)
 
