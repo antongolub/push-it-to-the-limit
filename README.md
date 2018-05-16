@@ -143,6 +143,26 @@ It's 10 requests per second and 200 requests per minute.
   */
 ```
 
+#### `repeat`
+[Repeater](https://github.com/antongolub/repeater) makes a function to be autocallable. It stores the last call params and uses them for further invocations.
+
+```javascript
+    import {repeat} from '@antongolub/push-it-to-the-limit'
+    
+    function fn (step) { this.i += step }
+    const context = { i: 0 }
+    const delay = 1000
+    const rep = repeater(fn, delay, context)
+    
+    rep(2)
+    
+    // Imagine, 5 seconds later new 'manual' call occurs
+    setTimeout(() => rep(1), 5000)
+
+    // ~10 seconds after start: 
+    setTimeout(() => console.log(context.i), 10000) // 15
+```
+
 #### Notes and refs
 * [The differences between `throttle` and `debounce`](https://css-tricks.com/debouncing-throttling-explained-examples/).
 * [node-function-rate-limit](https://github.com/wankdanker/node-function-rate-limit)

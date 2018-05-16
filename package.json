@@ -135,5 +135,8 @@
         "onlyFilesWithFlowAnnotation": true
       }
     }
+  },
+  "dependencies": {
+    "@antongolub/repeater": "^1.1.2"
   }
 }
