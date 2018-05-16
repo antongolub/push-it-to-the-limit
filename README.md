@@ -9,12 +9,19 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/antongolub/push-it-to-the-limit.svg)](https://greenkeeper.io/)
 
 Delay wrappers for common purposes. Fast and simple.
-
 #### Main features
 * `Promise` as a result
 *  Interrelated delays support
 * [Lodash](https://lodash.com/)-compatible API
 
+## Install
+```bash
+    npm i @antongolub/push-it-to-the-limit
+    yarn add @antongolub/push-it-to-the-limit
+```
+Dist contains cjs-formatted `bundle.es5.js` and its parts as es5-modules, so you may use them directly.
+
+##Usage examples
 #### `delay`
 Each function call is delayed for a specified time.
 ```javascript
