@@ -21,7 +21,7 @@ Delay wrappers for common purposes. Fast and simple.
 ```
 Dist contains cjs-formatted `bundle.es5.js` and its parts as es5-modules, so you may use them directly.
 
-##Usage examples
+## Usage examples
 #### `delay`
 Each function call is delayed for a specified time.
 ```javascript

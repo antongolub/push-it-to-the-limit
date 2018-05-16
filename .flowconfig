@@ -1,11 +1,10 @@
 [include]
 ./src/
 
-[ignore]
-.*/node_modules/*.
-
 [libs]
 ./flow-typed/
+./node_modules/**/flow-typed/
+./node_modules/**/**/flow-typed/
 
 [options]
 module.ignore_non_literal_requires=true
