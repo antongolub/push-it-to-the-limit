@@ -1,5 +1,7 @@
 # Push it to the limit
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/antongolub/push-it-to-the-limit.svg)](https://greenkeeper.io/)
+
 Delay wrappers for common purposes. Fast and simple.
 
 #### Main features
