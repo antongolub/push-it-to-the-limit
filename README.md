@@ -1,5 +1,11 @@
 # Push it to the limit
 
+[![buildStatus](https://img.shields.io/travis/antongolub/push-it-to-the-limit.svg?maxAge=3600&branch=master)](https://travis-ci.org/antongolub/push-it-to-the-limit)
+[![Coveralls](https://img.shields.io/coveralls/antongolub/push-it-to-the-limit.svg?maxAge=3600)](https://coveralls.io/github/antongolub/push-it-to-the-limit)
+[![dependencyStatus](https://img.shields.io/david/antongolub/push-it-to-the-limit.svg?maxAge=3600)](https://david-dm.org/antongolub/push-it-to-the-limit)
+[![devDependencyStatus](https://img.shields.io/david/dev/antongolub/push-it-to-the-limit.svg?maxAge=3600)](https://david-dm.org/antongolub/push-it-to-the-limit)
+[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/antongolub/push-it-to-the-limit)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 [![Greenkeeper badge](https://badges.greenkeeper.io/antongolub/push-it-to-the-limit.svg)](https://greenkeeper.io/)
 
 Delay wrappers for common purposes. Fast and simple.
