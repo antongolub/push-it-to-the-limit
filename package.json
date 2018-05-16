@@ -1,6 +1,6 @@
 {
   "name": "push-it-to-the-limit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Delay wrappers for common purposes",
   "main": "dist/bundle.es5.js",
   "scripts": {
