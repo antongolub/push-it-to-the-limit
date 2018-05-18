@@ -1,3 +1,11 @@
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.1.0...v1.2.0) (2018-05-18)
+
+
+### Features
+
+* add `flow` libdefs ([aaac2f1](https://github.com/antongolub/push-it-to-the-limit/commit/aaac2f1))
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.0.0...v1.1.0) (2018-05-16)
 
