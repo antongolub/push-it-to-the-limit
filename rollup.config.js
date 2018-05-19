@@ -19,6 +19,5 @@ export default {
     }),
     commonjs(),
     uglify()
-  ],
-  external: ['fs']
+  ]
 }
