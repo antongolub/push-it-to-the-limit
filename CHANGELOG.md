@@ -1,3 +1,11 @@
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.2.0...v1.3.0) (2018-05-23)
+
+
+### Features
+
+* implement `IControlled` methods for `delay` wrapper ([8ecf049](https://github.com/antongolub/push-it-to-the-limit/commit/8ecf049))
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.1.0...v1.2.0) (2018-05-18)
 
