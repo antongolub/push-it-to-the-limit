@@ -2,7 +2,7 @@ import {delay} from '../src'
 
 describe('delay', () => {
   it('wrapper returns function', () => {
-    expect(delay(() => {})).toEqual(expect.any(Function))
+    expect(delay(() => {}, {delay: 10})).toEqual(expect.any(Function))
   })
 
   it('throws error on invalid input', () => {

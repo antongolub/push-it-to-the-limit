@@ -1,12 +1,13 @@
 // @flow
 
-import type {IAny, ITarget, IControlled, IResolve} from './interface'
+import type {IAny, ITarget, IControlled, IResolve, IWrapper, IWrapperOpts} from './interface'
 import {assertFn} from './assert'
-import {complete} from './common'
+import {complete, adapter} from './common'
 
-export default function delay (fn: ITarget, delay: number, context?: IAny): IControlled {
+export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
   assertFn(fn)
 
+  const { delay, context } = opts
   let timeout: TimeoutID
   let _resolve: IResolve
   let _args: IAny[]
@@ -21,4 +22,4 @@ export default function delay (fn: ITarget, delay: number, context?: IAny): ICon
   res.cancel = () => clearTimeout(timeout)
 
   return res
-}
+}): IWrapper)

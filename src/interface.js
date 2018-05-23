@@ -1,6 +1,7 @@
 // @flow
 
 export type IAny = any
+export type IDelay = number
 export type ITarget = (...args: IAny[]) => IAny
 export type ILimit = {
   period: number,
@@ -24,3 +25,14 @@ export type IControlled = {
 }
 
 export type IResolve = (value: IAny) => void
+
+export type IPromiser = (...args: IAny[]) => Promise<IAny>
+export type ILodashOpts = {}
+export type IWrapperOpts = {
+  delay: IDelay,
+  context: IAny
+}
+export type IWrapper = {
+  (fn: ITarget, opts: IWrapperOpts): IPromiser,
+  (fn: ITarget, delay: IDelay): IPromiser
+}

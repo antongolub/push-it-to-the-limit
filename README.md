@@ -13,6 +13,7 @@ Delay wrappers for common purposes. Fast and simple.
 * `Promise` as a result
 *  Interrelated delays support
 * [Lodash](https://lodash.com/)-compatible API
+* `Flow` type defs 
 
 ## Install
 ```bash
