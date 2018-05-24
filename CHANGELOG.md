@@ -1,3 +1,11 @@
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.3.0...v1.4.0) (2018-05-24)
+
+
+### Features
+
+* **delay:** reject promise on `cancel` ([26f8fa9](https://github.com/antongolub/push-it-to-the-limit/commit/26f8fa9))
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.2.0...v1.3.0) (2018-05-23)
 
