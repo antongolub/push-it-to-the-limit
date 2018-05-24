@@ -29,6 +29,8 @@ export function failOnCancel (reject: IReject): void {
 // Lodash compatibility wrapper
 export function adapter (wrapper: Function): IWrapper {
   return (fn: ITarget, delay: IDelay | IWrapperOpts, opts?: ILodashOpts): IControlled => {
+    assertFn(fn)
+
     if (typeof delay === 'number') {
       return wrapper(fn, {...opts, delay})
     }

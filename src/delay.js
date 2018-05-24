@@ -1,7 +1,7 @@
 // @flow
 
 import type {IAny, ITarget, IControlled, IResolve, IWrapper, IWrapperOpts, IReject} from './interface'
-import {complete, failOnCancel, adapter, assertFn} from './common'
+import {complete, failOnCancel, adapter} from './common'
 
 // TODO refactor
 export type ICall = {
@@ -10,10 +10,7 @@ export type ICall = {
 }
 
 export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
-  assertFn(fn)
-
   const { delay, context, rejectOnCancel } = opts
-
   const calls: ICall[] = []
   const timeouts: TimeoutID[] = []
   const res = (...args: IAny[]): Promise<IAny> => new Promise((resolve: IResolve, reject: IReject) => {
