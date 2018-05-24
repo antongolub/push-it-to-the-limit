@@ -2,7 +2,7 @@ import {throttle} from '../src'
 
 describe('throttle', () => {
   it('wrapper returns function', () => {
-    expect(throttle(() => {})).toEqual(expect.any(Function))
+    expect(throttle(() => {}, 10)).toEqual(expect.any(Function))
   })
 
   it('throws error on invalid input', () => {

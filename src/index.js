@@ -6,6 +6,7 @@ import debounce from './debounce'
 import ratelimit from './ratelimit'
 import stabilize from './stabilize'
 import repeat from './repeat'
+import {REJECTED_ON_CANCEL, REJECTED} from './common'
 
 export {
   delay,
@@ -13,5 +14,7 @@ export {
   debounce,
   ratelimit,
   stabilize,
-  repeat
+  repeat,
+  REJECTED,
+  REJECTED_ON_CANCEL
 }

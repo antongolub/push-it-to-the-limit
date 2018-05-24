@@ -1,21 +1,27 @@
 // @flow
 
-import type {IAny, ITarget} from './interface'
-import {assertFn} from './common'
+import type {IAny, ITarget, IControlled, IWrapper, IWrapperOpts} from './interface'
+import {adapter, assertFn} from './common'
 
-export default function throttle (fn: ITarget, delay: number, context?: IAny) {
+export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
   assertFn(fn)
 
+  const { delay, context } = opts
   let ready: boolean = true
   let lastResult: IAny
 
-  return (...args: IAny[]): IAny => {
+  const res = (...args: IAny[]): IAny => {
     if (ready) {
-      setTimeout(() => { ready = true })
+      setTimeout(() => { ready = true }, delay)
       lastResult = fn.call(context, ...args)
       ready = false
     }
 
     return lastResult
   }
-}
+
+  res.flush = () => {}
+  res.cancel = () => {}
+
+  return res
+}): IWrapper)

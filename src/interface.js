@@ -25,12 +25,14 @@ export type IControlled = {
 }
 
 export type IResolve = (value: IAny) => void
+export type IReject = (value: IAny) => void
 
 export type IPromiser = (...args: IAny[]) => Promise<IAny>
 export type ILodashOpts = {}
 export type IWrapperOpts = {
   delay: IDelay,
-  context: IAny
+  context: IAny,
+  rejectOnCancel?: boolean
 }
 export type IWrapper = {
   (fn: ITarget, opts: IWrapperOpts): IPromiser,

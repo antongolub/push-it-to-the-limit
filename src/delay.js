@@ -1,24 +1,42 @@
 // @flow
 
-import type {IAny, ITarget, IControlled, IResolve, IWrapper, IWrapperOpts} from './interface'
-import {complete, adapter, assertFn} from './common'
+import type {IAny, ITarget, IControlled, IResolve, IWrapper, IWrapperOpts, IReject} from './interface'
+import {complete, failOnCancel, adapter, assertFn} from './common'
+
+// TODO refactor
+export type ICall = {
+  fail: Function,
+  complete: Function
+}
 
 export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
   assertFn(fn)
 
-  const { delay, context } = opts
-  let timeout: TimeoutID
-  let _resolve: IResolve
-  let _args: IAny[]
+  const { delay, context, rejectOnCancel } = opts
 
-  const res = (...args: IAny[]): Promise<IAny> => new Promise(resolve => {
-    _resolve = resolve
-    _args = args
-    timeout = setTimeout(res.flush, delay)
+  const calls: ICall[] = []
+  const timeouts: TimeoutID[] = []
+  const res = (...args: IAny[]): Promise<IAny> => new Promise((resolve: IResolve, reject: IReject) => {
+    calls.push({
+      complete: complete.bind(null, resolve, fn, args, context),
+      fail: failOnCancel.bind(null, reject)
+    })
+    timeouts.push(setTimeout(() => calls.shift().complete(), delay))
   })
 
-  res.flush = () => complete(_resolve, fn, _args, context)
-  res.cancel = () => clearTimeout(timeout)
+  res.flush = () => {
+    calls.forEach(call => call.complete())
+    res.cancel()
+  }
+
+  res.cancel = () => {
+    timeouts.forEach(clearTimeout)
+    if (rejectOnCancel) {
+      calls.forEach(call => call.fail())
+    }
+    calls.length = 0
+    timeouts.length = 0
+  }
 
   return res
 }): IWrapper)

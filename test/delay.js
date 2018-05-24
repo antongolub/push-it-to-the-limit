@@ -1,4 +1,4 @@
-import {delay} from '../src'
+import {delay, REJECTED_ON_CANCEL} from '../src'
 
 describe('delay', () => {
   it('wrapper returns function', () => {
@@ -28,5 +28,51 @@ describe('delay', () => {
 
     expect(bar).toBe('foo')
     expect(fn).toBeCalledWith('foo')
+  })
+
+  it('`flush` invokes all delayed calls immediately', done => {
+    const fn = jest.fn(v => v)
+    const delayed = delay(fn, 1000000000)
+
+    const result = Promise.all([delayed('foo'), delayed('bar')])
+    result
+      .then(([foo, bar]) => {
+        expect(foo).toBe('foo')
+        expect(bar).toBe('bar')
+        expect(fn).toBeCalledWith('foo')
+        expect(fn).toBeCalledWith('bar')
+        done()
+      })
+    delayed.flush()
+  })
+
+  it('`cancel` removes delayed calls stack and timers', done => {
+    const fn = jest.fn(v => v)
+    const delayed = delay(fn, {
+      delay: 10,
+      rejectOnCancel: false
+    })
+    const delayedWithReject = delay(fn, {
+      delay: 10,
+      rejectOnCancel: true
+    })
+    const resultWithReject = Promise.all([delayedWithReject('foo'), delayedWithReject('bar')])
+    const result = Promise.all([delayed('foo'), delayed('bar')])
+
+    resultWithReject
+      .catch(e => {
+        expect(e.message).toBe(REJECTED_ON_CANCEL)
+      })
+    result
+      .then(() => expect(true).toBeFalsy())
+      .catch(() => expect(true).toBeFalsy())
+
+    delayed.cancel()
+    delayedWithReject.cancel()
+
+    setTimeout(() => {
+      expect(fn).not.toHaveBeenCalled()
+      done()
+    }, 15)
   })
 })
