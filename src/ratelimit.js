@@ -1,7 +1,7 @@
 // @flow
 
 import type {IAny, ITarget, ILimit, ILimitStack, ICallStack} from './interface'
-import {assertFn} from './assert'
+import {assertFn} from './common'
 
 export default function ratelimit (fn: ITarget, limit: ILimit | ILimitStack, context?: IAny): Function {
   assertFn(fn)

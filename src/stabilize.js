@@ -1,7 +1,7 @@
 // @flow
 
 import type {IAny, ITarget} from './interface'
-import {assertFn} from './assert'
+import {assertFn} from './common'
 
 export default function stabilize (fn: ITarget, delay: number, context?: IAny): Function {
   assertFn(fn)

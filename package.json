@@ -7,7 +7,7 @@
     "flow": "flow",
     "flow_coverage": "flow-coverage-report -i 'src/**/*.js' -t html -t json -t text --threshold 90",
     "lint": "standard src/**/*.js test/**/*.js",
-    "jest": "BABEL_ENV=test jest -w 2 --forceExit",
+    "jest": "BABEL_ENV=test jest -w 1 --forceExit",
     "test": "npm run flow && npm run flow_coverage && npm run lint && npm run build_with_rollup && npm run jest",
     "doc": "esdoc",
     "test_with_report": "npm test && npm run codeclimate_push && npm run coveralls_push",

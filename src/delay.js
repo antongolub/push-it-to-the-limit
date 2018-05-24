@@ -1,8 +1,7 @@
 // @flow
 
 import type {IAny, ITarget, IControlled, IResolve, IWrapper, IWrapperOpts} from './interface'
-import {assertFn} from './assert'
-import {complete, adapter} from './common'
+import {complete, adapter, assertFn} from './common'
 
 export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
   assertFn(fn)

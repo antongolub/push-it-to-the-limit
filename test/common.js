@@ -1,4 +1,4 @@
-import {assert, assertFn} from '../src/assert'
+import {assert, assertFn} from '../src/common'
 
 describe('assert', () => {
   it('does nothing if condition looks truthy', () => {
