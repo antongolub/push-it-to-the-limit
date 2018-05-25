@@ -18,23 +18,27 @@ export type ICall = {
 }
 export type ICallStack = Array<ICall>
 
-export type IControlled = {
-  (...args: any[]): any,
-  flush(): void,
-  cancel(): void
-}
-
 export type IResolve = (value: IAny) => void
 export type IReject = (value: IAny) => void
 
 export type IPromiser = (...args: IAny[]) => Promise<IAny>
+export type IControlled = {
+  (...args: IAny[]): Promise<IAny>,
+  flush(): void,
+  cancel(): void
+}
 export type ILodashOpts = {}
 export type IWrapperOpts = {
   delay: IDelay,
-  context: IAny,
-  rejectOnCancel?: boolean
+  context?: IAny,
+  rejectOnCancel?: boolean,
+
+  leading?: boolean,
+  trailing?: boolean,
+  maxWait?: number
 }
-export type IWrapper = {
-  (fn: ITarget, opts: IWrapperOpts): IPromiser,
-  (fn: ITarget, delay: IDelay): IPromiser
+export type IWrapper = (fn: ITarget, opts: IWrapperOpts) => IControlled
+export type IExposedWrapper = {
+  (fn: ITarget, opts: IWrapperOpts): IControlled,
+  (fn: ITarget, delay: IDelay, opts?: ILodashOpts): IControlled
 }

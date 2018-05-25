@@ -1,25 +1,9 @@
 // @flow
 
-import type {IAny, ITarget, IControlled, IWrapper, IWrapperOpts} from './interface'
+import type {ITarget, IControlled, IExposedWrapper, IWrapperOpts} from './interface'
 import {adapter} from './common'
+import debounce from './debounce'
 
-export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
-  const { delay, context } = opts
-  let ready: boolean = true
-  let lastResult: IAny
-
-  const res = (...args: IAny[]): IAny => {
-    if (ready) {
-      setTimeout(() => { ready = true }, delay)
-      lastResult = fn.call(context, ...args)
-      ready = false
-    }
-
-    return lastResult
-  }
-
-  res.flush = () => {}
-  res.cancel = () => {}
-
-  return res
-}): IWrapper)
+export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled =>
+  debounce(fn, {leading: true, maxWait: opts.delay, ...opts})
+): IExposedWrapper)

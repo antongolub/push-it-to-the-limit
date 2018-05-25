@@ -1,12 +1,12 @@
 // @flow
 
-import type {IAny, ITarget, IControlled, IResolve, IWrapper, IWrapperOpts, IReject} from './interface'
+import type {IAny, ITarget, IControlled, IResolve, IReject, IExposedWrapper, IWrapperOpts} from './interface'
 import {complete, failOnCancel, adapter} from './common'
 
 // TODO refactor
 export type ICall = {
-  fail: Function,
-  complete: Function
+  fail: () => void,
+  complete: () => void
 }
 
 export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
@@ -36,4 +36,4 @@ export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
   }
 
   return res
-}): IWrapper)
+}): IExposedWrapper)

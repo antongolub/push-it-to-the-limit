@@ -9,7 +9,8 @@ import type {
   ITarget,
   IWrapper,
   IControlled,
-  IWrapperOpts
+  IWrapperOpts,
+  IExposedWrapper
 } from './interface'
 
 export function complete (resolve: IResolve, fn: ITarget, args: IAny[], context?: IAny): void {
@@ -27,12 +28,13 @@ export function failOnCancel (reject: IReject): void {
 }
 
 // Lodash compatibility wrapper
-export function adapter (wrapper: Function): IWrapper {
+export function adapter (wrapper: IWrapper): IExposedWrapper {
   return (fn: ITarget, delay: IDelay | IWrapperOpts, opts?: ILodashOpts): IControlled => {
     assertFn(fn)
 
     if (typeof delay === 'number') {
-      return wrapper(fn, {...opts, delay})
+      const _opts: IWrapperOpts = {...opts, delay}
+      return wrapper(fn, _opts)
     }
 
     return wrapper(fn, delay)
@@ -48,3 +50,11 @@ export function assert (condition: boolean, text?: string = 'Assertion error'): 
 export function assertFn (target: IAny): void {
   assert(typeof target === 'function', 'Target must be a function')
 }
+
+export function dropTimeout (timeout?: ?TimeoutID): void {
+  if (timeout) {
+    clearTimeout(timeout)
+  }
+}
+
+export function noop () {}

@@ -111,11 +111,15 @@ It's 10 requests per second and 200 requests per minute.
 — But here's `ratelimit`, isn't it?  
 — Ratelimit "expands" the calls timeline to match frequency limit.  
 — ...  
-— This wrapper swaps some calls like `throttle`, but guarantees that target fn would be called at least every `n` ms.
-— Still looks similar to [Lodash debounce](https://lodash.com/docs/4.17.10#debounce) with `maxDelay` opt.
-— Yes. But this one returns a `Promise`.
-— Why just not...
-— Ok. It's a shortcut for `debounce` with `maxDelay` opt, that equals `delay`.
+— This wrapper swaps some calls like `throttle`, but guarantees that target fn would be called at least every `n` ms.  
+— Still looks similar to [Lodash debounce](https://lodash.com/docs/4.17.10#debounce) with `maxDelay` opt.  
+— Yes. But this one returns a `Promise`.  
+— Why just not...  
+— Ok. It's a shortcut for `debounce` with `maxDelay` opt, that equals `delay`.  
+— And how about this: `throttle(fn, {delay: 100, maxWait: 100, leading: false, trailing: true})`?  
+— `throttle` is a special case of `debounce`  
+— ...  
+— Actually everything is `debounce`.
 
 ```javascript
     const fn = v => v
