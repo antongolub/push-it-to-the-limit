@@ -22,6 +22,11 @@ Delay wrappers for common purposes. Fast and simple.
 ```
 Dist contains cjs-formatted `bundle.es5.js` and its parts as es5-modules, so you may use them directly.
 
+## API
+[The interface](./src/interface.js) is dumb: each wrapper gets at least one argument — `target` function. The second param is `opt`, which may be a numeric `delay` or a `IWrapperOpts` object. Also the scheme with three arguments is supported as in lodash. Wrapper returns `IControlled` function: it's a functor with a pair exposed util methods: `cancel` and `flush`.  
+* `flush()` immediately invokes the `target` fn.
+* `cancel()` clears any bounded timeout.  
+
 ## Usage examples
 #### `delay`
 Each function call is delayed for a specified time.
@@ -70,7 +75,7 @@ Returns the function that invokes origin fn at most once per a period.
 
 #### `ratelimit`
 `ratelimit` confines the execution frequency of target function. Overlimited invocations are being `delayed` until the limit reset.
-Have a look at this [ratelimit](https://github.com/wankdanker/node-function-rate-limit/blob/master/index.js) implementation. That's good except the only thing: generating timeout for each invocation looks redundant.
+Have a look at this [ratelimit](https://github.com/wankdanker/node-function-rate-limit/blob/master/index.js) implementation. That's good enough except the only thing: generating timeout for each invocation looks redundant.
 
 ```javascript
     import {ratelimit} from 'push-it-to-the-limit'
