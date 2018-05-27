@@ -1,3 +1,11 @@
+<a name="1.5.0"></a>
+# [1.5.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.4.0...v1.5.0) (2018-05-27)
+
+
+### Features
+
+* add `flush` and `cancel` methods for debounced and throttled functions ([fc40497](https://github.com/antongolub/push-it-to-the-limit/commit/fc40497))
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.3.0...v1.4.0) (2018-05-24)
 
