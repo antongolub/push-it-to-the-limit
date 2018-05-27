@@ -10,14 +10,14 @@ describe('ratelimit', () => {
   })
 
   it('delays overlimit calls', done => {
-    const period = 100
+    const period = 50
     const count = 2
     const start = Date.now()
     const fn = ratelimit(x => {
       const diff = Date.now() - start
-      const expected = Math.round((x - 1) / count) * period
+      const expected = Math.round(((x || 1) - 1) / count) * period
 
-      expect(diff >= expected && diff <= expected + 5 * (x + 1)).toBeTruthy()
+      expect(diff >= expected && diff <= expected + 15 + 2 * x).toBeTruthy()
       if (x === 9) {
         done()
       }

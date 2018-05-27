@@ -25,7 +25,7 @@ describe('complete', () => {
   it('resolves a promise with target fn invocation result', done => {
     const foo = 'foo'
     const fn = v => v
-    const p = new Promise((resolve, reject) => complete(resolve, fn, [foo]))
+    const p = new Promise(resolve => complete(resolve, fn, [foo]))
 
     p.then(v => {
       expect(v).toBe(foo)

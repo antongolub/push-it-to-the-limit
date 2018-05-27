@@ -17,6 +17,7 @@ describe('repeat', () => {
     setTimeout(() => rep(4), 20)
     setTimeout(() => {
       expect(context.i > 9).toBeTruthy()
+      clearTimeout(rep.timeout)
       done()
     }, 40)
   })
