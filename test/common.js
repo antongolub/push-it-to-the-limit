@@ -1,4 +1,14 @@
-import {assert, assertFn, complete, fail, failOnCancel, REJECTED_ON_CANCEL} from '../src/common'
+import {
+  assert,
+  assertFn,
+  complete,
+  fail,
+  failOnCancel,
+  REJECTED_ON_CANCEL,
+  REJECTED,
+  DEFAULT_DELAY,
+  adapter
+} from '../src/common'
 
 describe('assert', () => {
   it('does nothing if condition looks truthy', () => {
@@ -45,6 +55,15 @@ describe('fail', () => {
       done()
     })
   })
+
+  it('passes default message to `reject` if no opt is specified', done => {
+    const p = new Promise((resolve, reject) => fail(reject))
+
+    p.catch(e => {
+      expect(e.message).toBe(REJECTED)
+      done()
+    })
+  })
 })
 
 describe('failOnCancel', () => {
@@ -56,6 +75,44 @@ describe('failOnCancel', () => {
       expect(e.message).toBe(REJECTED_ON_CANCEL)
 
       done()
+    })
+  })
+})
+
+describe('adapter', () => {
+  const fn = v => v
+  const wrapper = jest.fn((target, opts) => null)
+  const adapted = adapter(wrapper)
+
+  afterEach(wrapper.mockClear)
+
+  const cases = [
+    [
+      'converts <ITarget> to <ITarget, IWrapperOpts>',
+      [fn],
+      [fn, {delay: DEFAULT_DELAY}]
+    ],
+    [
+      'converts <ITarget, IDelay> to <ITarget, IWrapperOpts>',
+      [fn, 1],
+      [fn, {delay: 1}]
+    ],
+    [
+      'converts <ITarget, IDelay, ILodashOpts> to <ITarget, IWrapperOpts>',
+      [fn, 1, {foo: 'bar'}],
+      [fn, {delay: 1, foo: 'bar'}]
+    ],
+    [
+      'converts <ITarget, IWrapperOpts, ILodashOpts> to <ITarget, IWrapperOpts>',
+      [fn, {delay: 2}, {baz: 'qux'}],
+      [fn, {delay: 2, baz: 'qux'}]
+    ]
+  ]
+
+  cases.map(([description, args, expected]) => {
+    it(description, () => {
+      adapted(...args)
+      expect(wrapper).toHaveBeenCalledWith(...expected)
     })
   })
 })

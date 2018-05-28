@@ -27,9 +27,10 @@ export function failOnCancel (reject: IReject): void {
   fail(reject, REJECTED_ON_CANCEL)
 }
 
+export const DEFAULT_DELAY = 0
 // Lodash compatibility wrapper
 export function adapter (wrapper: IWrapper): IExposedWrapper {
-  return (fn: ITarget, delay: IDelay | IWrapperOpts, opts?: ILodashOpts): IControlled => {
+  return (fn: ITarget, delay?: IDelay | IWrapperOpts, opts?: ILodashOpts): IControlled => {
     assertFn(fn)
 
     if (typeof delay === 'number') {
@@ -37,7 +38,11 @@ export function adapter (wrapper: IWrapper): IExposedWrapper {
       return wrapper(fn, _opts)
     }
 
-    return wrapper(fn, delay)
+    if (delay === undefined) {
+      return wrapper(fn, {delay: DEFAULT_DELAY})
+    }
+
+    return wrapper(fn, {...opts, ...delay})
   }
 }
 
