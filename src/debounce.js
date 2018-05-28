@@ -1,13 +1,7 @@
 // @flow
 
-import type {IAny, ITarget, IControlled, IResolve, IReject, IExposedWrapper, IWrapperOpts} from './interface'
+import type {IAny, ITarget, IControlled, IResolve, IReject, IExposedWrapper, IWrapperOpts, ICall} from './interface'
 import {complete, failOnCancel, adapter, dropTimeout, noop} from './common'
-
-// TODO refactor
-export type ICall = {
-  fail: () => void,
-  complete: () => void
-}
 
 export const DEFAULT_OPTS = {
   leading: false,

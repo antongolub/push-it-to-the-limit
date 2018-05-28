@@ -1,13 +1,16 @@
 // @flow
 
-import type {IAny, ITarget, IControlled, IResolve, IReject, IExposedWrapper, IWrapperOpts} from './interface'
+import type {
+  IAny,
+  ITarget,
+  IControlled,
+  IResolve,
+  IReject,
+  IExposedWrapper,
+  IWrapperOpts,
+  ICall
+} from './interface'
 import {complete, failOnCancel, adapter} from './common'
-
-// TODO refactor
-export type ICall = {
-  fail: () => void,
-  complete: () => void
-}
 
 export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
   const { delay, context, rejectOnCancel } = opts

@@ -13,8 +13,8 @@ export type ILimit = {
 export type ILimitStack = Array<ILimit>
 
 export type ICall = {
-  args: IAny[],
-  resolve: Function
+  fail: () => void,
+  complete: () => void
 }
 export type ICallStack = Array<ICall>
 
