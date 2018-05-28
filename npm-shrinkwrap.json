@@ -1,6 +1,6 @@
 {
   "name": "push-it-to-the-limit",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "lockfileVersion": 1,
   "requires": true,
   "dependencies": {
@@ -794,9 +794,9 @@
       "dev": true
     },
     "@octokit/rest": {
-      "version": "15.7.0",
-      "resolved": "https://registry.npmjs.org/@octokit/rest/-/rest-15.7.0.tgz",
-      "integrity": "sha512-WHW4MgiGb0i/1DfkMWXtu3lvZ8N8gLzbKNycss3+Z2O929m13GUH0/XrXmurYndbMKrG6e5Y/LuE2pJdNBPdeg==",
+      "version": "15.8.0",
+      "resolved": "https://registry.npmjs.org/@octokit/rest/-/rest-15.8.0.tgz",
+      "integrity": "sha512-meERu6/ogKkqnqmeqapjyjOXEVH3wA/V9vSyCzYDshZLJWgdl+JwWWYziRd68Oy2wmlQnPr//3gH8gC6YUpMPw==",
       "dev": true,
       "requires": {
         "before-after-hook": "1.1.0",
@@ -1156,7 +1156,7 @@
       "integrity": "sha512-SuaBvUf7l3RwqdxBKyRSPZnSckEMB0EqBu6658x41hivJXn7KdJnH/EcKNzMeKu8zFJ6a8DrXTY71APVKE3wHg==",
       "dev": true,
       "requires": {
-        "@octokit/rest": "15.7.0",
+        "@octokit/rest": "15.8.0",
         "@semantic-release/error": "2.2.0",
         "aggregate-error": "1.0.0",
         "bottleneck": "2.3.1",
@@ -1173,9 +1173,9 @@
       }
     },
     "@semantic-release/npm": {
-      "version": "3.3.0",
-      "resolved": "https://registry.npmjs.org/@semantic-release/npm/-/npm-3.3.0.tgz",
-      "integrity": "sha512-XuVXsZ8JkRLjoAsknfD4YXwhJqWRL5IDq77k1uZBXlQlGhVE2MRQ0Vtl3fUMThYPs7RlJfzQNJvY3TZm0zsTOg==",
+      "version": "3.3.1",
+      "resolved": "https://registry.npmjs.org/@semantic-release/npm/-/npm-3.3.1.tgz",
+      "integrity": "sha512-cSTxtCmLRk1SO3spR/4JPXWtnMLP/K79AqaQYhHVVUleRcKdlrxu1A1hO3ADlZ6MVTf1iDPe+lXm4FJ139Neeg==",
       "dev": true,
       "requires": {
         "@semantic-release/error": "2.2.0",
@@ -1186,7 +1186,7 @@
         "fs-extra": "6.0.1",
         "lodash": "4.17.10",
         "nerf-dart": "1.0.0",
-        "normalize-url": "2.0.1",
+        "normalize-url": "3.0.0",
         "parse-json": "4.0.0",
         "read-pkg": "3.0.0",
         "registry-auth-token": "3.3.2"
@@ -8495,15 +8495,10 @@
       }
     },
     "normalize-url": {
-      "version": "2.0.1",
-      "resolved": "https://registry.npmjs.org/normalize-url/-/normalize-url-2.0.1.tgz",
-      "integrity": "sha512-D6MUW4K/VzoJ4rJ01JFKxDrtY1v9wrgzCX5f2qj/lzH1m/lW6MhUZFKerVsnyjOhOsYzI9Kqqak+10l4LvLpMw==",
-      "dev": true,
-      "requires": {
-        "prepend-http": "2.0.0",
-        "query-string": "5.1.1",
-        "sort-keys": "2.0.0"
-      }
+      "version": "3.0.0",
+      "resolved": "https://registry.npmjs.org/normalize-url/-/normalize-url-3.0.0.tgz",
+      "integrity": "sha512-1ByGkIwUIYyZMgsh0OpyuJDTCzIHh6Egi3W6rSNNJUx40mOB4gtnPeHbCGdBMN+VU6UmRQiuq0UfefNlIth4xg==",
+      "dev": true
     },
     "npm-run-path": {
       "version": "2.0.2",
@@ -9009,12 +9004,6 @@
       "integrity": "sha1-IZMqVJ9eUv/ZqCf1cOBL5iqX2lQ=",
       "dev": true
     },
-    "prepend-http": {
-      "version": "2.0.0",
-      "resolved": "https://registry.npmjs.org/prepend-http/-/prepend-http-2.0.0.tgz",
-      "integrity": "sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=",
-      "dev": true
-    },
     "preserve": {
       "version": "0.2.0",
       "resolved": "https://registry.npmjs.org/preserve/-/preserve-0.2.0.tgz",
@@ -9106,17 +9095,6 @@
       "resolved": "https://registry.npmjs.org/qs/-/qs-6.3.2.tgz",
       "integrity": "sha1-51vV9uJoEioqDgvaYwslUMFmUCw=",
       "dev": true
-    },
-    "query-string": {
-      "version": "5.1.1",
-      "resolved": "https://registry.npmjs.org/query-string/-/query-string-5.1.1.tgz",
-      "integrity": "sha512-gjWOsm2SoGlgLEdAGt7a6slVOk9mGiXmPFMqrEhLQ68rhQuBnpfs3+EmlvqKyxnCo9/PPlF+9MtY02S1aFg+Jw==",
-      "dev": true,
-      "requires": {
-        "decode-uri-component": "0.2.0",
-        "object-assign": "4.1.1",
-        "strict-uri-encode": "1.1.0"
-      }
     },
     "quick-lru": {
       "version": "1.1.0",
@@ -10093,7 +10071,7 @@
         "@semantic-release/commit-analyzer": "5.0.3",
         "@semantic-release/error": "2.2.0",
         "@semantic-release/github": "4.2.16",
-        "@semantic-release/npm": "3.3.0",
+        "@semantic-release/npm": "3.3.1",
         "@semantic-release/release-notes-generator": "6.0.10",
         "aggregate-error": "1.0.0",
         "chalk": "2.4.1",
@@ -10454,15 +10432,6 @@
         "hoek": "2.16.3"
       }
     },
-    "sort-keys": {
-      "version": "2.0.0",
-      "resolved": "https://registry.npmjs.org/sort-keys/-/sort-keys-2.0.0.tgz",
-      "integrity": "sha1-ZYU1WEhh7JfXMNbPQYIuH1ZoQSg=",
-      "dev": true,
-      "requires": {
-        "is-plain-obj": "1.1.0"
-      }
-    },
     "source-map": {
       "version": "0.5.7",
       "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.5.7.tgz",
@@ -10671,12 +10640,6 @@
         "duplexer2": "0.1.4",
         "readable-stream": "2.3.6"
       }
-    },
-    "strict-uri-encode": {
-      "version": "1.1.0",
-      "resolved": "https://registry.npmjs.org/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz",
-      "integrity": "sha1-J5siXfHVgrH1TmWt3UNS4Y+qBxM=",
-      "dev": true
     },
     "string-length": {
       "version": "2.0.0",
