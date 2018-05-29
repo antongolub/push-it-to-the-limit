@@ -1,3 +1,11 @@
+<a name="1.7.0"></a>
+# [1.7.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.6.0...v1.7.0) (2018-05-29)
+
+
+### Features
+
+* **stabilize:** add `cancel` and `flush` methods ([f49fd50](https://github.com/antongolub/push-it-to-the-limit/commit/f49fd50))
+
 <a name="1.6.0"></a>
 # [1.6.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.5.0...v1.6.0) (2018-05-29)
 
