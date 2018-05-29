@@ -1,3 +1,11 @@
+<a name="1.6.0"></a>
+# [1.6.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.5.0...v1.6.0) (2018-05-29)
+
+
+### Features
+
+* **ratelimit:** add `cancel` and `flush` methods ([743d6b4](https://github.com/antongolub/push-it-to-the-limit/commit/743d6b4))
+
 <a name="1.5.0"></a>
 # [1.5.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.4.0...v1.5.0) (2018-05-27)
 
