@@ -1,28 +1,52 @@
 // @flow
 
-import type {IAny, ITarget, ILimit, ILimitStack, ICallStack} from './interface'
-import {assertFn, complete, failOnCancel} from './common'
+import type {
+  IAny,
+  ITarget,
+  ILimit,
+  ILimitStack,
+  ICallStack,
+  IControlled,
+  IExposedWrapper,
+  IWrapperOpts
+} from './interface'
+import {complete, failOnCancel, dropTimeout, adapter} from './common'
 
-export default function ratelimit (fn: ITarget, limit: ILimit | ILimitStack, context?: IAny): Function {
-  assertFn(fn)
+export type IProcessor = (calls: ICallStack, limits: ILimitStack) => void
 
-  const limits: ILimitStack = [].concat(limit)
+export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
+  let timeout: ?TimeoutID = null
+  const {limit, context} = opts
+  const limits: ILimitStack = limit ? [].concat(limit) : []
   const calls: ICallStack = []
+  const processCalls: IProcessor = (calls: ICallStack, limits: ILimitStack): void => {
+    dropTimeout(timeout)
+    refreshLimits(limits)
+    invokeToTheLimit(calls, limits)
 
-  return (...args: IAny[]): Promise<IAny> => new Promise((resolve, reject) => {
+    timeout = processTimeouts(calls, limits, processCalls)
+  }
+
+  const res = (...args: IAny[]): Promise<IAny> => new Promise((resolve, reject) => {
     calls.push({
       complete: complete.bind(null, resolve, fn, args, context),
       fail: failOnCancel.bind(null, reject)
     })
     processCalls(calls, limits)
   })
-}
 
-export function processCalls (calls: ICallStack, limits: ILimitStack): void {
-  refreshLimits(limits)
-  invokeToTheLimit(calls, limits)
-  processTimeouts(calls, limits)
-}
+  res.flush = () => {
+    calls.forEach(call => call.complete())
+    res.cancel()
+  }
+
+  res.cancel = () => {
+    calls.length = 0
+    dropTimeout(timeout)
+  }
+
+  return res
+}): IExposedWrapper)
 
 export function invokeToTheLimit (calls: ICallStack, limits: ILimitStack): void {
   while (calls.length > 0 && isAllowed(limits)) {
@@ -49,10 +73,10 @@ export function refreshLimit (limit: ILimit): void {
   }
 }
 
-export function refreshTimeouts (calls: ICallStack, limits: ILimitStack): TimeoutID {
+export function refreshTimeouts (calls: ICallStack, limits: ILimitStack, handler: IProcessor): TimeoutID {
   const ttl = getReasonableTtl(limits)
 
-  return setTimeout(() => processCalls(calls, limits), ttl - Date.now())
+  return setTimeout(() => handler(calls, limits), ttl - Date.now())
 }
 
 export function getReasonableTtl (limits: ILimitStack): number {
@@ -68,10 +92,12 @@ export function getReasonableTtl (limits: ILimitStack): number {
   return ttl
 }
 
-export function processTimeouts (calls: ICallStack, limits: ILimitStack): void {
+export function processTimeouts (calls: ICallStack, limits: ILimitStack, handler: IProcessor): TimeoutID | null {
   if (calls.length > 0) {
-    refreshTimeouts(calls, limits)
+    return refreshTimeouts(calls, limits, handler)
   }
+
+  return null
 }
 
 export function refreshLimits (limits: ILimitStack): void {

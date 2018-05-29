@@ -1,4 +1,4 @@
-import {ratelimit} from '../src'
+import {ratelimit, REJECTED_ON_CANCEL} from '../src'
 
 describe('ratelimit', () => {
   it('wrapper returns function', () => {
@@ -48,5 +48,52 @@ describe('ratelimit', () => {
     for (let y = 0; y < 10; y++) {
       fn(y)
     }
+  })
+
+  it('`flush` invokes all delayed calls immediately', done => {
+    const fn = ratelimit(x => x, {period: 10000000, count: 1})
+    const result = Promise.all([fn('foo'), fn('bar'), fn('baz')])
+    result
+      .then(([foo, bar, baz]) => {
+        expect(foo).toBe('foo')
+        expect(bar).toBe('bar')
+        expect(baz).toBe('baz')
+
+        done()
+      })
+
+    fn.flush()
+  })
+
+  it('`cancel` removes ltd calls stack and timers', done => {
+    const fn = jest.fn(v => v)
+    const ltd = ratelimit(fn, {
+      limit: {period: 10, count: 1},
+      rejectOnCancel: false
+    })
+    const ltdWithReject = ratelimit(fn, {
+      limit: {period: 10, count: 1},
+      rejectOnCancel: true
+    })
+    const resultWithReject = Promise.all([ltdWithReject('foo'), ltdWithReject('bar')])
+    const result = Promise.all([ltd('baz'), ltd('qux')])
+
+    resultWithReject
+      .catch(e => {
+        expect(e.message).toBe(REJECTED_ON_CANCEL)
+      })
+    result
+      .then(() => expect(true).toBeFalsy())
+      .catch(() => expect(true).toBeFalsy())
+
+    ltd.cancel()
+    ltdWithReject.cancel()
+
+    setTimeout(() => {
+      expect(fn).toHaveBeenCalledTimes(2)
+      expect(fn).toHaveBeenCalledWith('foo')
+      expect(fn).toHaveBeenCalledWith('baz')
+      done()
+    }, 15)
   })
 })
