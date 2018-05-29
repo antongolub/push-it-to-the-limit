@@ -60,6 +60,7 @@ describe('delay', () => {
     const result = Promise.all([delayed('foo'), delayed('bar')])
 
     resultWithReject
+      .then(() => expect(true).toBeFalsy())
       .catch(e => {
         expect(e.message).toBe(REJECTED_ON_CANCEL)
       })

@@ -79,6 +79,7 @@ describe('ratelimit', () => {
     const result = Promise.all([ltd('baz'), ltd('qux')])
 
     resultWithReject
+      .then(() => expect(true).toBeFalsy())
       .catch(e => {
         expect(e.message).toBe(REJECTED_ON_CANCEL)
       })

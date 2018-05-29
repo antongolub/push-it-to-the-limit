@@ -32,26 +32,20 @@ export function failOnCancel (reject: IReject): void {
 export const DEFAULT_DELAY = 0
 // Lodash compatibility wrapper
 export function adapter (wrapper: IWrapper): IExposedWrapper {
-  return (fn: ITarget, value?: IDelay | ILimit | ILimitStack | IWrapperOpts, opts?: ILodashOpts): IControlled => {
+  return (fn: ITarget, value?: IDelay | ILimit | ILimitStack | IWrapperOpts, lodashOpts?: ILodashOpts): IControlled => {
     assertFn(fn)
 
+    let opts: IWrapperOpts = {delay: DEFAULT_DELAY, ...lodashOpts}
+
     if (typeof value === 'number') {
-      return wrapper(fn, {...opts, delay: value})
+      opts = {...lodashOpts, delay: value}
+    } else if (Array.isArray(value) || (typeof value === 'object' && typeof value.period === 'number' && typeof value.count === 'number')) {
+      opts = {delay: DEFAULT_DELAY, ...lodashOpts, limit: value}
+    } else if (typeof value === 'object' && !Array.isArray(value)) {
+      opts = {delay: DEFAULT_DELAY, ...lodashOpts, ...value}
     }
 
-    if (value === undefined) {
-      return wrapper(fn, {delay: DEFAULT_DELAY})
-    }
-
-    if (Array.isArray(value) || (typeof value === 'object' && typeof value.period === 'number' && typeof value.count === 'number')) {
-      return wrapper(fn, {delay: DEFAULT_DELAY, ...opts, limit: value})
-    }
-
-    if (typeof value === 'object' && !Array.isArray(value)) {
-      return wrapper(fn, {delay: DEFAULT_DELAY, ...opts, ...value})
-    }
-
-    return wrapper(fn, {delay: DEFAULT_DELAY, ...opts})
+    return wrapper(fn, opts)
   }
 }
 

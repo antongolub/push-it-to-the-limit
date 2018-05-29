@@ -16,7 +16,7 @@ export type IProcessor = (calls: ICallStack, limits: ILimitStack) => void
 
 export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
   let timeout: ?TimeoutID = null
-  const {limit, context} = opts
+  const {limit, context, rejectOnCancel} = opts
   const limits: ILimitStack = limit ? [].concat(limit) : []
   const calls: ICallStack = []
   const processCalls: IProcessor = (calls: ICallStack, limits: ILimitStack): void => {
@@ -41,6 +41,9 @@ export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
   }
 
   res.cancel = () => {
+    if (rejectOnCancel) {
+      calls.forEach(call => call.fail())
+    }
     calls.length = 0
     dropTimeout(timeout)
   }

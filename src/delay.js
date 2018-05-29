@@ -10,7 +10,7 @@ import type {
   IWrapperOpts,
   ICall
 } from './interface'
-import {complete, failOnCancel, adapter} from './common'
+import {complete, failOnCancel, adapter, dropTimeout} from './common'
 
 export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
   const { delay, context, rejectOnCancel } = opts
@@ -30,7 +30,7 @@ export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
   }
 
   res.cancel = () => {
-    timeouts.forEach(clearTimeout)
+    timeouts.forEach(dropTimeout)
     if (rejectOnCancel) {
       calls.forEach(call => call.fail())
     }
