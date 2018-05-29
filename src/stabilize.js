@@ -1,26 +1,9 @@
 // @flow
 
-import type {IAny, ITarget} from './interface'
-import {assertFn} from './common'
+import type {IControlled, IExposedWrapper, ITarget, IWrapperOpts} from './interface'
+import {adapter} from './common'
+import debounce from './debounce'
 
-export default function stabilize (fn: ITarget, delay: number, context?: IAny): Function {
-  assertFn(fn)
-
-  let promise: ?Promise<IAny>
-  let lastArgs: IAny[]
-
-  return (...args: IAny[]): Promise<IAny> => {
-    lastArgs = args
-
-    if (!promise) {
-      promise = new Promise(resolve => {
-        setTimeout(() => {
-          promise = null
-          resolve(fn.call(context, ...lastArgs))
-        }, delay)
-      })
-    }
-
-    return promise
-  }
-}
+export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled =>
+  debounce(fn, {maxWait: opts.delay, ...opts})
+): IExposedWrapper)
