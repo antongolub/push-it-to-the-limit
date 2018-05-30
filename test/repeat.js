@@ -11,7 +11,7 @@ describe('repeat', () => {
       this.i += step
     }
 
-    const rep = repeat(target, delay, context)
+    const rep = repeat(target, {delay, context})
     rep(1)
 
     setTimeout(() => rep(4), 20)
@@ -20,5 +20,31 @@ describe('repeat', () => {
       clearTimeout(rep.timeout)
       done()
     }, 40)
+  })
+
+  it('`flush` invokes target fn immediately', () => {
+    const fn = jest.fn(v => v)
+    const rep = repeat(fn, {delay: 100})
+
+    rep(1)
+    rep.flush()
+
+    expect(fn).toHaveBeenCalledTimes(2)
+    expect(fn).toHaveBeenCalledWith(1)
+  })
+
+  it('`cancel` breaks auto-invocation loop', done => {
+    const fn = jest.fn(v => v)
+    const rep = repeat(fn, {delay: 5})
+
+    rep(1)
+    rep.cancel()
+
+    setTimeout(() => {
+      expect(fn).toHaveBeenCalledTimes(1)
+      expect(fn).toHaveBeenCalledWith(1)
+
+      done()
+    }, 20)
   })
 })
