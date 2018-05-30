@@ -11,9 +11,9 @@
 Delay wrappers for common purposes. Fast and simple.
 #### Main features
 * `Promise` as a result
-*  Interrelated delays support
 * [Lodash](https://lodash.com/)-compatible API
 * `Flow` type defs 
+*  Interrelated delays support
 
 ## Install
 ```bash
@@ -181,3 +181,4 @@ It's 10 requests per second and 200 requests per minute.
 * [The differences between `throttle` and `debounce`](https://css-tricks.com/debouncing-throttling-explained-examples/).
 * [node-function-rate-limit](https://github.com/wankdanker/node-function-rate-limit)
 * [SGrondin/bottleneck](https://github.com/SGrondin/bottleneck)
+* [promise-throttle](https://github.com/jmperez/promise-throttle)
