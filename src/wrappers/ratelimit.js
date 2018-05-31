@@ -7,9 +7,9 @@ import type {
   IControlled,
   IExposedWrapper,
   IWrapperOpts, ILimiter, INormalizedDelays
-} from './interface'
-import {complete, failOnCancel, dropTimeout, adapter, normalizeDelay} from './common'
-import Limiter from './limiter'
+} from '../interface'
+import {complete, failOnCancel, dropTimeout, adapter, normalizeDelay} from '../common'
+import Limiter from '../limiter'
 
 export type IProcessor = (calls: ICallStack, limiter: ILimiter) => void
 

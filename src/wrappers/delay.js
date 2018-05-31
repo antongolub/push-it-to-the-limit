@@ -9,8 +9,8 @@ import type {
   IExposedWrapper,
   IWrapperOpts,
   ICall
-} from './interface'
-import {complete, failOnCancel, adapter, dropTimeout} from './common'
+} from '../interface'
+import {complete, failOnCancel, adapter, dropTimeout} from '../common'
 
 export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
   const { delay, context, rejectOnCancel } = opts

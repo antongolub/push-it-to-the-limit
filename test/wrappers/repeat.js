@@ -1,4 +1,4 @@
-import {repeat} from '../src'
+import {repeat} from '../../src'
 
 describe('repeat', () => {
   it('looks to be working', done => {

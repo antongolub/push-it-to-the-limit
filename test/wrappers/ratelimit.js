@@ -1,4 +1,4 @@
-import {ratelimit, REJECTED_ON_CANCEL} from '../src'
+import {ratelimit, REJECTED_ON_CANCEL} from '../../src'
 
 describe('ratelimit', () => {
   it('wrapper returns function', () => {

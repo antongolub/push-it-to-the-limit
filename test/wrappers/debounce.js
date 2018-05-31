@@ -1,4 +1,4 @@
-import {debounce, REJECTED_ON_CANCEL} from '../src'
+import {debounce, REJECTED_ON_CANCEL} from '../../src'
 
 describe('debounce', () => {
   it('wrapper returns function', () => {

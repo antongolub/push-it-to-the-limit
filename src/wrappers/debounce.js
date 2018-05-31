@@ -1,7 +1,7 @@
 // @flow
 
-import type {IAny, ITarget, IControlled, IResolve, IReject, IExposedWrapper, IWrapperOpts, ICall} from './interface'
-import {complete, failOnCancel, adapter, dropTimeout, noop} from './common'
+import type {IAny, ITarget, IControlled, IResolve, IReject, IExposedWrapper, IWrapperOpts, ICall} from '../interface'
+import {complete, failOnCancel, adapter, dropTimeout, noop} from '../common'
 
 export const DEFAULT_OPTS = {
   leading: false,

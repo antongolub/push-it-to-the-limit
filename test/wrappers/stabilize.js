@@ -1,4 +1,4 @@
-import {REJECTED_ON_CANCEL, stabilize} from '../src'
+import {REJECTED_ON_CANCEL, stabilize} from '../../src'
 
 describe('stabilize', () => {
   it('wrapper returns function', () => {

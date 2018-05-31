@@ -1,4 +1,4 @@
-import {delay, REJECTED_ON_CANCEL} from '../src'
+import {delay, REJECTED_ON_CANCEL} from '../../src'
 
 describe('delay', () => {
   it('wrapper returns function', () => {

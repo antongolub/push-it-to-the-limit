@@ -1,4 +1,4 @@
-import {throttle} from '../src'
+import {throttle} from '../../src'
 
 describe('throttle', () => {
   it('wrapper returns function', () => {
