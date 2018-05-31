@@ -12,7 +12,11 @@ import type {
   IWrapperOpts,
   IExposedWrapper,
   ILimit,
-  ILimitStack
+  ILimitStack,
+  IBasicDelay,
+  IComplexDelay,
+  IMixedDelays,
+  INormalizedDelays
 } from './interface'
 
 export function complete (resolve: IResolve, fn: ITarget, args: IAny[], context?: IAny): void {
@@ -66,3 +70,15 @@ export function dropTimeout (timeout?: ?TimeoutID): void {
 }
 
 export function noop (): void {}
+
+export function normalizeDelay (delay?: IBasicDelay | IComplexDelay | IMixedDelays | INormalizedDelays| ILimit | ILimitStack): INormalizedDelays {
+  if (delay === undefined) {
+    return []
+  }
+
+  return [].concat(delay)
+    .map((v): IComplexDelay => typeof v === 'number'
+      ? {period: v || DEFAULT_DELAY, count: 1}
+      : v
+    )
+}

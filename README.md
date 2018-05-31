@@ -25,7 +25,23 @@ Dist contains cjs-formatted `bundle.es5.js` and its parts as es5-modules, so you
 ## API
 [The interface](./src/interface.js) is dumb: each wrapper gets at least one argument — `target` function. The second param is `opt`, which may be a numeric `delay` or a `IWrapperOpts` object. Also the scheme with three arguments is supported as in lodash. Wrapper returns `IControlled` function: it's a functor with a pair exposed util methods: `cancel` and `flush`.  
 * `flush()` immediately invokes the `target` fn.
-* `cancel()` clears any bounded timeout.  
+* `cancel()` clears any bounded timeout.
+
+### `IDelay`
+_Basic_ `delay` is a rate limit — 1 request per `n` ms. Sometimes you may face with more _complex_ restriction like "10 req per 100ms" and, you know, this is not the same as "1 req per 10ms". Moreover, "10 requests per second and 200 requests per minute" also occurs. The last case is _interrelated delay_.
+```javascript
+// basic numeric delay
+  const d1 = 100
+  
+// complex delay
+  const d2 = {period: 1000, count: 10}
+  
+// interrelated delay
+  const d3 = [{period: 1000, count: 10}, {period: 60000, count: 200}]
+
+// mixed case delay
+  const d4 = [1000, {period: 60000, count: 20}]
+```
 
 ## Usage examples
 #### `delay`
