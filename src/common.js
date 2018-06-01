@@ -78,7 +78,7 @@ export function normalizeDelay (delay?: IBasicDelay | IComplexDelay | IMixedDela
 
   return [].concat(delay)
     .map((v): IComplexDelay => typeof v === 'number'
-      ? {period: v || DEFAULT_DELAY, count: 1}
+      ? {period: v, count: 1}
       : v
     )
 }

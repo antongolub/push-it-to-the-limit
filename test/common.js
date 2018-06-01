@@ -7,7 +7,8 @@ import {
   REJECTED_ON_CANCEL,
   REJECTED,
   DEFAULT_DELAY,
-  adapter
+  adapter,
+  normalizeDelay
 } from '../src/common'
 
 describe('assert', () => {
@@ -113,6 +114,21 @@ describe('adapter', () => {
     it(description, () => {
       adapted(...args)
       expect(wrapper).toHaveBeenCalledWith(...expected)
+    })
+  })
+})
+
+describe('normalizeDelay', () => {
+  const cases = [
+    [undefined, []],
+    [100, [{period: 100, count: 1}]],
+    [[{period: 100, count: 10}], [{period: 100, count: 10}]],
+    [[200, {period: 100, count: 10}], [{period: 200, count: 1}, {period: 100, count: 10}]],
+  ]
+
+  cases.forEach(([input, output]) => {
+    it(input + ' > ' + output, () => {
+      expect(normalizeDelay(input)).toEqual(output)
     })
   })
 })
