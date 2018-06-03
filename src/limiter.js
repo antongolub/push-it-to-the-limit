@@ -38,6 +38,10 @@ export default class Limiter implements ILimiter {
     return ttl - Date.now()
   }
 
+  getNextQueueSize (): number {
+    return Math.min.apply(Math, this.limits.map(({rest}) => rest))
+  }
+
   static refreshLimit (limit: ILimit) {
     if (limit.ttl === undefined || limit.ttl < Date.now()) {
       limit.rest = limit.count

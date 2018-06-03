@@ -1,7 +1,17 @@
 // @flow
 
-import type {IAny, ITarget, IControlled, IResolve, IReject, IExposedWrapper, IWrapperOpts, ICall} from '../interface'
-import {complete, failOnCancel, adapter, dropTimeout, noop} from '../common'
+import type {
+  IAny,
+  ITarget,
+  IControlled,
+  IResolve,
+  IReject,
+  IExposedWrapper,
+  IWrapperOpts,
+  ICallStack
+} from '../interface'
+import {complete, failOnCancel, adapter, dropTimeout, normalizeDelay} from '../common'
+import Limiter from '../limiter'
 
 export const DEFAULT_OPTS = {
   leading: false,
@@ -9,41 +19,54 @@ export const DEFAULT_OPTS = {
 }
 
 export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
-  const { delay, context, rejectOnCancel, maxWait, leading } = ({...DEFAULT_OPTS, ...opts}: IWrapperOpts)
+  const { delay, limit, context, rejectOnCancel, maxWait, leading } = ({...DEFAULT_OPTS, ...opts}: IWrapperOpts)
+  const limiter = new Limiter(normalizeDelay(delay || limit))
+  const calls: ICallStack = []
+  const args = []
 
-  let call: ?ICall
   let timeout: ?TimeoutID
   let maxTimeout: ?TimeoutID
-  let promise: ?Promise<IAny>
-  let _args: IAny
+  let promise: Promise<IAny> | null
+  let queueLimit: number | null = null
 
-  const res = (...args: IAny[]): Promise<IAny> => {
-    _args = args
-
-    if (!promise) {
-      promise = new Promise((resolve: IResolve, reject: IReject) => {
-        call = {
-          complete: () => complete(resolve, fn, _args, context),
-          fail: failOnCancel.bind(null, reject)
-        }
-      })
+  const res = (..._args: IAny[]): Promise<IAny> => {
+    if (queueLimit === null) {
+      limiter.reset()
+      queueLimit = limiter.getNextQueueSize()
     }
 
     // NOTE `leading` option has priority
-    if (!timeout && leading && call) {
-      const _p = promise
+    let shouldRun = leading && !timeout && queueLimit > 0
 
-      call.complete()
-      call = null
+    args.push(_args)
+
+    if (queueLimit > 0 || promise === null) {
+      promise = new Promise((resolve: IResolve, reject: IReject) => {
+        calls.push({
+          complete: () => complete(resolve, fn, args.pop(), context),
+          fail: failOnCancel.bind(null, reject)
+        })
+      })
+
+      limiter.decrease()
+      queueLimit += -1
+    }
+
+    const nextDelay = limiter.getNextDelay()
+    if (shouldRun) {
+      const _p = promise
+      timeout = setTimeout(res.flush, nextDelay)
       promise = null
-      timeout = setTimeout(noop, delay)
+
+      calls.forEach(call => call.complete())
+      calls.length = 0
 
       return _p
     }
 
     dropTimeout(timeout)
+    timeout = setTimeout(res.flush, nextDelay)
 
-    timeout = setTimeout(res.flush, delay)
     if (maxWait && !maxTimeout) {
       maxTimeout = setTimeout(res.flush, maxWait)
     }
@@ -52,28 +75,29 @@ export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
   }
 
   res.flush = () => {
-    if (call) {
-      call.complete()
-      call = null
-    }
+    limiter.reset()
+    promise = null
+    queueLimit = null
+    calls.forEach(call => call.complete())
+    calls.length = 0
 
     res.cancel()
   }
 
   res.cancel = () => {
-    timeout && clearTimeout(timeout)
-    maxTimeout && clearTimeout(maxTimeout)
+    dropTimeout(timeout)
+    dropTimeout(maxTimeout)
 
+    queueLimit = null
     promise = null
     timeout = null
     maxTimeout = null
-    _args = null
+    args.length = 0
 
-    if (rejectOnCancel && call) {
-      call.fail()
+    if (rejectOnCancel) {
+      calls.forEach(call => call.fail)
     }
-
-    call = null
+    calls.length = 0
   }
 
   return res

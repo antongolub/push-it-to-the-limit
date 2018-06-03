@@ -28,6 +28,28 @@ describe('debounce', () => {
     }, 12)
   })
 
+  it('handles `complex delays`', done => {
+    const fn = jest.fn(v => v)
+    const delay = {period: 10, count: 2}
+    const debounced = debounce(fn, delay)
+
+    const foo = debounced('foo')
+    const bar = debounced('bar')
+    const baz = debounced('baz')
+    const qux = debounced('qux')
+
+    expect(foo).not.toBe(bar)
+    expect(bar).toBe(baz)
+    expect(bar).toBe(qux)
+
+    setTimeout(() => {
+      expect(fn).toHaveBeenCalledTimes(2)
+      expect(fn).toHaveBeenCalledWith('baz')
+      expect(fn).toHaveBeenCalledWith('qux')
+      done()
+    }, 12)
+  })
+
   it('passes same promise as a result', async () => {
     const debounced = debounce(v => v, 1)
     const [foo, baz] = await Promise.all([debounced('bar'), debounced('qux')])
@@ -57,21 +79,25 @@ describe('debounce', () => {
     const debounced = debounce(fn, 10, {leading: true})
 
     debounced('foo').then(v => expect(v).toBe('foo'))
-    debounced('bar').then(v => expect(v).toBe('baz'))
-    debounced('baz').then(v => expect(v).toBe('baz'))
+    debounced('bar').then(v => expect(v).toBe('qux'))
+    debounced('baz').then(v => expect(v).toBe('qux'))
+    debounced('qux').then(v => expect(v).toBe('qux'))
 
     setTimeout(() => {
-      debounced('qux').then(v => expect(v).toBe('qux'))
-    }, 11)
+      debounced('quxx').then(v => expect(v).toBe('quxx'))
+      debounced('barr').then(v => expect(v).toBe('bazz'))
+      debounced('bazz').then(v => expect(v).toBe('bazz'))
+    }, 12)
 
     setTimeout(() => {
-      expect(fn).toHaveBeenCalledTimes(3)
+      expect(fn).toHaveBeenCalledTimes(4)
       expect(fn).toHaveBeenCalledWith('foo')
-      expect(fn).toHaveBeenCalledWith('baz')
       expect(fn).toHaveBeenCalledWith('qux')
+      expect(fn).toHaveBeenCalledWith('quxx')
+      expect(fn).toHaveBeenCalledWith('bazz')
 
       done()
-    }, 15)
+    }, 25)
   })
 
   it('`flush` invokes target function immediately', done => {

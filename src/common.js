@@ -69,8 +69,6 @@ export function dropTimeout (timeout?: ?TimeoutID): void {
   }
 }
 
-export function noop (): void {}
-
 export function normalizeDelay (delay?: IBasicDelay | IComplexDelay | IMixedDelays | INormalizedDelays| ILimit | ILimitStack): INormalizedDelays {
   if (delay === undefined) {
     return []
