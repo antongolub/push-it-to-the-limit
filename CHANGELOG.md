@@ -1,3 +1,11 @@
+<a name="1.9.0"></a>
+# [1.9.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.8.0...v1.9.0) (2018-06-04)
+
+
+### Features
+
+* **debounce:** add `complex delays` support ([f7b483a](https://github.com/antongolub/push-it-to-the-limit/commit/f7b483a))
+
 <a name="1.8.0"></a>
 # [1.8.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.7.0...v1.8.0) (2018-05-30)
 
