@@ -100,6 +100,35 @@ describe('debounce', () => {
     }, 25)
   })
 
+  it('handles `leading` with complex delays', done => {
+    const fn = jest.fn(v => v)
+    const debounced = debounce(fn, {period: 10, count: 2}, {leading: true})
+
+    debounced('foo').then(v => expect(v).toBe('foo'))
+    debounced('bar').then(v => expect(v).toBe('bar'))
+    debounced('baz').then(v => expect(v).toBe('qux'))
+    debounced('qux').then(v => expect(v).toBe('qux'))
+
+    setTimeout(() => {
+      debounced('fooo').then(v => expect(v).toBe('fooo'))
+      debounced('barr').then(v => expect(v).toBe('barr'))
+      debounced('bazz').then(v => expect(v).toBe('quxx'))
+      debounced('quxx').then(v => expect(v).toBe('quxx'))
+    }, 12)
+
+    setTimeout(() => {
+      expect(fn).toHaveBeenCalledTimes(6)
+      expect(fn).toHaveBeenCalledWith('foo')
+      expect(fn).toHaveBeenCalledWith('bar')
+      expect(fn).toHaveBeenCalledWith('qux')
+      expect(fn).toHaveBeenCalledWith('fooo')
+      expect(fn).toHaveBeenCalledWith('barr')
+      expect(fn).toHaveBeenCalledWith('quxx')
+
+      done()
+    }, 25)
+  })
+
   it('`flush` invokes target function immediately', done => {
     const fn = jest.fn(v => v)
     const debounced = debounce(fn, {delay: 10000})
