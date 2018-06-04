@@ -1,3 +1,11 @@
+<a name="1.9.2"></a>
+## [1.9.2](https://github.com/antongolub/push-it-to-the-limit/compare/v1.9.1...v1.9.2) (2018-06-04)
+
+
+### Bug Fixes
+
+* **debounce:** extend waiting on further invocations ([f8b81cc](https://github.com/antongolub/push-it-to-the-limit/commit/f8b81cc))
+
 <a name="1.9.1"></a>
 ## [1.9.1](https://github.com/antongolub/push-it-to-the-limit/compare/v1.9.0...v1.9.1) (2018-06-04)
 
