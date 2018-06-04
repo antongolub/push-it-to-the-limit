@@ -8,7 +8,7 @@
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 [![Greenkeeper badge](https://badges.greenkeeper.io/antongolub/push-it-to-the-limit.svg)](https://greenkeeper.io/)
 
-Delay wrappers for common purposes. Fast and simple.
+Delay wrappers for common purposes. <s>Fast and simple</s> with promises.
 #### Main features
 * `Promise` as a result
 * [Lodash](https://lodash.com/)-compatible API
