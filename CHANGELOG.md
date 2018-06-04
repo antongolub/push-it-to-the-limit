@@ -1,3 +1,11 @@
+<a name="1.9.1"></a>
+## [1.9.1](https://github.com/antongolub/push-it-to-the-limit/compare/v1.9.0...v1.9.1) (2018-06-04)
+
+
+### Bug Fixes
+
+* **debounce:** handle `leading` opt with complex delays ([e69df69](https://github.com/antongolub/push-it-to-the-limit/commit/e69df69))
+
 <a name="1.9.0"></a>
 # [1.9.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.8.0...v1.9.0) (2018-06-04)
 
