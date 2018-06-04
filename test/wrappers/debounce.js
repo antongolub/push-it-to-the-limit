@@ -28,6 +28,21 @@ describe('debounce', () => {
     }, 12)
   })
 
+  it('defers the call', done => {
+    const fn = jest.fn(v => v)
+    const debounced = debounce(fn, 10)
+
+    for (let i = 0; i < 5; i++) {
+      (v => setTimeout(() => debounced(v), v * 5))(i)
+    }
+
+    setTimeout(() => {
+      expect(fn).toHaveBeenCalledTimes(1)
+      expect(fn).toHaveBeenCalledWith(4)
+      done()
+    }, 40)
+  })
+
   it('handles `complex delays`', done => {
     const fn = jest.fn(v => v)
     const delay = {period: 10, count: 2}
@@ -87,7 +102,7 @@ describe('debounce', () => {
       debounced('quxx').then(v => expect(v).toBe('quxx'))
       debounced('barr').then(v => expect(v).toBe('bazz'))
       debounced('bazz').then(v => expect(v).toBe('bazz'))
-    }, 12)
+    }, 15)
 
     setTimeout(() => {
       expect(fn).toHaveBeenCalledTimes(4)
@@ -97,7 +112,7 @@ describe('debounce', () => {
       expect(fn).toHaveBeenCalledWith('bazz')
 
       done()
-    }, 25)
+    }, 30)
   })
 
   it('handles `leading` with complex delays', done => {

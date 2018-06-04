@@ -20,6 +20,10 @@ export default class Limiter implements ILimiter {
     this.limits.forEach(this.constructor.refreshLimit)
   }
 
+  resetTtl (): void {
+    this.limits.forEach(this.constructor.refreshTtl)
+  }
+
   isAllowed (): boolean {
     return !this.limits.find(({rest}) => rest < 1)
   }
@@ -39,6 +43,7 @@ export default class Limiter implements ILimiter {
   }
 
   getNextQueueSize (): number {
+    this.reset()
     return Math.min.apply(Math, this.limits.map(({rest}) => rest))
   }
 
@@ -49,5 +54,9 @@ export default class Limiter implements ILimiter {
     }
 
     return limit
+  }
+
+  static refreshTtl (limit: ILimit) {
+    limit.ttl = Date.now() + limit.period
   }
 }

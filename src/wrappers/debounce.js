@@ -31,11 +31,8 @@ export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
 
   const res = (..._args: IAny[]): Promise<IAny> => {
     if (queueLimit === null) {
-      limiter.reset()
       queueLimit = limiter.getNextQueueSize()
     }
-    args.push(_args)
-
     // NOTE `leading` option has priority
     let shouldRun = leading && queueLimit > 0
 
@@ -51,6 +48,8 @@ export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
       queueLimit += -1
     }
 
+    args.push(_args)
+    limiter.resetTtl()
     const nextDelay = limiter.getNextDelay()
     if (shouldRun) {
       const _p = promise
