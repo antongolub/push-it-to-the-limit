@@ -11,7 +11,7 @@ import debounce from './debounce'
 
 export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
   const delay = typeof opts.delay === 'number'
-    ? {period: opts.delay, count: 10000}
+    ? {period: opts.delay, count: Infinity}
     : opts.delay
 
   const maxWait = typeof opts.delay === 'number'
