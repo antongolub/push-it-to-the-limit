@@ -1,3 +1,11 @@
+<a name="1.10.0"></a>
+# [1.10.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.9.2...v1.10.0) (2018-06-05)
+
+
+### Features
+
+* add `order` option to switch fifo and lifo flows ([05e38cc](https://github.com/antongolub/push-it-to-the-limit/commit/05e38cc))
+
 <a name="1.9.2"></a>
 ## [1.9.2](https://github.com/antongolub/push-it-to-the-limit/compare/v1.9.1...v1.9.2) (2018-06-04)
 
