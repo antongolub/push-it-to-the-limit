@@ -15,8 +15,8 @@ export type IProcessor = (calls: ICallStack, limiter: ILimiter) => void
 
 export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
   let timeout: ?TimeoutID = null
-  const {limit, context, rejectOnCancel} = opts
-  const delays: INormalizedDelays = normalizeDelay(limit)
+  const {delay, limit, context, rejectOnCancel} = opts
+  const delays: INormalizedDelays = normalizeDelay(limit || delay)
   const limiter = new Limiter(delays)
   const calls: ICallStack = []
   const processCalls: IProcessor = (calls: ICallStack, limiter: ILimiter): void => {

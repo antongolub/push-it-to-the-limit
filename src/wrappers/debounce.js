@@ -19,7 +19,7 @@ export const DEFAULT_OPTS = {
 }
 
 export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
-  const { delay, limit, context, rejectOnCancel, maxWait, leading } = ({...DEFAULT_OPTS, ...opts}: IWrapperOpts)
+  const { delay, limit, context, rejectOnCancel, maxWait, leading, order } = ({...DEFAULT_OPTS, ...opts}: IWrapperOpts)
   const limiter = new Limiter(normalizeDelay(limit || delay))
   const calls: ICallStack = []
   const args = []
@@ -39,7 +39,7 @@ export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
     if (queueLimit > 0 || promise === null) {
       promise = new Promise((resolve: IResolve, reject: IReject) => {
         calls.push({
-          complete: () => complete(resolve, fn, args.pop(), context),
+          complete: () => complete(resolve, fn, order === 'fifo' ? args.shift() : args.pop(), context),
           fail: failOnCancel.bind(null, reject)
         })
       })

@@ -36,15 +36,17 @@ export function failOnCancel (reject: IReject): void {
 export const DEFAULT_DELAY = 0
 // Lodash compatibility wrapper
 export function adapter (wrapper: IWrapper): IExposedWrapper {
-  return (fn: ITarget, value?: IDelay | ILimit | ILimitStack | IWrapperOpts, lodashOpts?: ILodashOpts): IControlled => {
+  return (fn: ITarget, value?: IDelay | IComplexDelay | ILimit | ILimitStack | IWrapperOpts, lodashOpts?: ILodashOpts): IControlled => {
     assertFn(fn)
 
     let opts: IWrapperOpts = {delay: DEFAULT_DELAY, ...lodashOpts}
 
     if (typeof value === 'number') {
       opts = {...lodashOpts, delay: value}
-    } else if (Array.isArray(value) || (typeof value === 'object' && typeof value.period === 'number' && typeof value.count === 'number')) {
+    } else if (Array.isArray(value)) {
       opts = {delay: DEFAULT_DELAY, ...lodashOpts, limit: value}
+    } else if (typeof value === 'object' && typeof value.period === 'number' && typeof value.count === 'number') {
+      opts = {delay: value, ...lodashOpts}
     } else if (typeof value === 'object' && !Array.isArray(value)) {
       opts = {delay: DEFAULT_DELAY, ...lodashOpts, ...value}
     }
@@ -52,6 +54,8 @@ export function adapter (wrapper: IWrapper): IExposedWrapper {
     return wrapper(fn, opts)
   }
 }
+
+// function isLimit
 
 export function assert (condition: boolean, text?: string = 'Assertion error'): void {
   if (!condition) {
