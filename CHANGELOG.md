@@ -1,3 +1,11 @@
+<a name="1.10.1"></a>
+## [1.10.1](https://github.com/antongolub/push-it-to-the-limit/compare/v1.10.0...v1.10.1) (2018-06-05)
+
+
+### Bug Fixes
+
+* **delay:** fix default limit opts ([5999562](https://github.com/antongolub/push-it-to-the-limit/commit/5999562))
+
 <a name="1.10.0"></a>
 # [1.10.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.9.2...v1.10.0) (2018-06-05)
 
