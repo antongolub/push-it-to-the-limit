@@ -39,7 +39,7 @@ _Basic_ `delay` is a rate limit — 1 request per `n` ms. Sometimes you may face
 // interrelated delay
   const d3 = [{period: 1000, count: 10}, {period: 60000, count: 200}]
 
-// mixed case delay
+// mixed case
   const d4 = [1000, {period: 60000, count: 20}]
 ```
 
@@ -140,23 +140,20 @@ It's 10 requests per second and 200 requests per minute.
 — And how about this: `throttle(fn, {delay: 100, maxWait: 100, leading: false, trailing: true})`?  
 — `throttle` is a special case of `debounce`  
 — ...  
-— Actually everything is `debounce`.
+— **Actually everything is `debounce`**.
 
 ```javascript
     const fn = v => v
     const stable = stabilize(fn, 100)
 
     for (let y = 0; y < 10; y++) {
-      (x => {
-        setTimeout(() => {
-          const start = Date.now()
-
-          stable(x)
-            .then(v => {
-              console.log('x=', x, 'value=', v, 'delay=', (Date.now() - start))
-            })
+      (x => setTimeout(() => {
+        const start = Date.now()
+    
+        stable(x)
+          .then(v => console.log('x=', x, 'value=', v, 'delay=', (Date.now() - start)))
         }, x * 20 )
-      })(y)
+      )(y)
     }
  
  /** stdout
@@ -195,6 +192,7 @@ It's 10 requests per second and 200 requests per minute.
 
 #### Notes and refs
 * [The differences between `throttle` and `debounce`](https://css-tricks.com/debouncing-throttling-explained-examples/).
-* [node-function-rate-limit](https://github.com/wankdanker/node-function-rate-limit)
+* [wankdanker/node-function-rate-limit](https://github.com/wankdanker/node-function-rate-limit)
 * [SGrondin/bottleneck](https://github.com/SGrondin/bottleneck)
-* [promise-throttle](https://github.com/jmperez/promise-throttle)
+* [jmperez/promise-throttle](https://github.com/jmperez/promise-throttle)
+* [bjoerge/debounce-promise](https://github.com/bjoerge/debounce-promise)
