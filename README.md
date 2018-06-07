@@ -10,15 +10,15 @@
 
 Delay wrappers for common purposes. <s>Fast and simple</s> with promises.
 #### Main features
-* `Promise` as a result
-* [Lodash](https://lodash.com/)-compatible API
-* `Flow` type defs 
-*  Interrelated delays support
+* `Promise` as a result                <small>done</small>
+* [Lodash](https://lodash.com/)-compatible API           <small>done</small>
+*  Interrelated delays support     <small>done</small>
+* Exposed `Flow` libdefs            <small>wip</small>
 
 ## Install
 ```bash
-    npm i @antongolub/push-it-to-the-limit
-    yarn add @antongolub/push-it-to-the-limit
+    npm i push-it-to-the-limit
+    yarn add push-it-to-the-limit
 ```
 Dist contains cjs-formatted `bundle.es5.js` and its parts as es5-modules, so you may use them directly.
 
