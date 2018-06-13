@@ -62,7 +62,7 @@ describe('stabilize', () => {
       rejectOnCancel: false
     })
     const stableWithReject = stabilize(fn, {
-      delay: 10,
+      delay: {period: 10, count: 1},
       rejectOnCancel: true
     })
     const resultWithReject = Promise.all([stableWithReject('foo'), stableWithReject('bar')])

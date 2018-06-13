@@ -11,7 +11,7 @@ describe('throttle', () => {
 
   it('returns first result for all invokes in period', done => {
     const fn = jest.fn(v => v)
-    const throttled = throttle(fn, 10)
+    const throttled = throttle(fn, {period: 10, count: 1})
 
     throttled(1).then(v => expect(v).toBe(1))
     throttled(2).then(v => expect(v).toBe(3))

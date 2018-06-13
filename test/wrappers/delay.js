@@ -53,7 +53,7 @@ describe('delay', () => {
       rejectOnCancel: false
     })
     const delayedWithReject = delay(fn, {
-      delay: 10,
+      delay: {period: 10, count: 1},
       rejectOnCancel: true
     })
     const resultWithReject = Promise.all([delayedWithReject('foo'), delayedWithReject('bar')])

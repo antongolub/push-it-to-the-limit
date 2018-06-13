@@ -107,6 +107,11 @@ describe('adapter', () => {
       'converts <ITarget, IWrapperOpts, ILodashOpts> to <ITarget, IWrapperOpts>',
       [fn, {delay: 2}, {baz: 'qux'}],
       [fn, {delay: 2, baz: 'qux'}]
+    ],
+    [
+      'converts <ITarget, emptyObject, ILodashOpts> to <ITarget, IWrapperOpts>',
+      [fn, {}, {baz: 'qux'}],
+      [fn, {delay: DEFAULT_DELAY, baz: 'qux'}]
     ]
   ]
 
