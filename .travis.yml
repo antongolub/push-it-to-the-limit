@@ -4,15 +4,15 @@ node_js:
 
 before_install:
   - npm install -g greenkeeper-lockfile
-before_script: greenkeeper-lockfile-update
-after_script: greenkeeper-lockfile-upload
 
 install:
+  - greenkeeper-lockfile-update
   - npm install
   - npm run build
 
 script:
   - npm run test_with_report
+  - greenkeeper-lockfile-upload
 
 deploy:
   provider: script
