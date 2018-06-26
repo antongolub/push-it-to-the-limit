@@ -10,10 +10,10 @@
 
 Delay wrappers for common purposes. <s>Fast and simple</s> with promises.
 #### Main features
-* `Promise` as a result                <small>done</small>
-* [Lodash](https://lodash.com/)-compatible API           <small>done</small>
-*  Interrelated delays support     <small>done</small>
-* Exposed `Flow` libdefs            <small>wip</small>
+* `Promise` as a result
+* [Lodash](https://lodash.com/)-compatible API
+* Interrelated delays support
+* Exposed `Flow` libdefs
 
 ## Install
 ```bash
