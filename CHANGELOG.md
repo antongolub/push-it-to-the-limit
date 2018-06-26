@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.10.1...v1.11.0) (2018-06-26)
+
+
+### Features
+
+* add `flow` libdefs ([e7910df](https://github.com/antongolub/push-it-to-the-limit/commit/e7910df))
+
 <a name="1.10.1"></a>
 ## [1.10.1](https://github.com/antongolub/push-it-to-the-limit/compare/v1.10.0...v1.10.1) (2018-06-05)
 
