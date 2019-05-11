@@ -6,19 +6,19 @@
   "scripts": {
     "clean": "rm -rf dist",
     "flow": "flow",
-    "flow_coverage": "flow-coverage-report -i 'src/**/*.js' -t html -t json -t text --threshold 90",
+    "flow:coverage": "flow-coverage-report -i 'src/**/*.js' -t html -t json -t text --threshold 90",
     "lint": "standard src/**/*.js test/**/*.js",
     "lint:fix": "standard src/**/*.js test/**/*.js --fix",
     "jest": "BABEL_ENV=test jest -w 1 --detectOpenHandles",
-    "test": "npm run flow && npm run flow_coverage && npm run lint && npm run build_with_rollup && npm run jest",
-    "doc": "esdoc",
-    "test_with_report": "npm test && npm run coveralls_push",
-    "coveralls_push": "cat ./coverage/lcov.info | coveralls",
-    "build": "npm run clean && npm run build_with_rollup && npm run build_with_babel",
-    "build_with_babel": "BABEL_ENV=production babel src --out-dir dist",
-    "build_with_rollup": "npm run rollup && npm run bundle_to_es5",
+    "test": "npm run flow && npm run flow:coverage && npm run lint && npm run build:rollup && npm run jest",
+    "test:report": "npm test && npm run coveralls:push",
+    "coveralls:push": "cat ./coverage/lcov.info | coveralls",
+    "build": "npm run clean && npm run build:rollup && npm run build:babel",
+    "build:babel": "BABEL_ENV=production babel src --out-dir dist",
+    "build:rollup": "npm run rollup && npm run bundle:es5",
     "rollup": "rollup -c",
-    "bundle_to_es5": "BABEL_ENV=production babel dist/bundle.js --out-file dist/bundle.es5.js"
+    "bundle:es5": "BABEL_ENV=production babel dist/bundle.js --out-file dist/bundle.es5.js",
+    "doc": "esdoc"
   },
   "repository": {
     "type": "git",
