@@ -10,7 +10,7 @@ import type {
   IWrapperOpts,
   ICallStack
 } from '../interface'
-import {complete, failOnCancel, adapter, dropTimeout, normalizeDelay} from '../common'
+import { complete, failOnCancel, adapter, dropTimeout, normalizeDelay } from '../common'
 import Limiter from '../limiter'
 
 export const DEFAULT_OPTS = {
@@ -19,7 +19,7 @@ export const DEFAULT_OPTS = {
 }
 
 export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
-  const { delay, limit, context, rejectOnCancel, maxWait, leading, order } = ({...DEFAULT_OPTS, ...opts}: IWrapperOpts)
+  const { delay, limit, context, rejectOnCancel, maxWait, leading, order } = ({ ...DEFAULT_OPTS, ...opts }: IWrapperOpts)
   const limiter = new Limiter(normalizeDelay(limit || delay))
   const calls: ICallStack = []
   const args = []

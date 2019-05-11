@@ -1,4 +1,4 @@
-import {repeat} from '../../src'
+import { repeat } from '../../src'
 
 describe('repeat', () => {
   it('looks to be working', done => {
@@ -11,7 +11,7 @@ describe('repeat', () => {
       this.i += step
     }
 
-    const rep = repeat(target, {delay, context})
+    const rep = repeat(target, { delay, context })
     rep(1)
 
     setTimeout(() => rep(4), 20)
@@ -24,7 +24,7 @@ describe('repeat', () => {
 
   it('`flush` invokes target fn immediately', () => {
     const fn = jest.fn(v => v)
-    const rep = repeat(fn, {delay: 100})
+    const rep = repeat(fn, { delay: 100 })
 
     rep(1)
     rep.flush()
@@ -35,7 +35,7 @@ describe('repeat', () => {
 
   it('`cancel` breaks auto-invocation loop', done => {
     const fn = jest.fn(v => v)
-    const rep = repeat(fn, {delay: 5})
+    const rep = repeat(fn, { delay: 5 })
 
     rep(1)
     rep.cancel()

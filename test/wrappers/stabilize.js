@@ -1,4 +1,4 @@
-import {REJECTED_ON_CANCEL, stabilize} from '../../src'
+import { REJECTED_ON_CANCEL, stabilize } from '../../src'
 
 describe('stabilize', () => {
   it('wrapper returns function', () => {
@@ -38,7 +38,7 @@ describe('stabilize', () => {
 
   it('`flush` invokes target function immediately', done => {
     const fn = jest.fn(v => v)
-    const stable = stabilize(fn, {delay: 10000})
+    const stable = stabilize(fn, { delay: 10000 })
 
     stable('foo').then(v => expect(v).toBe('bar'))
     stable('bar').then(v => expect(v).toBe('bar'))
@@ -62,7 +62,7 @@ describe('stabilize', () => {
       rejectOnCancel: false
     })
     const stableWithReject = stabilize(fn, {
-      delay: {period: 10, count: 1},
+      delay: { period: 10, count: 1 },
       rejectOnCancel: true
     })
     const resultWithReject = Promise.all([stableWithReject('foo'), stableWithReject('bar')])

@@ -1,7 +1,7 @@
 // @flow
 
-import type {IControlled, IExposedWrapper, ITarget, IWrapperOpts} from '../interface'
-import {adapter} from '../common'
+import type { IControlled, IExposedWrapper, ITarget, IWrapperOpts } from '../interface'
+import { adapter } from '../common'
 import debounce from './debounce'
 
 export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
@@ -9,5 +9,5 @@ export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
     ? opts.delay
     : undefined
 
-  return debounce(fn, {maxWait, ...opts})
+  return debounce(fn, { maxWait, ...opts })
 }): IExposedWrapper)

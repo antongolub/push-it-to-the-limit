@@ -1,4 +1,4 @@
-import {ratelimit, REJECTED_ON_CANCEL} from '../../src'
+import { ratelimit, REJECTED_ON_CANCEL } from '../../src'
 
 describe('ratelimit', () => {
   it('wrapper returns function', () => {
@@ -21,7 +21,7 @@ describe('ratelimit', () => {
       if (x === 9) {
         done()
       }
-    }, {period, count})
+    }, { period, count })
 
     for (let y = 0; y < 10; y++) {
       fn(y)
@@ -29,7 +29,7 @@ describe('ratelimit', () => {
   })
 
   it('properly proceeds interrelated limits', done => {
-    const limit = [{period: 20, count: 1}, {period: 200, count: 5}]
+    const limit = [{ period: 20, count: 1 }, { period: 200, count: 5 }]
     const start = Date.now()
     const fn = ratelimit(x => {
       const diff = Date.now() - start
@@ -51,7 +51,7 @@ describe('ratelimit', () => {
   })
 
   it('`flush` invokes all delayed calls immediately', done => {
-    const fn = ratelimit(x => x, {period: 10000000, count: 1})
+    const fn = ratelimit(x => x, { period: 10000000, count: 1 })
     const result = Promise.all([fn('foo'), fn('bar'), fn('baz')])
     result
       .then(([foo, bar, baz]) => {
@@ -68,11 +68,11 @@ describe('ratelimit', () => {
   it('`cancel` removes ltd calls stack and timers', done => {
     const fn = jest.fn(v => v)
     const ltd = ratelimit(fn, {
-      limit: {period: 10, count: 1},
+      limit: { period: 10, count: 1 },
       rejectOnCancel: false
     })
     const ltdWithReject = ratelimit(fn, {
-      limit: {period: 10, count: 1},
+      limit: { period: 10, count: 1 },
       rejectOnCancel: true
     })
     const resultWithReject = Promise.all([ltdWithReject('foo'), ltdWithReject('bar')])

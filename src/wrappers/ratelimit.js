@@ -8,14 +8,14 @@ import type {
   IExposedWrapper,
   IWrapperOpts, ILimiter, INormalizedDelays
 } from '../interface'
-import {complete, failOnCancel, dropTimeout, adapter, normalizeDelay} from '../common'
+import { complete, failOnCancel, dropTimeout, adapter, normalizeDelay } from '../common'
 import Limiter from '../limiter'
 
 export type IProcessor = (calls: ICallStack, limiter: ILimiter) => void
 
 export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
   let timeout: ?TimeoutID = null
-  const {delay, limit, context, rejectOnCancel} = opts
+  const { delay, limit, context, rejectOnCancel } = opts
   const delays: INormalizedDelays = normalizeDelay(limit || delay)
   const limiter = new Limiter(delays)
   const calls: ICallStack = []

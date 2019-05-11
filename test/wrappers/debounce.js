@@ -1,4 +1,4 @@
-import {debounce, REJECTED_ON_CANCEL} from '../../src'
+import { debounce, REJECTED_ON_CANCEL } from '../../src'
 
 describe('debounce', () => {
   it('wrapper returns function', () => {
@@ -45,7 +45,7 @@ describe('debounce', () => {
 
   it('handles `complex delays`', done => {
     const fn = jest.fn(v => v)
-    const delay = {period: 10, count: 2}
+    const delay = { period: 10, count: 2 }
     const debounced = debounce(fn, delay)
 
     const foo = debounced('foo')
@@ -75,7 +75,7 @@ describe('debounce', () => {
 
   it('supports `maxWait` option', done => {
     const fn = jest.fn(v => v)
-    const debounced = debounce(fn, 100000, {maxWait: 10})
+    const debounced = debounce(fn, 100000, { maxWait: 10 })
 
     debounced('foo')
     debounced('bar')
@@ -91,7 +91,7 @@ describe('debounce', () => {
 
   it('properly handles `leading` option', done => {
     const fn = jest.fn(v => v)
-    const debounced = debounce(fn, 10, {leading: true})
+    const debounced = debounce(fn, 10, { leading: true })
 
     debounced('foo').then(v => expect(v).toBe('foo'))
     debounced('bar').then(v => expect(v).toBe('qux'))
@@ -117,7 +117,7 @@ describe('debounce', () => {
 
   it('handles `leading` with complex delays', done => {
     const fn = jest.fn(v => v)
-    const debounced = debounce(fn, {period: 10, count: 2}, {leading: true})
+    const debounced = debounce(fn, { period: 10, count: 2 }, { leading: true })
 
     debounced('foo').then(v => expect(v).toBe('foo'))
     debounced('bar').then(v => expect(v).toBe('bar'))
@@ -146,7 +146,7 @@ describe('debounce', () => {
 
   it('`flush` invokes target function immediately', done => {
     const fn = jest.fn(v => v)
-    const debounced = debounce(fn, {delay: 10000})
+    const debounced = debounce(fn, { delay: 10000 })
 
     debounced('foo').then(v => expect(v).toBe('bar'))
     debounced('bar').then(v => expect(v).toBe('bar'))

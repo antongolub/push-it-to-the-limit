@@ -1,8 +1,8 @@
-import {delay, REJECTED_ON_CANCEL} from '../../src'
+import { delay, REJECTED_ON_CANCEL } from '../../src'
 
 describe('delay', () => {
   it('wrapper returns function', () => {
-    expect(delay(() => {}, {delay: 10})).toEqual(expect.any(Function))
+    expect(delay(() => {}, { delay: 10 })).toEqual(expect.any(Function))
   })
 
   it('throws error on invalid input', () => {
@@ -53,7 +53,7 @@ describe('delay', () => {
       rejectOnCancel: false
     })
     const delayedWithReject = delay(fn, {
-      delay: {period: 10, count: 1},
+      delay: { period: 10, count: 1 },
       rejectOnCancel: true
     })
     const resultWithReject = Promise.all([delayedWithReject('foo'), delayedWithReject('bar')])
