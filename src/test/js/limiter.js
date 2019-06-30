@@ -1,7 +1,7 @@
 import Limiter from '../../main/js/limiter'
 
 describe('limiter', () => {
-  const delays = [{period: 10, count: 5}, {period: 50, count: 10}]
+  const delays = [{ period: 10, count: 5 }, { period: 50, count: 10 }]
 
   it('constructs proper instance', () => {
     const limiter = new Limiter(delays)

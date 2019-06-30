@@ -103,13 +103,13 @@
     "testEnvironment": "node",
     "collectCoverage": true,
     "coveragePathIgnorePatterns": [
-      "<rootDir>/src/interface.js"
+      "<rootDir>/src/main/js/interface.js"
     ],
     "collectCoverageFrom": [
-      "<rootDir>/src/**/*.js"
+      "<rootDir>/src/main/**/*.js"
     ],
     "testMatch": [
-      "<rootDir>/test/**/*.js"
+      "<rootDir>/src/test/**/*.js"
     ]
   },
   "standard": {

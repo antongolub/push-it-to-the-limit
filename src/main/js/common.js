@@ -39,16 +39,16 @@ export function adapter (wrapper: IWrapper): IExposedWrapper {
   return (fn: ITarget, value?: IDelay | IComplexDelay | ILimit | ILimitStack | IWrapperOpts, lodashOpts?: ILodashOpts): IControlled => {
     assertFn(fn)
 
-    let opts: IWrapperOpts = {delay: DEFAULT_DELAY, ...lodashOpts}
+    let opts: IWrapperOpts = { delay: DEFAULT_DELAY, ...lodashOpts }
 
     if (typeof value === 'number') {
-      opts = {...lodashOpts, delay: value}
+      opts = { ...lodashOpts, delay: value }
     } else if (Array.isArray(value)) {
-      opts = {delay: DEFAULT_DELAY, ...lodashOpts, limit: value}
+      opts = { delay: DEFAULT_DELAY, ...lodashOpts, limit: value }
     } else if (typeof value === 'object' && typeof value.period === 'number' && typeof value.count === 'number') {
-      opts = {delay: value, ...lodashOpts}
+      opts = { delay: value, ...lodashOpts }
     } else if (typeof value === 'object' && !Array.isArray(value)) {
-      opts = {delay: DEFAULT_DELAY, ...lodashOpts, ...value}
+      opts = { delay: DEFAULT_DELAY, ...lodashOpts, ...value }
     }
 
     return wrapper(fn, opts)
@@ -80,7 +80,7 @@ export function normalizeDelay (delay?: IBasicDelay | IComplexDelay | IMixedDela
 
   return [].concat(delay)
     .map((v): IComplexDelay => typeof v === 'number'
-      ? {period: v, count: 1}
+      ? { period: v, count: 1 }
       : v
     )
 }

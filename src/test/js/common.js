@@ -91,27 +91,27 @@ describe('adapter', () => {
     [
       'converts <ITarget> to <ITarget, IWrapperOpts>',
       [fn],
-      [fn, {delay: DEFAULT_DELAY}]
+      [fn, { delay: DEFAULT_DELAY }]
     ],
     [
       'converts <ITarget, IDelay> to <ITarget, IWrapperOpts>',
       [fn, 1],
-      [fn, {delay: 1}]
+      [fn, { delay: 1 }]
     ],
     [
       'converts <ITarget, IDelay, ILodashOpts> to <ITarget, IWrapperOpts>',
-      [fn, 1, {foo: 'bar'}],
-      [fn, {delay: 1, foo: 'bar'}]
+      [fn, 1, { foo: 'bar' }],
+      [fn, { delay: 1, foo: 'bar' }]
     ],
     [
       'converts <ITarget, IWrapperOpts, ILodashOpts> to <ITarget, IWrapperOpts>',
-      [fn, {delay: 2}, {baz: 'qux'}],
-      [fn, {delay: 2, baz: 'qux'}]
+      [fn, { delay: 2 }, { baz: 'qux' }],
+      [fn, { delay: 2, baz: 'qux' }]
     ],
     [
       'converts <ITarget, emptyObject, ILodashOpts> to <ITarget, IWrapperOpts>',
-      [fn, {}, {baz: 'qux'}],
-      [fn, {delay: DEFAULT_DELAY, baz: 'qux'}]
+      [fn, {}, { baz: 'qux' }],
+      [fn, { delay: DEFAULT_DELAY, baz: 'qux' }]
     ]
   ]
 
@@ -126,9 +126,9 @@ describe('adapter', () => {
 describe('normalizeDelay', () => {
   const cases = [
     [undefined, []],
-    [100, [{period: 100, count: 1}]],
-    [[{period: 100, count: 10}], [{period: 100, count: 10}]],
-    [[200, {period: 100, count: 10}], [{period: 200, count: 1}, {period: 100, count: 10}]],
+    [100, [{ period: 100, count: 1 }]],
+    [[{ period: 100, count: 10 }], [{ period: 100, count: 10 }]],
+    [[200, { period: 100, count: 10 }], [{ period: 200, count: 1 }, { period: 100, count: 10 }]]
   ]
 
   cases.forEach(([input, output]) => {

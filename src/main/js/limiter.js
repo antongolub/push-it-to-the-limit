@@ -1,11 +1,11 @@
 // @flow
 
-import type {ILimit, ILimiter, ILimitStack, INormalizedDelays} from './interface'
+import type { ILimit, ILimiter, ILimitStack, INormalizedDelays } from './interface'
 
 export default class Limiter implements ILimiter {
   limits: ILimitStack
   constructor (delays: INormalizedDelays) {
-    this.limits = delays.map((delay): ILimit => ({...delay, rest: delay.count, ttl: 0}))
+    this.limits = delays.map((delay): ILimit => ({ ...delay, rest: delay.count, ttl: 0 }))
 
     return this
   }
@@ -25,7 +25,7 @@ export default class Limiter implements ILimiter {
   }
 
   isAllowed (): boolean {
-    return !this.limits.find(({rest}) => rest < 1)
+    return !this.limits.find(({ rest }) => rest < 1)
   }
 
   getNextDelay (): number {
@@ -44,7 +44,7 @@ export default class Limiter implements ILimiter {
 
   getNextQueueSize (): number {
     this.reset()
-    return Math.min.apply(Math, this.limits.map(({rest}) => rest))
+    return Math.min.apply(Math, this.limits.map(({ rest }) => rest))
   }
 
   static refreshLimit (limit: ILimit) {
