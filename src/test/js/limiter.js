@@ -1,4 +1,4 @@
-import Limiter from '../src/limiter'
+import Limiter from '../../main/js/limiter'
 
 describe('limiter', () => {
   const delays = [{period: 10, count: 5}, {period: 50, count: 10}]

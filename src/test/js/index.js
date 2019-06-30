@@ -1,4 +1,4 @@
-import {delay, throttle, debounce, ratelimit, stabilize, repeat} from '../dist/bundle.es5'
+import {delay, throttle, debounce, ratelimit, stabilize, repeat} from '../../../target/bundle.es5'
 
 describe('index', () => {
   it('exposes factories', () => {

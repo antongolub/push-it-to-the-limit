@@ -2,22 +2,22 @@
   "name": "push-it-to-the-limit",
   "version": "1.11.0",
   "description": "Delay wrappers for common purposes. Throttle, debounce and ratelimit with promises",
-  "main": "dist/bundle.es5.js",
+  "main": "target/bundle.es5.js",
   "scripts": {
-    "clean": "rm -rf dist",
+    "clean": "rm -rf target",
     "flow": "flow",
-    "flow:coverage": "flow-coverage-report -i 'src/**/*.js' -t html -t json -t text --threshold 90",
-    "lint": "standard src/**/*.js test/**/*.js",
-    "lint:fix": "standard src/**/*.js test/**/*.js --fix",
+    "flow:coverage": "flow-coverage-report -i 'src/main/**/*.js' -t html -t json -t text --threshold 90",
+    "lint": "standard src/**/*.js",
+    "lint:fix": "standard src/**/*.js --fix",
     "jest": "BABEL_ENV=test jest -w 1 --detectOpenHandles",
     "test": "npm run flow && npm run flow:coverage && npm run lint && npm run build:rollup && npm run jest",
     "test:report": "npm test && npm run coveralls:push",
     "coveralls:push": "cat ./coverage/lcov.info | coveralls",
     "build": "npm run clean && npm run build:rollup && npm run build:babel",
-    "build:babel": "BABEL_ENV=production babel src --out-dir dist",
+    "build:babel": "BABEL_ENV=production babel src/main/js --out-dir target",
     "build:rollup": "npm run rollup && npm run bundle:es5",
     "rollup": "rollup -c",
-    "bundle:es5": "BABEL_ENV=production babel dist/bundle.js --out-file dist/bundle.es5.js",
+    "bundle:es5": "BABEL_ENV=production babel target/bundle.js --out-file target/bundle.es5.js",
     "doc": "esdoc"
   },
   "repository": {
@@ -80,7 +80,7 @@
   "files": [
     "README.md",
     "CHANGELOG.md",
-    "dist/"
+    "target/"
   ],
   "release": {
     "branch": "master",

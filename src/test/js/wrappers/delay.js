@@ -1,4 +1,4 @@
-import { delay, REJECTED_ON_CANCEL } from '../../src'
+import { delay, REJECTED_ON_CANCEL } from '../../../main/js'
 
 describe('delay', () => {
   it('wrapper returns function', () => {

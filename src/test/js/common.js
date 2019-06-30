@@ -9,7 +9,7 @@ import {
   DEFAULT_DELAY,
   adapter,
   normalizeDelay
-} from '../src/common'
+} from '../../main/js/common'
 
 describe('assert', () => {
   it('does nothing if condition looks truthy', () => {

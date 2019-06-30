@@ -1,4 +1,4 @@
-import { repeat } from '../../src'
+import { repeat } from '../../../main/js'
 
 describe('repeat', () => {
   it('looks to be working', done => {

@@ -4,9 +4,9 @@ import flow from 'rollup-plugin-flow'
 import commonjs from 'rollup-plugin-commonjs'
 
 export default {
-  input: 'src/index.js',
+  input: 'src/main/js/index.js',
   output: {
-    file: 'dist/bundle.js',
+    file: 'target/bundle.js',
     format: 'umd',
     name: 'push-it-to-the-limit'
   },
