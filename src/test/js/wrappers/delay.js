@@ -1,4 +1,5 @@
 import { delay, REJECTED_ON_CANCEL } from '../../../main/js'
+import 'babel-polyfill'
 
 describe('delay', () => {
   it('wrapper returns function', () => {

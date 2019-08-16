@@ -4,6 +4,7 @@ import type { ILimit, ILimiter, ILimitStack, INormalizedDelays } from './interfa
 
 export default class Limiter implements ILimiter {
   limits: ILimitStack
+
   constructor (delays: INormalizedDelays) {
     this.limits = delays.map((delay): ILimit => ({ ...delay, rest: delay.count, ttl: 0 }))
 
@@ -33,7 +34,7 @@ export default class Limiter implements ILimiter {
     const limits = this.limits
 
     for (let i = 0; i < limits.length; i++) {
-      let limit = limits[i]
+      const limit = limits[i]
       if (limit.rest < 1 && limit.ttl > ttl) {
         ttl = limit.ttl
       }

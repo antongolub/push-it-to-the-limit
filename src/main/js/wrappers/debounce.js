@@ -34,7 +34,7 @@ export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
       queueLimit = limiter.getNextQueueSize()
     }
     // NOTE `leading` option has priority
-    let shouldRun = leading && queueLimit > 0
+    const shouldRun = leading && queueLimit > 0
 
     if (queueLimit > 0 || promise === null) {
       promise = new Promise((resolve: IResolve, reject: IReject) => {

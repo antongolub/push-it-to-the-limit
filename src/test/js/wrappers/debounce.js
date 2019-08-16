@@ -1,4 +1,5 @@
 import { debounce, REJECTED_ON_CANCEL } from '../../../main/js'
+import 'babel-polyfill'
 
 describe('debounce', () => {
   it('wrapper returns function', () => {
