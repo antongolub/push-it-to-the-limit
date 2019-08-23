@@ -81,7 +81,8 @@
   "files": [
     "README.md",
     "CHANGELOG.md",
-    "target/"
+    "target",
+    "flow-typed"
   ],
   "release": {
     "branch": "master",
