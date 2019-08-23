@@ -1,3 +1,10 @@
+## [1.11.1](https://github.com/antongolub/push-it-to-the-limit/compare/v1.11.0...v1.11.1) (2019-08-23)
+
+
+### Bug Fixes
+
+* **npm:** publish flow-typed dir ([9850b2f](https://github.com/antongolub/push-it-to-the-limit/commit/9850b2f))
+
 # [1.11.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.10.1...v1.11.0) (2018-06-26)
 
 
