@@ -6,7 +6,7 @@ import commonjs from 'rollup-plugin-commonjs'
 export default {
   input: 'src/main/js/index.js',
   output: {
-    file: 'target/bundle.js',
+    file: 'target/es5/bundle.js',
     format: 'umd',
     name: 'push-it-to-the-limit'
   },
