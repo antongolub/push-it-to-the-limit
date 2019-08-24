@@ -1,8 +1,12 @@
 {
   "name": "push-it-to-the-limit",
   "version": "1.11.1",
-  "description": "Delay wrappers for common purposes. Throttle, debounce and ratelimit with promises",
+  "description": "Delay function wrappers for common purposes. Throttle, debounce and ratelimit with promises",
   "main": "target/bundle.es5.js",
+  "types": "typings/index.d.ts",
+  "typescript": {
+    "definition": "typings/index.d.ts"
+  },
   "scripts": {
     "clean": "rm -rf target",
     "flow": "flow",
@@ -42,6 +46,9 @@
     "url": "https://github.com/antongolub/push-it-to-the-limit/issues"
   },
   "homepage": "https://github.com/antongolub/push-it-to-the-limit#readme",
+  "dependencies": {
+    "@antongolub/repeater": "^1.2.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
@@ -82,7 +89,8 @@
     "README.md",
     "CHANGELOG.md",
     "target",
-    "flow-typed"
+    "flow-typed",
+    "typings"
   ],
   "release": {
     "branch": "master",
@@ -141,8 +149,5 @@
         "onlyFilesWithFlowAnnotation": true
       }
     }
-  },
-  "dependencies": {
-    "@antongolub/repeater": "^1.2.0"
   }
 }

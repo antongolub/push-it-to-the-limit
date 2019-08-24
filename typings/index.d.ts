@@ -1,52 +1,50 @@
 declare module 'push-it-to-the-limit' {
-  declare type IAny = any
-  declare type IBasicDelay = number
-  declare type IComplexDelay = {
+  type IAny = any
+  type IBasicDelay = number
+  type IComplexDelay = {
     period: number,
     count: number
   }
-  declare type ITarget = (...args: IAny[]) => IAny
-  declare type ILimit = IComplexDelay & {
+  type ITarget = (...args: IAny[]) => IAny
+  type ILimit = IComplexDelay & {
     ttl: number,
     rest: number,
-    timeout?: TimeoutID
+    timeout?: ReturnType<typeof setTimeout>
   }
-  declare type ILimitStack = Array<ILimit>
-  declare type IControlled = {
+  type ILimitStack = Array<ILimit>
+  type IControlled = {
     (...args: IAny[]): Promise<IAny>,
     flush(): void,
     cancel(): void
   }
-  declare type ILodashOpts = {
+  type ILodashOpts = {
     leading?: boolean,
     trailing?: boolean,
     maxWait?: IBasicDelay
   }
-  declare type IOrder = 'fifo' | 'lifo'
-  declare type IWrapperOpts = {
+  type IOrder = 'fifo' | 'lifo'
+  type IWrapperOpts = {
     delay: IBasicDelay | IComplexDelay,
     limit?: ILimit | ILimitStack,
     context?: IAny,
     rejectOnCancel?: boolean,
     order?: IOrder
   } & ILodashOpts
-  declare type IExposedWrapper = {
+  type IExposedWrapper = {
     (fn: ITarget, opts: IWrapperOpts): IControlled,
     (fn: ITarget, delay: IBasicDelay, opts?: ILodashOpts): IControlled,
     (fn: ITarget, delay: IComplexDelay, opts?: ILodashOpts): IControlled,
     (fn: ITarget, limit: ILimitStack | ILimit, opts?: ILodashOpts): IControlled,
   }
-  
-  declare module.exports: {
-    delay: IExposedWrapper,
-    throttle: IExposedWrapper,
-    debounce: IExposedWrapper,
-    ratelimit: IExposedWrapper,
-    stabilize: IExposedWrapper,
-    repeat: IExposedWrapper,
 
-    REJECTED: string,
-    REJECTED_ON_CANCEL: string,
-    DEFAULT_DELAY: number
-  }
+  export const delay: IExposedWrapper
+  export const throttle: IExposedWrapper
+  export const debounce: IExposedWrapper
+  export const ratelimit: IExposedWrapper
+  export const stabilize: IExposedWrapper
+  export const repeat: IExposedWrapper
+
+  export const REJECTED: string
+  export const REJECTED_ON_CANCEL: string
+  export const DEFAULT_DELAY: number
 }
