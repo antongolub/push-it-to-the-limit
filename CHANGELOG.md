@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.11.1...v1.12.0) (2019-08-24)
+
+
+### Features
+
+* add TS libdefs ([aeedff1](https://github.com/antongolub/push-it-to-the-limit/commit/aeedff1)), closes [#26](https://github.com/antongolub/push-it-to-the-limit/issues/26)
+
 ## [1.11.1](https://github.com/antongolub/push-it-to-the-limit/compare/v1.11.0...v1.11.1) (2019-08-23)
 
 
