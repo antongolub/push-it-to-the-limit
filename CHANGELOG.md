@@ -1,3 +1,10 @@
+## [1.12.1](https://github.com/antongolub/push-it-to-the-limit/compare/v1.12.0...v1.12.1) (2019-09-01)
+
+
+### Performance Improvements
+
+* **debounce:**  timeout tweak up ([e0878c2](https://github.com/antongolub/push-it-to-the-limit/commit/e0878c2))
+
 # [1.12.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.11.1...v1.12.0) (2019-08-24)
 
 
