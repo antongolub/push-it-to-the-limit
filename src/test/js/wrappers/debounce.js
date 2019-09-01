@@ -79,8 +79,8 @@ describe('debounce', () => {
     const debounced = debounce(fn, 100000, { maxWait: 10 })
 
     debounced('foo')
-    debounced('bar')
-    debounced('baz')
+    setTimeout(() => debounced('bar'), 5)
+    setTimeout(() => debounced('baz'), 9)
 
     setTimeout(() => {
       expect(fn).toHaveBeenCalledTimes(1)

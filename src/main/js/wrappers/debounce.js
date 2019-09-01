@@ -51,9 +51,11 @@ export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
     args.push(_args)
     limiter.resetTtl()
     const nextDelay = limiter.getNextDelay()
+    dropTimeout(timeout)
+    timeout = setTimeout(res.flush, nextDelay)
+
     if (shouldRun) {
       const _p = promise
-      timeout = setTimeout(res.flush, nextDelay)
       promise = null
 
       calls.forEach(call => call.complete())
@@ -61,9 +63,6 @@ export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
 
       return _p
     }
-
-    dropTimeout(timeout)
-    timeout = setTimeout(res.flush, nextDelay)
 
     if (maxWait && !maxTimeout) {
       maxTimeout = setTimeout(res.flush, maxWait)
