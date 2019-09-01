@@ -79,15 +79,15 @@ describe('debounce', () => {
     const debounced = debounce(fn, 100000, { maxWait: 10 })
 
     debounced('foo')
-    setTimeout(() => debounced('bar'), 5)
-    setTimeout(() => debounced('baz'), 9)
+    setTimeout(() => debounced('bar'), 4)
+    setTimeout(() => debounced('baz'), 8)
 
     setTimeout(() => {
       expect(fn).toHaveBeenCalledTimes(1)
       expect(fn).toHaveBeenCalledWith('baz')
 
       done()
-    }, 15)
+    }, 14)
   })
 
   it('properly handles `leading` option', done => {
