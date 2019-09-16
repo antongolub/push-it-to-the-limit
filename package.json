@@ -21,7 +21,8 @@
     "build:babel": "BABEL_ENV=production babel src/main/js --out-dir target/es5",
     "build:rollup": "rollup -c && npm run bundle:min",
     "bundle:min": "BABEL_ENV=production babel target/es5/bundle.js --out-file target/es5/bundle.min.js",
-    "doc": "esdoc"
+    "doc": "esdoc",
+    "postupdate": "npm i && npm audit fix && npm run build && npm run test"
   },
   "repository": {
     "type": "git",
