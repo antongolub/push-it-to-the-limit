@@ -4850,9 +4850,9 @@
           }
         },
         "glob-parent": {
-          "version": "5.0.0",
-          "resolved": "https://registry.npmjs.org/glob-parent/-/glob-parent-5.0.0.tgz",
-          "integrity": "sha512-Z2RwiujPRGluePM6j699ktJYxmPpJKCfpGA13jz2hmFZC7gKetzrWvg5KN3+OsIFmydGyZ1AVwERCq1w/ZZwRg==",
+          "version": "5.1.0",
+          "resolved": "https://registry.npmjs.org/glob-parent/-/glob-parent-5.1.0.tgz",
+          "integrity": "sha512-qjtRgnIVmOfnKUE3NJAQEdk+lKrxfw8t5ke7SXtfMTHcjsBfOfWXCQfdb30zfDoZQ2IRSIiidmjtbHZPZ++Ihw==",
           "dev": true,
           "requires": {
             "is-glob": "^4.0.1"
@@ -5659,9 +5659,9 @@
       }
     },
     "flow-bin": {
-      "version": "0.107.0",
-      "resolved": "https://registry.npmjs.org/flow-bin/-/flow-bin-0.107.0.tgz",
-      "integrity": "sha512-hsmwO5Q0+XUXaO2kIKLpleUNNBSFcsGEQGBOTEC/KR/4Ez695I1fweX/ioSjbU4RWhPZhkIqnpbF9opVAauCHg==",
+      "version": "0.108.0",
+      "resolved": "https://registry.npmjs.org/flow-bin/-/flow-bin-0.108.0.tgz",
+      "integrity": "sha512-hPEyCP1J8rdhNDfCAA5w7bN6HUNBDcHVg/ABU5JVo0gUFMx+uRewpyEH8LlLBGjVQuIpbaPpaqpoaQhAVyaYww==",
       "dev": true
     },
     "flow-coverage-report": {
@@ -5719,18 +5719,18 @@
       }
     },
     "flow-parser": {
-      "version": "0.107.0",
-      "resolved": "https://registry.npmjs.org/flow-parser/-/flow-parser-0.107.0.tgz",
-      "integrity": "sha512-GtMCS8qzP0VskiE5qfN4zYiwjnClV/BxPZ4zUqMRUfyaF+gBuLHDTPqVLJ4ndGedrdv54510rsXDSbkCqUig+g==",
+      "version": "0.108.0",
+      "resolved": "https://registry.npmjs.org/flow-parser/-/flow-parser-0.108.0.tgz",
+      "integrity": "sha512-Ug8VuwlyDIZq5Xgrf+T7XLpKydhqYyNd8lmFtf7PZbu90T5LL+FeHjWzxyrBn35RCCZMw7pXrjCrHOSs+2zXyg==",
       "dev": true
     },
     "flow-remove-types": {
-      "version": "2.107.0",
-      "resolved": "https://registry.npmjs.org/flow-remove-types/-/flow-remove-types-2.107.0.tgz",
-      "integrity": "sha512-PXsYEHt5gKuFxw4rSc5e0K2OxhR7JxploCQ4wQzu7wE/Fw42oOs7sdGHPZujTeBY/g3OYSoZ11YxK3KoTHIYWw==",
+      "version": "2.108.0",
+      "resolved": "https://registry.npmjs.org/flow-remove-types/-/flow-remove-types-2.108.0.tgz",
+      "integrity": "sha512-cbYe0AijNVlc6V1Xx99fNqQtRMJ+xbQwG5rQtcheFQiBPO6b6VwvhMs/OelJvpO+YUTz49IhFKzoZGj5xm74PA==",
       "dev": true,
       "requires": {
-        "flow-parser": "^0.107.0",
+        "flow-parser": "^0.108.0",
         "pirates": "^3.0.2",
         "vlq": "^0.2.1"
       }
@@ -15245,9 +15245,9 @@
       "dev": true
     },
     "standard": {
-      "version": "14.3.0",
-      "resolved": "https://registry.npmjs.org/standard/-/standard-14.3.0.tgz",
-      "integrity": "sha512-F3Su3IAxDrOW+v4O/WiPFp6SZ0FWj+H4NEtGrEI1iaCf5LWD0nIfcXh0GIyKQgpmswQFWBIAvgONihT8U5UM4w==",
+      "version": "14.3.1",
+      "resolved": "https://registry.npmjs.org/standard/-/standard-14.3.1.tgz",
+      "integrity": "sha512-TUQwU7znlZLfgKH1Zwn/D84FitWZkUTfbxSiz/vFx+4c9GV+clSfG/qLiLZOlcdyzhw3oF5/pZydNjbNDfHPEw==",
       "dev": true,
       "requires": {
         "eslint": "~6.4.0",

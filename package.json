@@ -73,9 +73,9 @@
     "codeclimate-test-reporter": "^0.5.1",
     "coveralls": "^3.0.6",
     "eslint-plugin-flowtype": "^4.3.0",
-    "flow-bin": "^0.107.0",
+    "flow-bin": "^0.108.0",
     "flow-coverage-report": "^0.6.1",
-    "flow-remove-types": "^2.107.0",
+    "flow-remove-types": "^2.108.0",
     "jest": "24.9.0",
     "rollup": "^1.21.4",
     "rollup-plugin-babel": "^4.3.3",
@@ -83,7 +83,7 @@
     "rollup-plugin-flow": "^1.1.1",
     "rollup-plugin-node-resolve": "^5.2.0",
     "semantic-release": "^15.13.24",
-    "standard": "^14.3.0"
+    "standard": "^14.3.1"
   },
   "files": [
     "README.md",
