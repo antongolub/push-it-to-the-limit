@@ -2,10 +2,10 @@
 
 export type IAny = any
 export type IBasicDelay = number
-export type IComplexDelay = {
+export type IComplexDelay = {|
   period: number,
   count: number
-}
+|}
 export type IMixedDelays = Array<IBasicDelay | IComplexDelay>
 export type INormalizedDelays = Array<IComplexDelay>
 export type IDelay = number
@@ -60,6 +60,8 @@ export interface ILimiter {
   constructor(delays: INormalizedDelays): ILimiter,
   getNextDelay(): number,
   reset(): void,
+  resetTtl(): void,
   decrease(): void,
-  isAllowed(): boolean
+  isAllowed(): boolean,
+  getNextQueueSize(): number,
 }

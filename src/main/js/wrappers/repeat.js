@@ -4,7 +4,7 @@ import { adapter, dropTimeout } from '../common'
 import type { IControlled, IExposedWrapper, ITarget, IWrapperOpts } from '../interface'
 
 export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
-  const res = repeater({ target: fn, ...opts })
+  const res = repeater({ ...opts, target: fn })
 
   res.cancel = () => {
     dropTimeout(res.timeout)

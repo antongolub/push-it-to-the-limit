@@ -34,21 +34,28 @@ export function failOnCancel (reject: IReject): void {
 }
 
 export const DEFAULT_DELAY = 0
+
+// $FlowFixMe
+const normalizeOpts = (opts: ILodashOpts = {}): IWrapperOpts => ({
+  delay: DEFAULT_DELAY,
+  ...opts
+})
+
 // Lodash compatibility wrapper
 export function adapter (wrapper: IWrapper): IExposedWrapper {
   return (fn: ITarget, value?: IDelay | IComplexDelay | ILimit | ILimitStack | IWrapperOpts, lodashOpts?: ILodashOpts): IControlled => {
     assertFn(fn)
 
-    let opts: IWrapperOpts = { delay: DEFAULT_DELAY, ...lodashOpts }
+    let opts: IWrapperOpts = normalizeOpts(lodashOpts)
 
     if (typeof value === 'number') {
-      opts = { ...lodashOpts, delay: value }
+      opts = { ...opts, delay: value }
     } else if (Array.isArray(value)) {
-      opts = { delay: DEFAULT_DELAY, ...lodashOpts, limit: value }
-    } else if (typeof value === 'object' && typeof value.period === 'number' && typeof value.count === 'number') {
-      opts = { delay: value, ...lodashOpts }
-    } else if (typeof value === 'object' && !Array.isArray(value)) {
-      opts = { delay: DEFAULT_DELAY, ...lodashOpts, ...value }
+      opts = { ...opts, limit: value }
+    } else if (typeof value === 'object') {
+      opts = typeof value.period === 'number' && typeof value.count === 'number'
+        ? { ...opts, delay: value }
+        : { ...opts, ...value }
     }
 
     return wrapper(fn, opts)
@@ -57,7 +64,7 @@ export function adapter (wrapper: IWrapper): IExposedWrapper {
 
 // function isLimit
 
-export function assert (condition: boolean, text?: string = 'Assertion error'): void {
+export function assert (condition: boolean, text: string = 'Assertion error'): void {
   if (!condition) {
     throw new Error(text)
   }

@@ -1,12 +1,13 @@
 // @flow
 
-import type { ILimit, ILimiter, ILimitStack, INormalizedDelays } from './interface'
+import type { IComplexDelay, ILimit, ILimiter, ILimitStack, INormalizedDelays } from './interface'
 
 export default class Limiter implements ILimiter {
   limits: ILimitStack
 
-  constructor (delays: INormalizedDelays) {
-    this.limits = delays.map((delay): ILimit => ({ ...delay, rest: delay.count, ttl: 0 }))
+  constructor (delays: INormalizedDelays): ILimiter {
+    // $FlowFixMe
+    this.limits = delays.map((delay: IComplexDelay): ILimit => ({ ...delay, rest: delay.count, ttl: 0 }))
 
     return this
   }
@@ -45,10 +46,10 @@ export default class Limiter implements ILimiter {
 
   getNextQueueSize (): number {
     this.reset()
-    return Math.min.apply(Math, this.limits.map(({ rest }) => rest))
+    return Math.min(...this.limits.map(({ rest }) => rest))
   }
 
-  static refreshLimit (limit: ILimit) {
+  static refreshLimit (limit: ILimit): ILimit {
     if (limit.ttl === undefined || limit.ttl < Date.now()) {
       limit.rest = limit.count
       limit.ttl = Date.now() + limit.period

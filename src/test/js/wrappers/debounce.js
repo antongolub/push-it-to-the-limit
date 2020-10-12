@@ -142,7 +142,7 @@ describe('debounce', () => {
       expect(fn).toHaveBeenCalledWith('quxx')
 
       done()
-    }, 25)
+    }, 26)
   })
 
   it('`flush` invokes target function immediately', done => {
