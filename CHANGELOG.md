@@ -1,3 +1,10 @@
+## [1.12.2](https://github.com/antongolub/push-it-to-the-limit/compare/v1.12.1...v1.12.2) (2020-10-12)
+
+
+### Bug Fixes
+
+* **package:** up deps, fix some vulnerabilities ([0f54732](https://github.com/antongolub/push-it-to-the-limit/commit/0f54732663f0a45e98a93a237b3bc73547579773))
+
 ## [1.12.1](https://github.com/antongolub/push-it-to-the-limit/compare/v1.12.0...v1.12.1) (2019-09-01)
 
 
