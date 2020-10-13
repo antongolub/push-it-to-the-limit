@@ -1,5 +1,3 @@
-// @flow
-
 import type {
   IAny,
   IDelay,
@@ -16,7 +14,9 @@ import type {
   IBasicDelay,
   IComplexDelay,
   IMixedDelays,
-  INormalizedDelays
+  INormalizedDelays,
+  TimeoutID,
+  Optional
 } from './interface'
 
 export function complete (resolve: IResolve, fn: ITarget, args: IAny[], context?: IAny): void {
@@ -35,7 +35,6 @@ export function failOnCancel (reject: IReject): void {
 
 export const DEFAULT_DELAY = 0
 
-// $FlowFixMe
 const normalizeOpts = (opts: ILodashOpts = {}): IWrapperOpts => ({
   delay: DEFAULT_DELAY,
   ...opts
@@ -53,16 +52,14 @@ export function adapter (wrapper: IWrapper): IExposedWrapper {
     } else if (Array.isArray(value)) {
       opts = { ...opts, limit: value }
     } else if (typeof value === 'object') {
-      opts = typeof value.period === 'number' && typeof value.count === 'number'
-        ? { ...opts, delay: value }
+      opts = typeof (value as any).period === 'number' && typeof (value as any).count === 'number'
+        ? { ...opts, delay: value as IWrapperOpts['delay'] }
         : { ...opts, ...value }
     }
 
     return wrapper(fn, opts)
   }
 }
-
-// function isLimit
 
 export function assert (condition: boolean, text: string = 'Assertion error'): void {
   if (!condition) {
@@ -74,7 +71,7 @@ export function assertFn (target: IAny): void {
   assert(typeof target === 'function', 'Target must be a function')
 }
 
-export function dropTimeout (timeout?: ?TimeoutID): void {
+export function dropTimeout (timeout: Optional<TimeoutID>): void {
   if (timeout) {
     clearTimeout(timeout)
   }
@@ -85,7 +82,15 @@ export function normalizeDelay (delay?: IBasicDelay | IComplexDelay | IMixedDela
     return []
   }
 
-  return [].concat(delay)
+  const res = []
+
+  if (Array.isArray(delay)) {
+    res.push(...delay)
+  } else {
+    res.push(delay)
+  }
+
+  return res
     .map((v): IComplexDelay => typeof v === 'number'
       ? { period: v, count: 1 }
       : v

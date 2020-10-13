@@ -9,7 +9,7 @@ import {
   DEFAULT_DELAY,
   adapter,
   normalizeDelay
-} from '../../main/js/common'
+} from '../../main/ts/common'
 
 describe('assert', () => {
   it('does nothing if condition looks truthy', () => {
@@ -35,7 +35,7 @@ describe('assertFn', () => {
 describe('complete', () => {
   it('resolves a promise with target fn invocation result', done => {
     const foo = 'foo'
-    const fn = v => v
+    const fn = (v: any) => v
     const p = new Promise(resolve => complete(resolve, fn, [foo]))
 
     p.then(v => {
@@ -81,13 +81,13 @@ describe('failOnCancel', () => {
 })
 
 describe('adapter', () => {
-  const fn = v => v
+  const fn = (v: any) => v
   const wrapper = jest.fn((target, opts) => null)
-  const adapted = adapter(wrapper)
+  const adapted = adapter(wrapper as any)
 
   afterEach(wrapper.mockClear)
 
-  const cases = [
+  const cases: Array<[string, [Function, ...any[]], any]> = [
     [
       'converts <ITarget> to <ITarget, IWrapperOpts>',
       [fn],
@@ -117,7 +117,7 @@ describe('adapter', () => {
 
   cases.map(([description, args, expected]) => {
     it(description, () => {
-      adapted(...args)
+      adapted(...args as Parameters<typeof adapted>)
       expect(wrapper).toHaveBeenCalledWith(...expected)
     })
   })

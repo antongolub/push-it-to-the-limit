@@ -1,4 +1,5 @@
-import { throttle } from '../../../main/js'
+import { throttle } from '../../../main/ts'
+import { ITarget, IWrapperOpts } from '../../../main/ts/interface'
 
 describe('throttle', () => {
   it('wrapper returns function', () => {
@@ -6,7 +7,7 @@ describe('throttle', () => {
   })
 
   it('throws error on invalid input', () => {
-    expect(() => throttle({})).toThrow('Target must be a function')
+    expect(() => throttle({} as ITarget, {} as IWrapperOpts)).toThrow('Target must be a function')
   })
 
   it('returns first result for all invokes in period', done => {

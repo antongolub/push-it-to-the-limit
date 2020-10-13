@@ -1,5 +1,3 @@
-// @flow
-
 import type {
   IAny,
   ITarget,
@@ -8,7 +6,11 @@ import type {
   IReject,
   IExposedWrapper,
   IWrapperOpts,
-  ICallStack
+  ICallStack,
+  TimeoutID,
+  Nullable,
+  Optional,
+  NotAlwaysDefined
 } from '../interface'
 import { complete, failOnCancel, adapter, dropTimeout, normalizeDelay } from '../common'
 import Limiter from '../limiter'
@@ -18,16 +20,16 @@ export const DEFAULT_OPTS = {
   trailing: true
 }
 
-export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
-  const { delay, limit, context, rejectOnCancel, maxWait, leading, order } = ({ ...DEFAULT_OPTS, ...opts }: IWrapperOpts)
+const debounce: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
+  const { delay, limit, context, rejectOnCancel, maxWait, leading, order } = ({ ...DEFAULT_OPTS, ...opts } as IWrapperOpts)
   const limiter = new Limiter(normalizeDelay(limit || delay))
   const calls: ICallStack = []
-  const args = []
+  const args: any[] = []
 
-  let timeout: ?TimeoutID
-  let maxTimeout: ?TimeoutID
-  let promise: Promise<IAny> | null
-  let queueLimit: number | null = null
+  let timeout: Optional<TimeoutID>
+  let maxTimeout: Optional<TimeoutID>
+  let promise: Nullable<Promise<IAny>>
+  let queueLimit: Nullable<number> = null
 
   const res = (..._args: IAny[]): Promise<IAny> => {
     if (queueLimit === null) {
@@ -98,4 +100,7 @@ export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
   }
 
   return res
-}): IExposedWrapper)
+})
+
+export default debounce
+

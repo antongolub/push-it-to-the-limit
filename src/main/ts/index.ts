@@ -1,5 +1,3 @@
-// @flow
-
 import delay from './wrappers/delay'
 import throttle from './wrappers/throttle'
 import debounce from './wrappers/debounce'

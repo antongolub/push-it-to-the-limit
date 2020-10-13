@@ -1,11 +1,9 @@
-// @flow
-
 import type { IComplexDelay, ILimit, ILimiter, ILimitStack, INormalizedDelays } from './interface'
 
 export default class Limiter implements ILimiter {
   limits: ILimitStack
 
-  constructor (delays: INormalizedDelays): ILimiter {
+  constructor (delays: INormalizedDelays) {
     // $FlowFixMe
     this.limits = delays.map((delay: IComplexDelay): ILimit => ({ ...delay, rest: delay.count, ttl: 0 }))
 
@@ -19,11 +17,11 @@ export default class Limiter implements ILimiter {
   }
 
   reset (): void {
-    this.limits.forEach(this.constructor.refreshLimit)
+    this.limits.forEach(Limiter.refreshLimit)
   }
 
   resetTtl (): void {
-    this.limits.forEach(this.constructor.refreshTtl)
+    this.limits.forEach(Limiter.refreshTtl)
   }
 
   isAllowed (): boolean {

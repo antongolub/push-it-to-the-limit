@@ -1,20 +1,21 @@
-// @flow
-
 import type {
   IAny,
   ITarget,
   ICallStack,
   IControlled,
   IExposedWrapper,
-  IWrapperOpts, ILimiter, INormalizedDelays
+  IWrapperOpts,
+  ILimiter,
+  INormalizedDelays,
+  TimeoutID
 } from '../interface'
 import { complete, failOnCancel, dropTimeout, adapter, normalizeDelay } from '../common'
 import Limiter from '../limiter'
 
 export type IProcessor = (calls: ICallStack, limiter: ILimiter) => void
 
-export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
-  let timeout: ?TimeoutID = null
+const rateLimit: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
+  let timeout: TimeoutID | null = null
   const { delay, limit, context, rejectOnCancel } = opts
   const delays: INormalizedDelays = normalizeDelay(limit || delay)
   const limiter = new Limiter(delays)
@@ -49,13 +50,13 @@ export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
   }
 
   return res
-}): IExposedWrapper)
+})
 
 export function invokeToTheLimit (calls: ICallStack, limiter: ILimiter): void {
   while (calls.length > 0 && limiter.isAllowed()) {
     limiter.decrease()
 
-    calls.shift().complete()
+    calls.shift()?.complete()
   }
 }
 
@@ -70,3 +71,5 @@ export function processTimeouts (calls: ICallStack, limiter: ILimiter, handler: 
 
   return null
 }
+
+export default rateLimit
