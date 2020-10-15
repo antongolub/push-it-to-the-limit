@@ -13,7 +13,7 @@ describe('debounce', () => {
 
   it('groups multiple sequential calls in a single one', done => {
     const fn = jest.fn(v => v)
-    const debounced = debounce(fn, 10)
+    const debounced = debounce(fn, 20)
 
     const foo = debounced('bar')
     const baz = debounced('qux')
@@ -27,7 +27,7 @@ describe('debounce', () => {
       expect(fn).toHaveBeenCalledTimes(1)
       expect(fn).toHaveBeenCalledWith('qux')
       done()
-    }, 12)
+    }, 25)
   })
 
   it('defers the call', done => {
@@ -42,12 +42,12 @@ describe('debounce', () => {
       expect(fn).toHaveBeenCalledTimes(1)
       expect(fn).toHaveBeenCalledWith(4)
       done()
-    }, 40)
+    }, 50)
   })
 
   it('handles `complex delays`', done => {
     const fn = jest.fn(v => v)
-    const delay = { period: 10, count: 2 }
+    const delay = { period: 15, count: 2 }
     const debounced = debounce(fn, delay)
 
     const foo = debounced('foo')
@@ -64,7 +64,7 @@ describe('debounce', () => {
       expect(fn).toHaveBeenCalledWith('baz')
       expect(fn).toHaveBeenCalledWith('qux')
       done()
-    }, 12)
+    }, 20)
   })
 
   it('passes same promise as a result', async () => {
@@ -77,7 +77,7 @@ describe('debounce', () => {
 
   it('supports `maxWait` option', done => {
     const fn = jest.fn(v => v)
-    const debounced = debounce(fn, 100000, { maxWait: 10 })
+    const debounced = debounce(fn, 100000, { maxWait: 15 })
 
     debounced('foo')
     setTimeout(() => debounced('bar'), 4)
@@ -88,7 +88,7 @@ describe('debounce', () => {
       expect(fn).toHaveBeenCalledWith('baz')
 
       done()
-    }, 14)
+    }, 20)
   })
 
   it('properly handles `leading` option', done => {
@@ -114,7 +114,7 @@ describe('debounce', () => {
       expect(fn).toHaveBeenCalledWith('bazz')
 
       done()
-    }, 30)
+    }, 35)
   })
 
   it('handles `leading` with complex delays', done => {
@@ -143,7 +143,7 @@ describe('debounce', () => {
       expect(fn).toHaveBeenCalledWith('quxx')
 
       done()
-    }, 26)
+    }, 29)
   })
 
   it('`flush` invokes target function immediately', done => {
