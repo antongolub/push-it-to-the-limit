@@ -1,3 +1,10 @@
+## [1.13.1](https://github.com/antongolub/push-it-to-the-limit/compare/v1.13.0...v1.13.1) (2020-10-15)
+
+
+### Performance Improvements
+
+* up repeater, rm custom typings ([be0628b](https://github.com/antongolub/push-it-to-the-limit/commit/be0628b4252f7a259a555f4c66eaa8276a798b6e))
+
 # [1.13.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.12.2...v1.13.0) (2020-10-15)
 
 
