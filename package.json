@@ -8,7 +8,7 @@
     "definition": "target/es5/index.d.ts"
   },
   "scripts": {
-    "clean": "rimraf target",
+    "clean": "rm -rf target",
     "lint": "standard src/**/*.js",
     "lint:fix": "npm run lint -- --fix",
     "jest": "BABEL_ENV=test jest -w 1 --detectOpenHandles",
@@ -78,7 +78,6 @@
     "coveralls": "^3.1.0",
     "eslint-plugin-flowtype": "^5.2.0",
     "jest": "26.5.3",
-    "rimraf": "^3.0.2",
     "rollup": "^2.29.0",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
