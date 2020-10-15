@@ -82,13 +82,7 @@ export function normalizeDelay (delay?: IBasicDelay | IComplexDelay | IMixedDela
     return []
   }
 
-  const res = []
-
-  if (Array.isArray(delay)) {
-    res.push(...delay)
-  } else {
-    res.push(delay)
-  }
+  const res = Array.isArray(delay)? delay : [delay]
 
   return res
     .map((v): IComplexDelay => typeof v === 'number'
