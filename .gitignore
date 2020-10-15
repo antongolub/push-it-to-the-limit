@@ -21,6 +21,8 @@ coverage
 build
 dist
 target
+flow-typed
+typings
 
 #Docs
 docs
@@ -38,3 +40,9 @@ flow-typed/npm/
 
 .idea
 *.iml
+
+# Typescript
+*.tsbuildinfo
+.tsbuildinfo
+buildcache
+.buildcache

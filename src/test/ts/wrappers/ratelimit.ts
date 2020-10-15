@@ -1,19 +1,20 @@
-import { ratelimit, REJECTED_ON_CANCEL } from '../../../main/js'
+import { ratelimit, REJECTED_ON_CANCEL } from '../../../main/ts'
+import { ILimitStack, ITarget, IWrapperOpts } from '../../../main/ts/interface'
 
 describe('ratelimit', () => {
   it('wrapper returns function', () => {
-    expect(ratelimit(() => {})).toEqual(expect.any(Function))
+    expect(ratelimit(() => {}, {} as IWrapperOpts)).toEqual(expect.any(Function))
   })
 
   it('throws error on invalid input', () => {
-    expect(() => ratelimit({})).toThrow('Target must be a function')
+    expect(() => ratelimit({} as ITarget,  {} as IWrapperOpts)).toThrow('Target must be a function')
   })
 
   it('delays overlimit calls', done => {
     const period = 50
     const count = 2
     const start = Date.now()
-    const fn = ratelimit(x => {
+    const fn = ratelimit((x: number) => {
       const diff = Date.now() - start
       const expected = Math.round(((x || 1) - 1) / count) * period
 
@@ -31,7 +32,7 @@ describe('ratelimit', () => {
   it('properly proceeds interrelated limits', done => {
     const limit = [{ period: 20, count: 1 }, { period: 200, count: 5 }]
     const start = Date.now()
-    const fn = ratelimit(x => {
+    const fn = ratelimit((x: number) => {
       const diff = Date.now() - start
       const expected = x > 4
         ? 200 + (x - 5) * 20
@@ -43,7 +44,7 @@ describe('ratelimit', () => {
       }
 
       return x
-    }, limit)
+    }, limit as ILimitStack)
 
     for (let y = 0; y < 10; y++) {
       fn(y)
@@ -51,7 +52,7 @@ describe('ratelimit', () => {
   })
 
   it('`flush` invokes all delayed calls immediately', done => {
-    const fn = ratelimit(x => x, { period: 10000000, count: 1 })
+    const fn = ratelimit((x: number) => x, { period: 10000000, count: 1 })
     const result = Promise.all([fn('foo'), fn('bar'), fn('baz')])
     result
       .then(([foo, bar, baz]) => {
@@ -68,13 +69,13 @@ describe('ratelimit', () => {
   it('`cancel` removes ltd calls stack and timers', done => {
     const fn = jest.fn(v => v)
     const ltd = ratelimit(fn, {
-      limit: { period: 10, count: 1 },
+      limit: { period: 10, count: 1, ttl: 0, rest: 0 },
       rejectOnCancel: false
-    })
+    } as IWrapperOpts)
     const ltdWithReject = ratelimit(fn, {
-      limit: { period: 10, count: 1 },
+      limit: { period: 10, count: 1, ttl: 0, rest: 0 },
       rejectOnCancel: true
-    })
+    } as IWrapperOpts)
     const resultWithReject = Promise.all([ltdWithReject('foo'), ltdWithReject('bar')])
     const result = Promise.all([ltd('baz'), ltd('qux')])
 

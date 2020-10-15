@@ -1,5 +1,6 @@
-import { delay, REJECTED_ON_CANCEL } from '../../../main/js'
+import { delay, REJECTED_ON_CANCEL } from '../../../main/ts'
 import 'babel-polyfill'
+import { ITarget, IWrapperOpts } from '../../../main/ts/interface'
 
 describe('delay', () => {
   it('wrapper returns function', () => {
@@ -7,11 +8,11 @@ describe('delay', () => {
   })
 
   it('throws error on invalid input', () => {
-    expect(() => delay({})).toThrow('Target must be a function')
+    expect(() => delay({} as ITarget, {} as IWrapperOpts)).toThrow('Target must be a function')
   })
 
   it('returns a promise', done => {
-    let foo
+    let foo: any
 
     expect(delay(() => { foo = 'bar' }, 10)()).toEqual(expect.any(Promise))
     setTimeout(() => {

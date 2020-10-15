@@ -1,3 +1,4 @@
+// @ts-ignore
 import { delay, throttle, debounce, ratelimit, stabilize, repeat } from '../../../target/es5/bundle.min'
 
 describe('index', () => {

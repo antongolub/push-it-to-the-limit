@@ -1,5 +1,3 @@
-// @flow
-
 import type {
   ITarget,
   IControlled,
@@ -7,9 +5,9 @@ import type {
   IWrapperOpts
 } from '../interface'
 import { adapter } from '../common'
-import debounce from './debounce'
+import { debounce } from './debounce'
 
-export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
+export const delay: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
   const delay = typeof opts.delay === 'number'
     ? { period: opts.delay, count: Infinity }
     : opts.delay
@@ -19,4 +17,4 @@ export default (adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
     : undefined
 
   return debounce(fn, { maxWait, ...opts, delay, order: 'fifo' })
-}): IExposedWrapper)
+})

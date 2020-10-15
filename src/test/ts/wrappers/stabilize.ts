@@ -1,12 +1,13 @@
-import { REJECTED_ON_CANCEL, stabilize } from '../../../main/js'
+import { REJECTED_ON_CANCEL, stabilize } from '../../../main/ts'
+import { ITarget, IWrapperOpts } from '../../../main/ts/interface'
 
 describe('stabilize', () => {
   it('wrapper returns function', () => {
-    expect(stabilize(() => {})).toEqual(expect.any(Function))
+    expect(stabilize(() => {}, {} as IWrapperOpts)).toEqual(expect.any(Function))
   })
 
   it('throws error on invalid input', () => {
-    expect(() => stabilize({})).toThrow('Target must be a function')
+    expect(() => stabilize({} as ITarget, {} as IWrapperOpts)).toThrow('Target must be a function')
   })
 
   it('groups multiple sequential calls in a single one per period', done => {

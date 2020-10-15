@@ -3,26 +3,27 @@
   "version": "1.12.2",
   "description": "Delay function wrappers for common purposes. Throttle, debounce and ratelimit with promises",
   "main": "target/es5/bundle.min.js",
-  "types": "typings/index.d.ts",
+  "types": "target/es5/index.d.ts",
   "typescript": {
-    "definition": "typings/index.d.ts"
+    "definition": "target/es5/index.d.ts"
   },
   "scripts": {
     "clean": "rm -rf target",
-    "flow": "flow",
-    "flow:coverage": "flow-coverage-report -i 'src/main/**/*.js' -t html -t json -t text --threshold 90",
     "lint": "standard src/**/*.js",
-    "lint:fix": "npm run lint -- --fix",
+    "lint:fix": "yarn lint -- --fix",
     "jest": "BABEL_ENV=test jest -w 1 --detectOpenHandles",
-    "test": "npm run lint && npm run flow && npm run flow:coverage && npm run jest",
-    "test:report": "npm test && npm run coveralls:push",
+    "test": "yarn lint && yarn jest",
+    "test:report": "yarn test && yarn coveralls:push",
     "coveralls:push": "cat ./coverage/lcov.info | coveralls",
-    "build": "npm run clean && npm run build:rollup && npm run build:babel",
-    "build:babel": "BABEL_ENV=production babel src/main/js --out-dir target/es5",
-    "build:rollup": "rollup -c && npm run bundle:min",
+    "build:es5": "mkdir -p target/es5 && tsc -p tsconfig.es5.json",
+    "build:es6": "mkdir -p target/es6 && tsc -p tsconfig.es6.json",
+    "build:ts": "cp -r src/main/ts/ target/ts/",
+    "build:libdef": "libdefkit --tsconfig=tsconfig.es5.json --tsconfig=tsconfig.es6.json",
+    "build": "yarn clean && yarn build:es5 && yarn build:es6 && yarn build:ts && yarn build:rollup && yarn build:libdef",
+    "build:rollup": "rollup -c && yarn bundle:min",
     "bundle:min": "BABEL_ENV=production babel target/es5/bundle.js --out-file target/es5/bundle.min.js",
     "doc": "esdoc",
-    "postupdate": "npm i && npm audit fix && npm run build && npm run test"
+    "postupdate": "yarn && npx yarn-audit-fix && yarn build && yarn test"
   },
   "repository": {
     "type": "git",
@@ -59,10 +60,13 @@
     "@babel/polyfill": "^7.11.5",
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-flow": "^7.10.4",
+    "@qiwi/libdefkit": "^2.1.1",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
     "@semantic-release/github": "^7.1.1",
     "@semantic-release/npm": "^7.0.6",
+    "@swissquote/crafty-preset-jest": "^1.13.4",
+    "@types/jest": "^26.0.14",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-external-helpers": "^6.22.0",
@@ -73,9 +77,6 @@
     "codeclimate-test-reporter": "^0.5.1",
     "coveralls": "^3.1.0",
     "eslint-plugin-flowtype": "^5.2.0",
-    "flow-bin": "^0.135.0",
-    "flow-coverage-report": "^0.8.0",
-    "flow-remove-types": "^2.135.0",
     "jest": "26.5.3",
     "rollup": "^2.29.0",
     "rollup-plugin-babel": "^4.4.0",
@@ -83,7 +84,9 @@
     "rollup-plugin-flow": "^1.1.1",
     "rollup-plugin-node-resolve": "^5.2.0",
     "semantic-release": "^17.2.1",
-    "standard": "^14.3.4"
+    "standard": "^14.3.4",
+    "ts-jest": "^26.4.1",
+    "typescript": "^4.0.3"
   },
   "files": [
     "README.md",
@@ -124,9 +127,6 @@
   },
   "standard": {
     "parser": "babel-eslint",
-    "plugins": [
-      "flowtype"
-    ],
     "globals": [
       "jest",
       "it",
@@ -140,14 +140,6 @@
       "afterEach",
       "TimeoutID"
     ],
-    "rules": {
-      "use-flow-type": 1
-    },
-    "ignore": [],
-    "settings": {
-      "flowtype": {
-        "onlyFilesWithFlowAnnotation": true
-      }
-    }
+    "ignore": []
   }
 }

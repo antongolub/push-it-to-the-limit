@@ -1,11 +1,10 @@
-// @flow
-
 export type IAny = any
 export type IBasicDelay = number
-export type IComplexDelay = {|
+export type IComplexDelay = {
   period: number,
   count: number
-|}
+}
+export type TimeoutID = ReturnType<typeof setTimeout>
 export type IMixedDelays = Array<IBasicDelay | IComplexDelay>
 export type INormalizedDelays = Array<IComplexDelay>
 export type IDelay = number
@@ -26,7 +25,7 @@ export type ICallStack = Array<ICall>
 export type IResolve = (value: IAny) => void
 export type IReject = (value: IAny) => void
 
-export type IControlled = {
+export type IControlled<T = {}> = T & {
   (...args: IAny[]): Promise<IAny>,
   flush(): void,
   cancel(): void
@@ -57,7 +56,6 @@ export type IExposedWrapper = {
 
 export interface ILimiter {
   limits: ILimitStack,
-  constructor(delays: INormalizedDelays): ILimiter,
   getNextDelay(): number,
   reset(): void,
   resetTtl(): void,
@@ -65,3 +63,9 @@ export interface ILimiter {
   isAllowed(): boolean,
   getNextQueueSize(): number,
 }
+
+export type Nullable<T> = T | null
+
+export type NotAlwaysDefined<T> = T | undefined
+
+export type Optional<T> = Nullable<T> | NotAlwaysDefined<T>

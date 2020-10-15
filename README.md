@@ -7,7 +7,6 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/d751b0eb18e737f8694b/maintainability)](https://codeclimate.com/github/antongolub/push-it-to-the-limit/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/d751b0eb18e737f8694b/test_coverage)](https://codeclimate.com/github/antongolub/push-it-to-the-limit/test_coverage)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
-[![Greenkeeper badge](https://badges.greenkeeper.io/antongolub/push-it-to-the-limit.svg)](https://greenkeeper.io/)
 
 Delay wrappers for common purposes. <s>Fast and simple</s> with promises.
 #### Main features

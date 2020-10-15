@@ -1,4 +1,4 @@
-import { repeat } from '../../../main/js'
+import { repeat } from '../../../main/ts'
 
 describe('repeat', () => {
   it('looks to be working', done => {
@@ -7,7 +7,8 @@ describe('repeat', () => {
       i: 0
     }
     const delay = 10
-    function target (step) {
+    function target (step: number) {
+      // @ts-ignore
       this.i += step
     }
 
@@ -17,7 +18,7 @@ describe('repeat', () => {
     setTimeout(() => rep(4), 20)
     setTimeout(() => {
       expect(context.i > 9).toBeTruthy()
-      clearTimeout(rep.timeout)
+      clearTimeout((rep as any).timeout)
       done()
     }, 40)
   })

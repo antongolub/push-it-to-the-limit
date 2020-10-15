@@ -1,5 +1,6 @@
-import { debounce, REJECTED_ON_CANCEL } from '../../../main/js'
+import { debounce, REJECTED_ON_CANCEL } from '../../../main/ts'
 import 'babel-polyfill'
+import { ITarget, IWrapperOpts } from '../../../main/ts/interface'
 
 describe('debounce', () => {
   it('wrapper returns function', () => {
@@ -7,7 +8,7 @@ describe('debounce', () => {
   })
 
   it('throws error on invalid input', () => {
-    expect(() => debounce({})).toThrow('Target must be a function')
+    expect(() => debounce({} as ITarget, {} as IWrapperOpts)).toThrow('Target must be a function')
   })
 
   it('groups multiple sequential calls in a single one', done => {

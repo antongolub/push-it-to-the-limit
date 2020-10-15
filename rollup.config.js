@@ -4,7 +4,7 @@ import flow from 'rollup-plugin-flow'
 import commonjs from 'rollup-plugin-commonjs'
 
 export default {
-  input: 'src/main/js/index.js',
+  input: 'target/es5/index.js',
   output: {
     file: 'target/es5/bundle.js',
     format: 'umd',
