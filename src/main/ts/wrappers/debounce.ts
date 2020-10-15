@@ -20,8 +20,8 @@ export const DEFAULT_OPTS = {
 }
 
 export const debounce: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
-  const { delay, limit, context, rejectOnCancel, maxWait, leading, order, limiter } = ({ ...DEFAULT_OPTS, ...opts } as IWrapperOpts)
-  const _limiter = limiter || new Limiter(normalizeDelay(limit || delay))
+  const { delay, limit, context, rejectOnCancel, maxWait, leading, order, limiter: _limiter } = ({ ...DEFAULT_OPTS, ...opts } as IWrapperOpts)
+  const limiter = _limiter || new Limiter(normalizeDelay(limit || delay))
   const calls: ICallStack = []
   const args: any[] = []
 
@@ -32,7 +32,7 @@ export const debounce: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpt
 
   const res = (..._args: IAny[]): Promise<IAny> => {
     if (queueLimit === null) {
-      queueLimit = _limiter.getNextQueueSize()
+      queueLimit = limiter.getNextQueueSize()
     }
     // NOTE `leading` option has priority
     const shouldRun = leading && queueLimit > 0
@@ -45,13 +45,13 @@ export const debounce: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpt
         })
       })
 
-      _limiter.decrease()
+      limiter.decrease()
       queueLimit += -1
     }
 
     args.push(_args)
-    _limiter.resetTtl()
-    const nextDelay = _limiter.getNextDelay()
+    limiter.resetTtl()
+    const nextDelay = limiter.getNextDelay()
     dropTimeout(timeout)
     timeout = setTimeout(res.flush, nextDelay)
 
@@ -73,7 +73,7 @@ export const debounce: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpt
   }
 
   res.flush = () => {
-    _limiter.reset()
+    limiter.reset()
     promise = null
     queueLimit = null
     calls.forEach(call => call.complete())
