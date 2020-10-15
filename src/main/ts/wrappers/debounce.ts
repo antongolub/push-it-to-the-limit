@@ -9,18 +9,17 @@ import type {
   ICallStack,
   TimeoutID,
   Nullable,
-  Optional,
-  NotAlwaysDefined
+  Optional
 } from '../interface'
 import { complete, failOnCancel, adapter, dropTimeout, normalizeDelay } from '../common'
-import Limiter from '../limiter'
+import { Limiter } from '../limiter'
 
 export const DEFAULT_OPTS = {
   leading: false,
   trailing: true
 }
 
-const debounce: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
+export const debounce: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
   const { delay, limit, context, rejectOnCancel, maxWait, leading, order } = ({ ...DEFAULT_OPTS, ...opts } as IWrapperOpts)
   const limiter = new Limiter(normalizeDelay(limit || delay))
   const calls: ICallStack = []
@@ -101,6 +100,3 @@ const debounce: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpts): ICo
 
   return res
 })
-
-export default debounce
-

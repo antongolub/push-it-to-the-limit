@@ -10,11 +10,11 @@ import type {
   TimeoutID
 } from '../interface'
 import { complete, failOnCancel, dropTimeout, adapter, normalizeDelay } from '../common'
-import Limiter from '../limiter'
+import { Limiter } from '../limiter'
 
 export type IProcessor = (calls: ICallStack, limiter: ILimiter) => void
 
-const rateLimit: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
+export const ratelimit: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
   let timeout: TimeoutID | null = null
   const { delay, limit, context, rejectOnCancel } = opts
   const delays: INormalizedDelays = normalizeDelay(limit || delay)
@@ -71,5 +71,3 @@ export function processTimeouts (calls: ICallStack, limiter: ILimiter, handler: 
 
   return null
 }
-
-export default rateLimit

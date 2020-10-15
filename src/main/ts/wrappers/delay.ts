@@ -5,9 +5,9 @@ import type {
   IWrapperOpts
 } from '../interface'
 import { adapter } from '../common'
-import debounce from './debounce'
+import { debounce } from './debounce'
 
-const delay: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
+export const delay: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
   const delay = typeof opts.delay === 'number'
     ? { period: opts.delay, count: Infinity }
     : opts.delay
@@ -18,5 +18,3 @@ const delay: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpts): IContr
 
   return debounce(fn, { maxWait, ...opts, delay, order: 'fifo' })
 })
-
-export default delay

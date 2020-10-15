@@ -2,7 +2,7 @@ import createRepeater from '@antongolub/repeater'
 import { adapter, dropTimeout } from '../common'
 import type { IControlled, IExposedWrapper, ITarget, IWrapperOpts } from '../interface'
 
-const repeat: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
+export const repeat: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
   const repeaterOpts = {
     ...opts,
     target: fn,
@@ -20,5 +20,3 @@ const repeat: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpts): ICont
 
   return repeater
 })
-
-export default repeat

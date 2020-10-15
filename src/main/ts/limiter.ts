@@ -1,6 +1,6 @@
 import type { IComplexDelay, ILimit, ILimiter, ILimitStack, INormalizedDelays } from './interface'
 
-export default class Limiter implements ILimiter {
+export class Limiter implements ILimiter {
   limits: ILimitStack
 
   constructor (delays: INormalizedDelays) {
