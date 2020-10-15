@@ -38,22 +38,6 @@ export type ILodashOpts = {
 
 export type IOrder = 'fifo' | 'lifo'
 
-export type IWrapperOpts = {
-  delay: IDelay | IComplexDelay,
-  limit?: ILimit | ILimitStack,
-  context?: IAny,
-  rejectOnCancel?: boolean,
-  order?: IOrder
-} & ILodashOpts
-
-export type IWrapper = (fn: ITarget, opts: IWrapperOpts) => IControlled
-export type IExposedWrapper = {
-  (fn: ITarget, opts: IWrapperOpts): IControlled,
-  (fn: ITarget, delay: IDelay, opts?: ILodashOpts): IControlled,
-  (fn: ITarget, delay: IComplexDelay, opts?: ILodashOpts): IControlled,
-  (fn: ITarget, limit: ILimitStack | ILimit, opts?: ILodashOpts): IControlled,
-}
-
 export interface ILimiter {
   limits: ILimitStack,
   getNextDelay(): number,
@@ -62,6 +46,23 @@ export interface ILimiter {
   decrease(): void,
   isAllowed(): boolean,
   getNextQueueSize(): number,
+}
+
+export type IWrapperOpts = {
+  delay: IDelay | IComplexDelay,
+  limit?: ILimit | ILimitStack,
+  context?: IAny,
+  rejectOnCancel?: boolean,
+  order?: IOrder,
+  limiter?: ILimiter
+} & ILodashOpts
+
+export type IWrapper = (fn: ITarget, opts: IWrapperOpts) => IControlled
+export type IExposedWrapper = {
+  (fn: ITarget, opts: IWrapperOpts): IControlled,
+  (fn: ITarget, delay: IDelay, opts?: ILodashOpts): IControlled,
+  (fn: ITarget, delay: IComplexDelay, opts?: ILodashOpts): IControlled,
+  (fn: ITarget, limit: ILimitStack | ILimit, opts?: ILodashOpts): IControlled,
 }
 
 export type Nullable<T> = T | null
