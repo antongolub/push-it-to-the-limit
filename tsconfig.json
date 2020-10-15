@@ -21,8 +21,7 @@
     "esModuleInterop": true,
 
     "incremental": true,
-    "tsBuildInfoFile": "./buildcache/.tsbuildinfo",
-    "typeRoots": ["./node_modules/@types", "./custom-typings"]
+    "tsBuildInfoFile": "./buildcache/.tsbuildinfo"
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]
