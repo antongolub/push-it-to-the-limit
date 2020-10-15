@@ -10,20 +10,20 @@
   "scripts": {
     "clean": "rm -rf target",
     "lint": "standard src/**/*.js",
-    "lint:fix": "npm run lint -- --fix",
+    "lint:fix": "yarn lint -- --fix",
     "jest": "BABEL_ENV=test jest -w 1 --detectOpenHandles",
-    "test": "npm run lint && npm run jest",
-    "test:report": "npm test && npm run coveralls:push",
+    "test": "yarn lint && yarn jest",
+    "test:report": "yarn test && yarn coveralls:push",
     "coveralls:push": "cat ./coverage/lcov.info | coveralls",
     "build:es5": "mkdir -p target/es5 && tsc -p tsconfig.es5.json",
     "build:es6": "mkdir -p target/es6 && tsc -p tsconfig.es6.json",
     "build:ts": "cp -r src/main/ts/ target/ts/",
     "build:libdef": "libdefkit --tsconfig=tsconfig.es5.json --tsconfig=tsconfig.es6.json",
-    "build": "npm run clean && npm run build:es5 && npm run build:es6 && npm run build:ts && npm run build:rollup && npm run build:libdef",
-    "build:rollup": "rollup -c && npm run bundle:min",
+    "build": "yarn clean && yarn build:es5 && yarn build:es6 && yarn build:ts && yarn build:rollup && yarn build:libdef",
+    "build:rollup": "rollup -c && yarn bundle:min",
     "bundle:min": "BABEL_ENV=production babel target/es5/bundle.js --out-file target/es5/bundle.min.js",
     "doc": "esdoc",
-    "postupdate": "npm i && npm audit fix && npm run build && npm run test"
+    "postupdate": "yarn && npx yarn-audit-fix && yarn build && yarn test"
   },
   "repository": {
     "type": "git",
