@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.12.2...v1.13.0) (2020-10-15)
+
+
+### Features
+
+* migrate to ts ([#33](https://github.com/antongolub/push-it-to-the-limit/issues/33)) ([295e3af](https://github.com/antongolub/push-it-to-the-limit/commit/295e3af3d2bb4748481b21a3fc321649a8f57eff)), closes [#30](https://github.com/antongolub/push-it-to-the-limit/issues/30)
+
 ## [1.12.2](https://github.com/antongolub/push-it-to-the-limit/compare/v1.12.1...v1.12.2) (2020-10-12)
 
 
