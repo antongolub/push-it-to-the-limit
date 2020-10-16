@@ -1,3 +1,15 @@
+# [1.15.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.14.0...v1.15.0) (2020-10-16)
+
+
+### Features
+
+* added limiters composition ([#38](https://github.com/antongolub/push-it-to-the-limit/issues/38)) ([191c483](https://github.com/antongolub/push-it-to-the-limit/commit/191c4833e6a045d02756704123a42e775b91d8cf)), closes [#36](https://github.com/antongolub/push-it-to-the-limit/issues/36)
+
+
+### Performance Improvements
+
+* deps revision ([01cd8c2](https://github.com/antongolub/push-it-to-the-limit/commit/01cd8c28351ba62af373bebb5023f6449a015d5a))
+
 # [1.14.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.13.1...v1.14.0) (2020-10-16)
 
 
