@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.13.1...v1.14.0) (2020-10-16)
+
+
+### Features
+
+* added limiter injection ([#37](https://github.com/antongolub/push-it-to-the-limit/issues/37)) ([1b31bb1](https://github.com/antongolub/push-it-to-the-limit/commit/1b31bb10ffa627fd161036ca25962a32a187eb43)), closes [#34](https://github.com/antongolub/push-it-to-the-limit/issues/34)
+
 ## [1.13.1](https://github.com/antongolub/push-it-to-the-limit/compare/v1.13.0...v1.13.1) (2020-10-15)
 
 
