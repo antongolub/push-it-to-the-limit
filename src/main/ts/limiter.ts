@@ -4,11 +4,11 @@ export class Limiter implements ILimiter {
   limits: ILimitStack
 
   constructor (items: Array<Limiter | IComplexDelay>) {
-    this.limits = items.reduce<ILimitStack>((acc, cur) => {
-      if (cur instanceof Limiter) {
-        return acc.concat(cur.limits)
+    this.limits = items.reduce<ILimitStack>((acc, item) => {
+      if (item instanceof Limiter) {
+        return acc.concat(item.limits)
       }
-      return [...acc, { ...cur, rest: cur.count, ttl: 0 }]
+      return [...acc, { ...item, rest: item.count, ttl: 0 }]
     }, [])
     return this
   }
@@ -32,10 +32,16 @@ export class Limiter implements ILimiter {
   }
 
   getNextDelay (): number {
-    const ttl = this.limits.reduce(
-      (acc, { rest, ttl }) => rest < 1 && ttl > acc ? ttl : acc,
-      0
-    )
+    let ttl = 0
+    const limits = this.limits
+
+    for (let i = 0; i < limits.length; i++) {
+      const limit = limits[i]
+      if (limit.rest < 1 && limit.ttl > ttl) {
+        ttl = limit.ttl
+      }
+    }
+
     return ttl - Date.now()
   }
 
