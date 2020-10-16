@@ -1,5 +1,4 @@
 import { delay, REJECTED_ON_CANCEL } from '../../../main/ts'
-import 'babel-polyfill'
 import { ITarget, IWrapperOpts } from '../../../main/ts/interface'
 
 describe('delay', () => {
