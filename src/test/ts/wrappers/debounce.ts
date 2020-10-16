@@ -197,22 +197,15 @@ describe('debounce', () => {
     }, 15)
   })
 
-  it('uses injected limiter', () => {
+  it('uses injected limiter', async () => {
     const limiter = new Limiter([{ period: 10, count: 1 }])
-    const classSpy = jest.spyOn(LimiterModule, 'Limiter')
+    const getNextDelaySpy = jest.spyOn(limiter, 'getNextDelay')
 
-    debounce(
-      jest.fn(v => v),
-      { delay: 10 }
-    )
-    expect(classSpy).toHaveBeenCalled()
-
-    classSpy.mockReset()
-
-    debounce(
+    const fn = debounce(
       jest.fn(v => v),
       { delay: 10, limiter }
     )
-    expect(classSpy).not.toHaveBeenCalled()
+    await fn()
+    expect(getNextDelaySpy).toHaveBeenCalled()
   })
 })
