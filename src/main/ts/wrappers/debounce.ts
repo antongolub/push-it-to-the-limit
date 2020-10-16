@@ -32,6 +32,7 @@ export const debounce: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpt
 
   const res = (..._args: IAny[]): Promise<IAny> => {
     if (queueLimit === null) {
+      limiter.reset()
       queueLimit = limiter.getNextQueueSize()
     }
     // NOTE `leading` option has priority

@@ -46,7 +46,6 @@ export class Limiter implements ILimiter {
   }
 
   getNextQueueSize (): number {
-    this.reset()
     return Math.min(...this.limits.map(({ rest }) => rest))
   }
 
