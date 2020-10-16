@@ -4,7 +4,6 @@ export class Limiter implements ILimiter {
   limits: ILimitStack
 
   constructor (delays: INormalizedDelays) {
-    // $FlowFixMe
     this.limits = delays.map((delay: IComplexDelay): ILimit => ({ ...delay, rest: delay.count, ttl: 0 }))
 
     return this

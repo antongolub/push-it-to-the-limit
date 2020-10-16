@@ -1,6 +1,7 @@
 import { debounce, REJECTED_ON_CANCEL } from '../../../main/ts'
 import 'babel-polyfill'
 import { ITarget, IWrapperOpts } from '../../../main/ts/interface'
+import { Limiter } from '../../../main/ts/limiter'
 
 describe('debounce', () => {
   it('wrapper returns function', () => {
@@ -193,5 +194,17 @@ describe('debounce', () => {
       expect(fn).not.toHaveBeenCalled()
       done()
     }, 15)
+  })
+
+  it('uses injected limiter', async () => {
+    const limiter = new Limiter([{ period: 10, count: 1 }])
+    const getNextDelaySpy = jest.spyOn(limiter, 'getNextDelay')
+
+    const fn = debounce(
+      jest.fn(v => v),
+      { delay: 10, limiter }
+    )
+    await fn()
+    expect(getNextDelaySpy).toHaveBeenCalled()
   })
 })

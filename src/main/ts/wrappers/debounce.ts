@@ -20,8 +20,8 @@ export const DEFAULT_OPTS = {
 }
 
 export const debounce: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
-  const { delay, limit, context, rejectOnCancel, maxWait, leading, order } = ({ ...DEFAULT_OPTS, ...opts } as IWrapperOpts)
-  const limiter = new Limiter(normalizeDelay(limit || delay))
+  const { delay, limit, context, rejectOnCancel, maxWait, leading, order, limiter: _limiter } = ({ ...DEFAULT_OPTS, ...opts } as IWrapperOpts)
+  const limiter = _limiter || new Limiter(normalizeDelay(limit || delay))
   const calls: ICallStack = []
   const args: any[] = []
 
