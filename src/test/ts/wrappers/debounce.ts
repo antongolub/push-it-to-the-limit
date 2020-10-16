@@ -1,5 +1,4 @@
 import { debounce, REJECTED_ON_CANCEL } from '../../../main/ts'
-import 'babel-polyfill'
 import { ITarget, IWrapperOpts } from '../../../main/ts/interface'
 import { Limiter } from '../../../main/ts/limiter'
 
