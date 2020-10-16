@@ -20,6 +20,16 @@ describe('limiter', () => {
       expect(limits[1].rest).toBe(9)
     })
 
+    it('handles injected limiter too', () => {
+      const injectedLimiter = new Limiter(delays)
+      const limiter = new Limiter([...delays, injectedLimiter])
+      const limits = injectedLimiter.limits
+      limiter.decrease()
+
+      expect(limits[0].rest).toBe(4)
+      expect(limits[1].rest).toBe(9)
+    })
+
     it('`reset` restores the limits', () => {
       const limiter = new Limiter(delays)
       const limits = limiter.limits

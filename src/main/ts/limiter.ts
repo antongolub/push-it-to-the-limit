@@ -1,11 +1,15 @@
-import type { IComplexDelay, ILimit, ILimiter, ILimitStack, INormalizedDelays } from './interface'
+import type { IComplexDelay, ILimit, ILimiter, ILimitStack } from './interface'
 
 export class Limiter implements ILimiter {
   limits: ILimitStack
 
-  constructor (delays: INormalizedDelays) {
-    this.limits = delays.map((delay: IComplexDelay): ILimit => ({ ...delay, rest: delay.count, ttl: 0 }))
-
+  constructor (items: Array<Limiter | IComplexDelay>) {
+    this.limits = items.reduce<ILimitStack>((acc, cur) => {
+      if (cur instanceof Limiter) {
+        return acc.concat(cur.limits)
+      }
+      return [...acc, { ...cur, rest: cur.count, ttl: 0 }]
+    }, [])
     return this
   }
 
@@ -28,16 +32,10 @@ export class Limiter implements ILimiter {
   }
 
   getNextDelay (): number {
-    let ttl = 0
-    const limits = this.limits
-
-    for (let i = 0; i < limits.length; i++) {
-      const limit = limits[i]
-      if (limit.rest < 1 && limit.ttl > ttl) {
-        ttl = limit.ttl
-      }
-    }
-
+    const ttl = this.limits.reduce(
+      (acc, { rest, ttl }) => rest < 1 && ttl > acc ? ttl : acc,
+      0
+    )
     return ttl - Date.now()
   }
 
