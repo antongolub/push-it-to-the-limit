@@ -1,11 +1,15 @@
-import type { IComplexDelay, ILimit, ILimiter, ILimitStack, INormalizedDelays } from './interface'
+import type { IComplexDelay, ILimit, ILimiter, ILimitStack } from './interface'
 
 export class Limiter implements ILimiter {
   limits: ILimitStack
 
-  constructor (delays: INormalizedDelays) {
-    this.limits = delays.map((delay: IComplexDelay): ILimit => ({ ...delay, rest: delay.count, ttl: 0 }))
-
+  constructor (items: Array<Limiter | IComplexDelay>) {
+    this.limits = items.reduce<ILimitStack>((acc, item) => {
+      if (item instanceof Limiter) {
+        return acc.concat(item.limits)
+      }
+      return [...acc, { ...item, rest: item.count, ttl: 0 }]
+    }, [])
     return this
   }
 
