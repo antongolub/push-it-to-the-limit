@@ -1,3 +1,10 @@
+## [1.15.1](https://github.com/antongolub/push-it-to-the-limit/compare/v1.15.0...v1.15.1) (2020-10-17)
+
+
+### Performance Improvements
+
+* update docs and repack ([15e07cc](https://github.com/antongolub/push-it-to-the-limit/commit/15e07cc505822838d93f89b3a66bb3155bdbca94))
+
 # [1.15.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.14.0...v1.15.0) (2020-10-16)
 
 
