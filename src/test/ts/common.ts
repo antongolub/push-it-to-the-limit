@@ -1,15 +1,20 @@
+import {ICallable} from '@qiwi/substrate'
+
 import {
+  adapter,
   assert,
   assertFn,
   complete,
+  DEFAULT_DELAY,
   fail,
   failOnCancel,
-  REJECTED_ON_CANCEL,
+  normalizeDelay,
   REJECTED,
-  DEFAULT_DELAY,
-  adapter,
-  normalizeDelay
+  REJECTED_ON_CANCEL
 } from '../../main/ts/common'
+
+const noop = () => { /* noop */ }
+const echo = <T>(v: T): T => v
 
 describe('assert', () => {
   it('does nothing if condition looks truthy', () => {
@@ -27,7 +32,7 @@ describe('assert', () => {
 
 describe('assertFn', () => {
   it('requires target to be a function', () => {
-    expect(assertFn(() => {})).toBeUndefined()
+    expect(assertFn(noop)).toBeUndefined()
     expect(() => assertFn({})).toThrow('Target must be a function')
   })
 })
@@ -35,8 +40,7 @@ describe('assertFn', () => {
 describe('complete', () => {
   it('resolves a promise with target fn invocation result', done => {
     const foo = 'foo'
-    const fn = (v: any) => v
-    const p = new Promise(resolve => complete(resolve, fn, [foo]))
+    const p = new Promise(resolve => complete(resolve, echo, [foo]))
 
     p.then(v => {
       expect(v).toBe(foo)
@@ -81,13 +85,13 @@ describe('failOnCancel', () => {
 })
 
 describe('adapter', () => {
-  const fn = (v: any) => v
-  const wrapper = jest.fn((target, opts) => null)
+  const fn = echo
+  const wrapper = jest.fn(noop)
   const adapted = adapter(wrapper as any)
 
   afterEach(wrapper.mockClear)
 
-  const cases: Array<[string, [Function, ...any[]], any]> = [
+  const cases: Array<[string, [ICallable, ...any[]], any]> = [
     [
       'converts <ITarget> to <ITarget, IWrapperOpts>',
       [fn],

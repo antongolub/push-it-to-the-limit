@@ -2,9 +2,12 @@ import { debounce, REJECTED_ON_CANCEL } from '../../../main/ts'
 import { ITarget, IWrapperOpts } from '../../../main/ts/interface'
 import { Limiter } from '../../../main/ts/limiter'
 
+const noop = () => { /* noop */ }
+const echo = <T>(v: T): T => v
+
 describe('debounce', () => {
   it('wrapper returns function', () => {
-    expect(debounce(() => {}, 10)).toEqual(expect.any(Function))
+    expect(debounce(noop, 10)).toEqual(expect.any(Function))
   })
 
   it('throws error on invalid input', () => {
@@ -12,7 +15,7 @@ describe('debounce', () => {
   })
 
   it('groups multiple sequential calls in a single one', done => {
-    const fn = jest.fn(v => v)
+    const fn = jest.fn(echo)
     const debounced = debounce(fn, 20)
 
     const foo = debounced('bar')
@@ -31,7 +34,7 @@ describe('debounce', () => {
   })
 
   it('defers the call', done => {
-    const fn = jest.fn(v => v)
+    const fn = jest.fn(echo)
     const debounced = debounce(fn, 10)
 
     for (let i = 0; i < 5; i++) {
@@ -46,7 +49,7 @@ describe('debounce', () => {
   })
 
   it('handles `complex delays`', done => {
-    const fn = jest.fn(v => v)
+    const fn = jest.fn(echo)
     const delay = { period: 15, count: 2 }
     const debounced = debounce(fn, delay)
 
@@ -68,7 +71,7 @@ describe('debounce', () => {
   })
 
   it('passes same promise as a result', async () => {
-    const debounced = debounce(v => v, 1)
+    const debounced = debounce(echo, 1)
     const [foo, baz] = await Promise.all([debounced('bar'), debounced('qux')])
 
     expect(foo).toBe(baz)
@@ -76,7 +79,7 @@ describe('debounce', () => {
   })
 
   it('supports `maxWait` option', done => {
-    const fn = jest.fn(v => v)
+    const fn = jest.fn(echo)
     const debounced = debounce(fn, 100000, { maxWait: 15 })
 
     debounced('foo')
@@ -92,7 +95,7 @@ describe('debounce', () => {
   })
 
   it('properly handles `leading` option', done => {
-    const fn = jest.fn(v => v)
+    const fn = jest.fn(echo)
     const debounced = debounce(fn, 10, { leading: true })
 
     debounced('foo').then(v => expect(v).toBe('foo'))
@@ -118,7 +121,7 @@ describe('debounce', () => {
   })
 
   it('handles `leading` with complex delays', done => {
-    const fn = jest.fn(v => v)
+    const fn = jest.fn(echo)
     const debounced = debounce(fn, { period: 10, count: 2 }, { leading: true })
 
     debounced('foo').then(v => expect(v).toBe('foo'))
@@ -147,7 +150,7 @@ describe('debounce', () => {
   })
 
   it('`flush` invokes target function immediately', done => {
-    const fn = jest.fn(v => v)
+    const fn = jest.fn(echo)
     const debounced = debounce(fn, { delay: 10000 })
 
     debounced('foo').then(v => expect(v).toBe('bar'))
@@ -166,7 +169,7 @@ describe('debounce', () => {
   })
 
   it('`cancel` removes delayed call and timers', done => {
-    const fn = jest.fn(v => v)
+    const fn = jest.fn(echo)
     const delayed = debounce(fn, {
       delay: 10,
       rejectOnCancel: false
@@ -200,7 +203,7 @@ describe('debounce', () => {
     const getNextDelaySpy = jest.spyOn(limiter, 'getNextDelay')
 
     const fn = debounce(
-      jest.fn(v => v),
+      jest.fn(echo),
       { delay: 10, limiter }
     )
     await fn()

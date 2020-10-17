@@ -1,9 +1,12 @@
 import { delay, REJECTED_ON_CANCEL } from '../../../main/ts'
 import { ITarget, IWrapperOpts } from '../../../main/ts/interface'
 
+const noop = () => { /* noop */ }
+const echo = <T>(v: T): T => v
+
 describe('delay', () => {
   it('wrapper returns function', () => {
-    expect(delay(() => {}, { delay: 10 })).toEqual(expect.any(Function))
+    expect(delay(noop, { delay: 10 })).toEqual(expect.any(Function))
   })
 
   it('throws error on invalid input', () => {
@@ -23,7 +26,7 @@ describe('delay', () => {
   })
 
   it('passes args to origin fn', async () => {
-    const fn = jest.fn(v => v)
+    const fn = jest.fn(echo)
     const delayed = delay(fn, 10)
     const bar = await delayed('foo')
 
@@ -32,7 +35,7 @@ describe('delay', () => {
   })
 
   it('`flush` invokes all delayed calls immediately', done => {
-    const fn = jest.fn(v => v)
+    const fn = jest.fn(echo)
     const delayed = delay(fn, 1000000000)
 
     const result = Promise.all([delayed('foo'), delayed('bar')])
@@ -48,7 +51,7 @@ describe('delay', () => {
   })
 
   it('`cancel` removes delayed calls stack and timers', done => {
-    const fn = jest.fn(v => v)
+    const fn = jest.fn(echo)
     const delayed = delay(fn, {
       delay: 10,
       rejectOnCancel: false

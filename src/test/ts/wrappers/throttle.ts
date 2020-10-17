@@ -1,9 +1,12 @@
 import { throttle } from '../../../main/ts'
 import { ITarget, IWrapperOpts } from '../../../main/ts/interface'
 
+const noop = () => { /* noop */ }
+const echo = <T>(v: T): T => v
+
 describe('throttle', () => {
   it('wrapper returns function', () => {
-    expect(throttle(() => {}, 10)).toEqual(expect.any(Function))
+    expect(throttle(noop, 10)).toEqual(expect.any(Function))
   })
 
   it('throws error on invalid input', () => {
@@ -11,7 +14,7 @@ describe('throttle', () => {
   })
 
   it('returns first result for all invokes in period', done => {
-    const fn = jest.fn(v => v)
+    const fn = jest.fn(echo)
     const throttled = throttle(fn, { period: 10, count: 1 })
 
     throttled(1).then(v => expect(v).toBe(1))

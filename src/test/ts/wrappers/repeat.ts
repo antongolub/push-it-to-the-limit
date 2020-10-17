@@ -7,7 +7,7 @@ describe('repeat', () => {
       i: 0
     }
     const delay = 10
-    function target (step: number) {
+    const target = function (step: number) {
       // @ts-ignore
       this.i += step
     }

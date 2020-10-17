@@ -1,9 +1,12 @@
 import { ratelimit, REJECTED_ON_CANCEL } from '../../../main/ts'
 import { ILimitStack, ITarget, IWrapperOpts } from '../../../main/ts/interface'
 
+const noop = () => { /* noop */ }
+const echo = <T>(v: T): T => v
+
 describe('ratelimit', () => {
   it('wrapper returns function', () => {
-    expect(ratelimit(() => {}, {} as IWrapperOpts)).toEqual(expect.any(Function))
+    expect(ratelimit(noop, {} as IWrapperOpts)).toEqual(expect.any(Function))
   })
 
   it('throws error on invalid input', () => {
@@ -67,7 +70,7 @@ describe('ratelimit', () => {
   })
 
   it('`cancel` removes ltd calls stack and timers', done => {
-    const fn = jest.fn(v => v)
+    const fn = jest.fn(echo)
     const ltd = ratelimit(fn, {
       limit: { period: 10, count: 1, ttl: 0, rest: 0 },
       rejectOnCancel: false

@@ -1,9 +1,12 @@
 import { REJECTED_ON_CANCEL, stabilize } from '../../../main/ts'
 import { ITarget, IWrapperOpts } from '../../../main/ts/interface'
 
+const noop = () => { /* noop */ }
+const echo = <T>(v: T): T => v
+
 describe('stabilize', () => {
   it('wrapper returns function', () => {
-    expect(stabilize(() => {}, {} as IWrapperOpts)).toEqual(expect.any(Function))
+    expect(stabilize(noop, {} as IWrapperOpts)).toEqual(expect.any(Function))
   })
 
   it('throws error on invalid input', () => {
@@ -11,7 +14,7 @@ describe('stabilize', () => {
   })
 
   it('groups multiple sequential calls in a single one per period', done => {
-    const fn = jest.fn(v => v)
+    const fn = jest.fn(echo)
     const stable = stabilize(fn, 100)
 
     for (let y = 0; y < 10; y++) {
@@ -38,7 +41,7 @@ describe('stabilize', () => {
   })
 
   it('`flush` invokes target function immediately', done => {
-    const fn = jest.fn(v => v)
+    const fn = jest.fn(echo)
     const stable = stabilize(fn, { delay: 10000 })
 
     stable('foo').then(v => expect(v).toBe('bar'))
@@ -57,7 +60,7 @@ describe('stabilize', () => {
   })
 
   it('`cancel` removes delayed call and timers', done => {
-    const fn = jest.fn(v => v)
+    const fn = jest.fn(echo)
     const stable = stabilize(fn, {
       delay: 10,
       rejectOnCancel: false

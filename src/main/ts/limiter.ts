@@ -35,8 +35,7 @@ export class Limiter implements ILimiter {
     let ttl = 0
     const limits = this.limits
 
-    for (let i = 0; i < limits.length; i++) {
-      const limit = limits[i]
+    for (const limit of limits) {
       if (limit.rest < 1 && limit.ttl > ttl) {
         ttl = limit.ttl
       }
@@ -58,7 +57,7 @@ export class Limiter implements ILimiter {
     return limit
   }
 
-  static refreshTtl (limit: ILimit) {
+  static refreshTtl (limit: ILimit): void {
     limit.ttl = Date.now() + limit.period
   }
 }

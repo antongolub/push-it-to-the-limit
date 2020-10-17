@@ -1,17 +1,17 @@
+import { adapter, complete, dropTimeout, failOnCancel, normalizeDelay } from '../common'
 import {
   IAny,
-  ITarget,
-  IControlled,
-  IResolve,
-  IReject,
-  IExposedWrapper,
-  IWrapperOpts,
   ICallStack,
-  TimeoutID,
-  Nullable,
-  Optional
+  IControlled,
+  IExposedWrapper,
+  IReject,
+  IResolve,
+  ITarget,
+  IWrapperOpts,
+  NotAlwaysDefined,
+  Optional,
+  TimeoutID
 } from '../interface'
-import { complete, failOnCancel, adapter, dropTimeout, normalizeDelay } from '../common'
 import { Limiter } from '../limiter'
 
 export const DEFAULT_OPTS = {
@@ -31,27 +31,27 @@ export const debounce: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpt
 
   let timeout: Optional<TimeoutID>
   let maxTimeout: Optional<TimeoutID>
-  let promise: Nullable<Promise<IAny>>
-  let queueLimit: Nullable<number> = null
+  let promise: NotAlwaysDefined<Promise<IAny>>
+  let queueLimit: NotAlwaysDefined<number>
 
   const res = (..._args: IAny[]): Promise<IAny> => {
     dropTimeout(timeout)
     args.push(_args)
 
-    if (queueLimit === null) {
+    if (queueLimit === undefined) {
       limiter.reset()
       queueLimit = limiter.getNextQueueSize()
     }
     // NOTE `leading` option has priority
     const shouldRun = leading && queueLimit > 0
 
-    if (queueLimit > 0 || promise === null) {
+    if (queueLimit > 0 || promise === undefined) {
       limiter.decrease()
       queueLimit -= 1
       promise = new Promise((resolve: IResolve, reject: IReject) => {
         calls.push({
           complete: () => complete(resolve, fn, order === 'fifo' ? args.shift() : args.pop(), context),
-          fail: failOnCancel.bind(null, reject)
+          fail: failOnCancel.bind(undefined, reject)
         })
       })
     }
@@ -61,7 +61,7 @@ export const debounce: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpt
 
     if (shouldRun) {
       const _p = promise
-      promise = null
+      promise = undefined
       completeCalls()
       return _p
     }
@@ -75,8 +75,8 @@ export const debounce: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpt
 
   res.flush = () => {
     limiter.reset()
-    promise = null
-    queueLimit = null
+    promise = undefined
+    queueLimit = undefined
     completeCalls()
 
     res.cancel()
@@ -86,10 +86,10 @@ export const debounce: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpt
     dropTimeout(timeout)
     dropTimeout(maxTimeout)
 
-    queueLimit = null
-    promise = null
-    timeout = null
-    maxTimeout = null
+    queueLimit = undefined
+    promise = undefined
+    timeout = undefined
+    maxTimeout = undefined
     args.length = 0
 
     if (rejectOnCancel) {
