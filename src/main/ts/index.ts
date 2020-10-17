@@ -1,10 +1,10 @@
-import { delay } from './wrappers/delay'
-import { throttle } from './wrappers/throttle'
+import { DEFAULT_DELAY,REJECTED, REJECTED_ON_CANCEL } from './common'
 import { debounce } from './wrappers/debounce'
+import { delay } from './wrappers/delay'
 import { ratelimit } from './wrappers/ratelimit'
-import { stabilize } from './wrappers/stabilize'
 import { repeat } from './wrappers/repeat'
-import { REJECTED_ON_CANCEL, REJECTED, DEFAULT_DELAY } from './common'
+import { stabilize } from './wrappers/stabilize'
+import { throttle } from './wrappers/throttle'
 
 export {
   delay,

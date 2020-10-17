@@ -1,5 +1,5 @@
-import type { IControlled, IExposedWrapper, ITarget, IWrapperOpts } from '../interface'
 import { adapter } from '../common'
+import type { IControlled, IExposedWrapper, ITarget, IWrapperOpts } from '../interface'
 import { debounce } from './debounce'
 
 export const stabilize: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {

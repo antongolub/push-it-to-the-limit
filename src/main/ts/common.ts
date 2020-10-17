@@ -1,23 +1,22 @@
 import type {
   IAny,
-  IDelay,
-  ILodashOpts,
-  IResolve,
-  IReject,
-  ITarget,
-  IWrapper,
+  IBasicDelay,
+  IComplexDelay,
   IControlled,
-  IWrapperOpts,
+  IDelay,
   IExposedWrapper,
   ILimit,
   ILimitStack,
-  IBasicDelay,
-  IComplexDelay,
+  ILodashOpts,
   IMixedDelays,
   INormalizedDelays,
-  TimeoutID,
-  Optional
-} from './interface'
+  IReject,
+  IResolve,
+  ITarget,
+  IWrapper,
+  IWrapperOpts,
+  Optional,
+  TimeoutID} from './interface'
 
 export function complete (resolve: IResolve, fn: ITarget, args: IAny[], context?: IAny): void {
   resolve(fn.call(context, ...args))
@@ -61,7 +60,7 @@ export function adapter (wrapper: IWrapper): IExposedWrapper {
   }
 }
 
-export function assert (condition: boolean, text: string = 'Assertion error'): void {
+export function assert (condition: boolean, text = 'Assertion error'): void {
   if (!condition) {
     throw new Error(text)
   }

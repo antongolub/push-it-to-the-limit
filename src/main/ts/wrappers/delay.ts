@@ -1,10 +1,10 @@
+import { adapter } from '../common'
 import type {
-  ITarget,
   IControlled,
   IExposedWrapper,
+  ITarget,
   IWrapperOpts
 } from '../interface'
-import { adapter } from '../common'
 import { debounce } from './debounce'
 
 export const delay: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {

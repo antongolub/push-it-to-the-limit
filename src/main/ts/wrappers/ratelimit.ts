@@ -1,21 +1,21 @@
+import { adapter, complete, dropTimeout, failOnCancel, normalizeDelay } from '../common'
 import type {
   IAny,
-  ITarget,
   ICallStack,
   IControlled,
   IExposedWrapper,
-  IWrapperOpts,
   ILimiter,
   INormalizedDelays,
+  ITarget,
+  IWrapperOpts,
   TimeoutID
 } from '../interface'
-import { complete, failOnCancel, dropTimeout, adapter, normalizeDelay } from '../common'
 import { Limiter } from '../limiter'
 
 export type IProcessor = (calls: ICallStack, limiter: ILimiter) => void
 
 export const ratelimit: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
-  let timeout: TimeoutID | null = null
+  let timeout: TimeoutID | undefined
   const { delay, limit, context, rejectOnCancel, limiter } = opts
   const delays: INormalizedDelays = normalizeDelay(limit || delay)
   const _limiter = limiter || new Limiter(delays)
@@ -30,8 +30,8 @@ export const ratelimit: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOp
 
   const res = (...args: IAny[]): Promise<IAny> => new Promise((resolve, reject) => {
     calls.push({
-      complete: complete.bind(null, resolve, fn, args, context),
-      fail: failOnCancel.bind(null, reject)
+      complete: complete.bind(undefined, resolve, fn, args, context),
+      fail: failOnCancel.bind(undefined, reject)
     })
     processCalls(calls, _limiter)
   })
@@ -64,10 +64,8 @@ export function refreshTimeouts (calls: ICallStack, limiter: ILimiter, handler: 
   return setTimeout(() => handler(calls, limiter), limiter.getNextDelay())
 }
 
-export function processTimeouts (calls: ICallStack, limiter: ILimiter, handler: IProcessor): TimeoutID | null {
-  if (calls.length > 0) {
-    return refreshTimeouts(calls, limiter, handler)
-  }
-
-  return null
+export function processTimeouts (calls: ICallStack, limiter: ILimiter, handler: IProcessor): TimeoutID | undefined {
+  return calls.length > 0
+    ? refreshTimeouts(calls, limiter, handler)
+    : undefined
 }

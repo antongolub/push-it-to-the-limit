@@ -25,7 +25,7 @@ export type ICallStack = Array<ICall>
 export type IResolve = (value: IAny) => void
 export type IReject = (value: IAny) => void
 
-export type IControlled<T = {}> = T & {
+export type IControlled<T = Record<any, any>> = T & {
   (...args: IAny[]): Promise<IAny>,
   flush(): void,
   cancel(): void
