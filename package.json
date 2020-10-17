@@ -34,6 +34,7 @@
     "throttle",
     "debounce",
     "rate limit",
+    "ratelimit",
     "delay",
     "frequency limiter",
     "slow down",
@@ -66,7 +67,6 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "semantic-release": "^17.2.1",
-    "standard": "^14.3.4",
     "terser": "^5.3.5",
     "ts-jest": "^26.4.1",
     "typedoc": "^0.19.2",
@@ -96,35 +96,5 @@
       "@semantic-release/npm",
       "@semantic-release/github"
     ]
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "collectCoverage": true,
-    "coveragePathIgnorePatterns": [
-      "<rootDir>/src/main/js/interface.js"
-    ],
-    "collectCoverageFrom": [
-      "<rootDir>/src/main/**/*.js"
-    ],
-    "testMatch": [
-      "<rootDir>/src/test/**/*.js"
-    ]
-  },
-  "standard": {
-    "parser": "babel-eslint",
-    "globals": [
-      "jest",
-      "it",
-      "expect",
-      "describe",
-      "before",
-      "beforeAll",
-      "beforeEach",
-      "afterAll",
-      "after",
-      "afterEach",
-      "TimeoutID"
-    ],
-    "ignore": []
   }
 }
