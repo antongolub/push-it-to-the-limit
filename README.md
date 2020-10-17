@@ -120,11 +120,19 @@ Have a look at this [ratelimit](https://github.com/wankdanker/node-function-rate
     412 ms - 9
  */
 ```
-`ratelimit` supports interrelated delays. So you're are able to set complex restrictions like:
+`ratelimit` supports interrelated delays. So you're able to set complex restrictions like:
 ```javascript
     [{period: 1000, count: 10}, {period: 60000, count: 200}]
 ```
-It's 10 requests per second and 200 requests per minute.
+It's 10 requests per second and 200 requests per minute. You can also share the same limit across several functions.
+```typescript
+const l1 = new Limiter([{ period: 10, count: 4 }])
+const l2 = new Limiter([{ period: 50, count: 5 }, l1])
+
+const throttled1 = throttle(fn1, {limiter: l2})
+const throttled2 = throttle(fn2, {limiter: l1})
+const throttled3 = throttle(fn3, {limiter: l1})
+```
 
 #### `stabilize`
 — Why not just use `debounce`?  
