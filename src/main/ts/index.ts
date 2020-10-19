@@ -1,4 +1,5 @@
 import { DEFAULT_DELAY,REJECTED, REJECTED_ON_CANCEL } from './common'
+import { Limiter } from './limiter'
 import { debounce } from './wrappers/debounce'
 import { delay } from './wrappers/delay'
 import { ratelimit } from './wrappers/ratelimit'
@@ -15,7 +16,8 @@ export {
   repeat,
   REJECTED,
   REJECTED_ON_CANCEL,
-  DEFAULT_DELAY
+  DEFAULT_DELAY,
+  Limiter
 }
 
 export * from './interface'
