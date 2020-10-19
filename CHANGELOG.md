@@ -1,3 +1,10 @@
+# [1.17.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.16.0...v1.17.0) (2020-10-19)
+
+
+### Features
+
+* added Limiter to main export ([#45](https://github.com/antongolub/push-it-to-the-limit/issues/45)) ([f83410d](https://github.com/antongolub/push-it-to-the-limit/commit/f83410d596d68f65def6697816665195745b6590))
+
 # [1.16.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.15.1...v1.16.0) (2020-10-19)
 
 

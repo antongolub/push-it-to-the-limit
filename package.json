@@ -1,6 +1,6 @@
 {
   "name": "push-it-to-the-limit",
-  "version": "1.16.0",
+  "version": "1.17.0",
   "description": "Delay function wrappers for common purposes. Throttle, debounce and ratelimit with promises",
   "main": "target/es5/bundle.js",
   "types": "target/es5/index.d.ts",
