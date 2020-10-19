@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.15.1...v1.16.0) (2020-10-19)
+
+
+### Features
+
+* added interfaces and utils reexport ([5f22dd6](https://github.com/antongolub/push-it-to-the-limit/commit/5f22dd6303c7baf13463f3c71686f07ed5c824f7)), closes [#42](https://github.com/antongolub/push-it-to-the-limit/issues/42)
+
 ## [1.15.1](https://github.com/antongolub/push-it-to-the-limit/compare/v1.15.0...v1.15.1) (2020-10-17)
 
 
