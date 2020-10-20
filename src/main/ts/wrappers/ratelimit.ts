@@ -5,7 +5,6 @@ import type {
   IControlled,
   IExposedWrapper,
   ILimiter,
-  INormalizedDelays,
   ITarget,
   IWrapperOpts,
   TimeoutID
@@ -17,8 +16,7 @@ export type IProcessor = (calls: ICallStack, limiter: ILimiter) => void
 export const ratelimit: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
   let timeout: TimeoutID | undefined
   const { delay, limit, context, rejectOnCancel, limiter } = opts
-  const delays: INormalizedDelays = normalizeDelay(limit || delay)
-  const _limiter = limiter || new Limiter(delays)
+  const _limiter = limiter || new Limiter(normalizeDelay(limit || delay))
   const calls: ICallStack = []
   const processCalls: IProcessor = (calls: ICallStack, limiter: ILimiter): void => {
     dropTimeout(timeout)
