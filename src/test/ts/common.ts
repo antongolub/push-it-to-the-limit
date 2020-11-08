@@ -119,7 +119,7 @@ describe('adapter', () => {
     ]
   ]
 
-  cases.map(([description, args, expected]) => {
+  cases.forEach(([description, args, expected]) => {
     it(description, () => {
       adapted(...args as Parameters<typeof adapted>)
       expect(wrapper).toHaveBeenCalledWith(...expected)
