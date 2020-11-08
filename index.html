@@ -1,0 +1,291 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>push-it-to-the-limit</title>
+	<meta name="description" content="Documentation for push-it-to-the-limit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">push-it-to-the-limit</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1>push-it-to-the-limit</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#push-it-to-the-limit" id="push-it-to-the-limit" style="color: inherit; text-decoration: none;">
+					<h1>Push it to the limit</h1>
+				</a>
+				<p><a href="https://travis-ci.com/antongolub/push-it-to-the-limit"><img src="https://travis-ci.com/antongolub/push-it-to-the-limit.svg?branch=master" alt="Build Status"></a>
+					<a href="https://www.npmjs.com/package/push-it-to-the-limit"><img src="https://img.shields.io/npm/v/push-it-to-the-limit/latest.svg" alt="npm (tag)"></a>
+					<a href="https://david-dm.org/antongolub/push-it-to-the-limit"><img src="https://img.shields.io/david/antongolub/push-it-to-the-limit.svg?maxAge=3600" alt="dependencyStatus"></a>
+					<a href="https://david-dm.org/antongolub/push-it-to-the-limit"><img src="https://img.shields.io/david/dev/antongolub/push-it-to-the-limit.svg?maxAge=3600" alt="devDependencyStatus"></a>
+					<a href="https://codeclimate.com/github/antongolub/push-it-to-the-limit/maintainability"><img src="https://api.codeclimate.com/v1/badges/d751b0eb18e737f8694b/maintainability" alt="Maintainability"></a>
+					<a href="https://codeclimate.com/github/antongolub/push-it-to-the-limit/test_coverage"><img src="https://api.codeclimate.com/v1/badges/d751b0eb18e737f8694b/test_coverage" alt="Test Coverage"></a>
+				<a href="https://github.com/qiwi/lint-config-qiwi"><img src="https://img.shields.io/badge/code%20style-eslint--config--qiwi-brightgreen.svg" alt="CodeStyle"></a></p>
+				<p>Delay wrappers for common purposes. <s>Fast and simple</s> with promises.</p>
+				<a href="#main-features" id="main-features" style="color: inherit; text-decoration: none;">
+					<h4>Main features</h4>
+				</a>
+				<ul>
+					<li><code>Promise</code> as a result</li>
+					<li><a href="https://lodash.com">Lodash</a>-compatible API</li>
+					<li>Interrelated delays support</li>
+					<li>Exposed <code>Flow</code> libdefs</li>
+				</ul>
+				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+					<h2>Install</h2>
+				</a>
+				<pre><code class="language-bash">    npm i push-it-to-the-limit
+    yarn add push-it-to-the-limit</code></pre>
+				<p>Dist contains cjs-formatted <code>bundle.es5.js</code> and its parts as es5-modules, so you may use them directly.</p>
+				<a href="#api" id="api" style="color: inherit; text-decoration: none;">
+					<h2>API</h2>
+				</a>
+				<p><a href="./src/interface.js">The interface</a> is dumb: each wrapper gets at least one argument — <code>target</code> function. The second param is <code>opt</code>, which may be a numeric <code>delay</code> or a <code>IWrapperOpts</code> object. Also the scheme with three arguments is supported as in lodash. Wrapper returns <code>IControlled</code> function: it&#39;s a functor with a pair exposed util methods: <code>cancel</code> and <code>flush</code>.  </p>
+				<ul>
+					<li><code>flush()</code> immediately invokes the <code>target</code> fn.</li>
+					<li><code>cancel()</code> clears any bounded timeout.</li>
+				</ul>
+				<a href="#idelay" id="idelay" style="color: inherit; text-decoration: none;">
+					<h3><code>IDelay</code></h3>
+				</a>
+				<p><em>Basic</em> <code>delay</code> is a rate limit — 1 request per <code>n</code> ms. Sometimes you may face with more <em>complex</em> restriction like &quot;10 req per 100ms&quot; and, you know, this is not the same as &quot;1 req per 10ms&quot;. Moreover, &quot;10 requests per second and 200 requests per minute&quot; also occurs. The last case is <em>interrelated delay</em>.</p>
+				<pre><code class="language-javascript"><span class="hljs-comment">// basic numeric delay</span>
+  <span class="hljs-keyword">const</span> d1 = <span class="hljs-number">100</span>
+
+<span class="hljs-comment">// complex delay</span>
+  <span class="hljs-keyword">const</span> d2 = {<span class="hljs-attr">period</span>: <span class="hljs-number">1000</span>, <span class="hljs-attr">count</span>: <span class="hljs-number">10</span>}
+
+<span class="hljs-comment">// interrelated delay</span>
+  <span class="hljs-keyword">const</span> d3 = [{<span class="hljs-attr">period</span>: <span class="hljs-number">1000</span>, <span class="hljs-attr">count</span>: <span class="hljs-number">10</span>}, {<span class="hljs-attr">period</span>: <span class="hljs-number">60000</span>, <span class="hljs-attr">count</span>: <span class="hljs-number">200</span>}]
+
+<span class="hljs-comment">// mixed case</span>
+  <span class="hljs-keyword">const</span> d4 = [<span class="hljs-number">1000</span>, {<span class="hljs-attr">period</span>: <span class="hljs-number">60000</span>, <span class="hljs-attr">count</span>: <span class="hljs-number">20</span>}]</code></pre>
+				<a href="#usage-examples" id="usage-examples" style="color: inherit; text-decoration: none;">
+					<h2>Usage examples</h2>
+				</a>
+				<a href="#delay" id="delay" style="color: inherit; text-decoration: none;">
+					<h4><code>delay</code></h4>
+				</a>
+				<p>Each function call is delayed for a specified time.</p>
+				<pre><code class="language-javascript">    <span class="hljs-keyword">import</span> {delay} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;push-it-to-the-limit&#x27;</span>
+
+    <span class="hljs-keyword">const</span> delayedLog = delay(<span class="hljs-built_in">console</span>.log, <span class="hljs-number">10000</span>)
+
+    delayedLog(<span class="hljs-string">&#x27;foo&#x27;</span>)
+    delayedLog(<span class="hljs-string">&#x27;bar&#x27;</span>)
+
+    <span class="hljs-comment">// ~10 second later in stdout</span>
+    <span class="hljs-comment">// foo</span>
+    <span class="hljs-comment">// bar</span></code></pre>
+				<p>Wrapped function always returns a <code>Promise</code>, so you are&#39;re able to use <code>await</code> or <code>then()</code></p>
+				<pre><code class="language-javascript">    <span class="hljs-keyword">const</span> delayed = delay(<span class="hljs-function">() =&gt;</span> <span class="hljs-string">&#x27;bar&#x27;</span>, <span class="hljs-number">100</span>)
+    <span class="hljs-keyword">const</span> foo = <span class="hljs-keyword">await</span> delayed() <span class="hljs-comment">// &#x27;bar&#x27;</span></code></pre>
+				<a href="#throttle" id="throttle" style="color: inherit; text-decoration: none;">
+					<h4><code>throttle</code></h4>
+				</a>
+				<p>Returns the function that invokes origin fn at most once per a period.</p>
+				<pre><code class="language-javascript">    <span class="hljs-keyword">import</span> {throttle} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;push-it-to-the-limit&#x27;</span>
+    <span class="hljs-keyword">const</span> throttled = throttle(<span class="hljs-function"><span class="hljs-params">v</span> =&gt;</span> v, <span class="hljs-number">100</span>)
+
+    throttled(<span class="hljs-string">&#x27;foo&#x27;</span>)  <span class="hljs-comment">// &#x27;foo&#x27;</span>
+    throttled(<span class="hljs-string">&#x27;bar&#x27;</span>)  <span class="hljs-comment">// &#x27;foo&#x27;</span>
+
+    <span class="hljs-comment">// 100 ms later</span>
+    throttled(<span class="hljs-string">&#x27;baz&#x27;</span>)  <span class="hljs-comment">// &#x27;baz&#x27;</span></code></pre>
+				<a href="#debounce" id="debounce" style="color: inherit; text-decoration: none;">
+					<h4><code>debounce</code></h4>
+				</a>
+				<p><code>debounce</code> groups multiple sequential calls in a single one with the last passed args.</p>
+				<pre><code class="language-javascript">    <span class="hljs-keyword">import</span> {debounce} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;push-it-to-the-limit&#x27;</span>
+    <span class="hljs-keyword">const</span> debounced = debounce(<span class="hljs-function"><span class="hljs-params">v</span> =&gt;</span> v, <span class="hljs-number">1</span>)
+    <span class="hljs-keyword">const</span> [foo, bar] = <span class="hljs-keyword">await</span> <span class="hljs-built_in">Promise</span>.all([debounced(<span class="hljs-string">&#x27;baz&#x27;</span>), debounced(<span class="hljs-string">&#x27;qux&#x27;</span>)])
+
+    foo === <span class="hljs-string">&#x27;qux&#x27;</span> <span class="hljs-comment">// true</span>
+    foo === bar   <span class="hljs-comment">// true</span></code></pre>
+				<a href="#ratelimit" id="ratelimit" style="color: inherit; text-decoration: none;">
+					<h4><code>ratelimit</code></h4>
+				</a>
+				<p><code>ratelimit</code> confines the execution frequency of target function. Overlimited invocations are being <code>delayed</code> until the limit reset.
+				Have a look at this <a href="https://github.com/wankdanker/node-function-rate-limit/blob/master/index.js">ratelimit</a> implementation. That&#39;s good enough except the only thing: generating timeout for each invocation looks redundant.</p>
+				<pre><code class="language-javascript">    <span class="hljs-keyword">import</span> {ratelimit} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;push-it-to-the-limit&#x27;</span>
+
+    <span class="hljs-keyword">const</span> period = <span class="hljs-number">100</span>
+    <span class="hljs-keyword">const</span> count = <span class="hljs-number">2</span>
+    <span class="hljs-keyword">const</span> start = <span class="hljs-built_in">Date</span>.now()
+    <span class="hljs-keyword">const</span> fn = ratelimit(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> {
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;%s ms - %s&#x27;</span>, <span class="hljs-built_in">Date</span>.now() - start, x)
+    }, {period, count})
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> y = <span class="hljs-number">0</span>; y &lt; <span class="hljs-number">10</span>; y++) {
+      fn(y)
+    }
+
+<span class="hljs-comment">/** stdout
+    1 ms - 0
+    14 ms - 1
+    103 ms - 2
+    105 ms - 3
+    204 ms - 4
+    206 ms - 5
+    305 ms - 6
+    310 ms - 7
+    411 ms - 8
+    412 ms - 9
+ */</span></code></pre>
+				<p><code>ratelimit</code> supports interrelated delays. So you&#39;re able to set complex restrictions like:</p>
+				<pre><code class="language-javascript">    [{<span class="hljs-attr">period</span>: <span class="hljs-number">1000</span>, <span class="hljs-attr">count</span>: <span class="hljs-number">10</span>}, {<span class="hljs-attr">period</span>: <span class="hljs-number">60000</span>, <span class="hljs-attr">count</span>: <span class="hljs-number">200</span>}]</code></pre>
+				<p>It&#39;s 10 requests per second and 200 requests per minute. You can also share the same limit across several functions.</p>
+				<pre><code class="language-typescript"><span class="hljs-keyword">const</span> l1 = <span class="hljs-keyword">new</span> Limiter([{ <span class="hljs-attr">period</span>: <span class="hljs-number">10</span>, <span class="hljs-attr">count</span>: <span class="hljs-number">4</span> }])
+<span class="hljs-keyword">const</span> l2 = <span class="hljs-keyword">new</span> Limiter([{ <span class="hljs-attr">period</span>: <span class="hljs-number">50</span>, <span class="hljs-attr">count</span>: <span class="hljs-number">5</span> }, l1])
+
+<span class="hljs-keyword">const</span> throttled1 = throttle(fn1, {<span class="hljs-attr">limiter</span>: l2})
+<span class="hljs-keyword">const</span> throttled2 = throttle(fn2, {<span class="hljs-attr">limiter</span>: l1})
+<span class="hljs-keyword">const</span> throttled3 = throttle(fn3, {<span class="hljs-attr">limiter</span>: l1})</code></pre>
+				<a href="#stabilize" id="stabilize" style="color: inherit; text-decoration: none;">
+					<h4><code>stabilize</code></h4>
+				</a>
+				<p>— Why not just use <code>debounce</code>?<br>— Debounced fn awaits some time before it invokes the origin function, so if ..., target fn would never been called.<br>— But here&#39;s <code>ratelimit</code>, isn&#39;t it?<br>— Ratelimit &quot;expands&quot; the calls timeline to match frequency limit.<br>— ...<br>— This wrapper swaps some calls like <code>throttle</code>, but guarantees that target fn would be called at least every <code>n</code> ms.<br>— Still looks similar to <a href="https://lodash.com/docs/4.17.10#debounce">Lodash debounce</a> with <code>maxDelay</code> opt.<br>— Yes. But this one returns a <code>Promise</code>.<br>— Why just not...<br>— Ok. It&#39;s a shortcut for <code>debounce</code> with <code>maxDelay</code> opt, that equals <code>delay</code>.<br>— And how about this: <code>throttle(fn, {delay: 100, maxWait: 100, leading: false, trailing: true})</code>?<br>— <code>throttle</code> is a special case of <code>debounce</code><br>— ...<br>— <strong>Actually everything is <code>debounce</code></strong>.</p>
+				<pre><code class="language-javascript">    <span class="hljs-keyword">const</span> fn = <span class="hljs-function"><span class="hljs-params">v</span> =&gt;</span> v
+    <span class="hljs-keyword">const</span> stable = stabilize(fn, <span class="hljs-number">100</span>)
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> y = <span class="hljs-number">0</span>; y &lt; <span class="hljs-number">10</span>; y++) {
+      (<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-keyword">const</span> start = <span class="hljs-built_in">Date</span>.now()
+
+        stable(x)
+          .then(<span class="hljs-function"><span class="hljs-params">v</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;x=&#x27;</span>, x, <span class="hljs-string">&#x27;value=&#x27;</span>, v, <span class="hljs-string">&#x27;delay=&#x27;</span>, (<span class="hljs-built_in">Date</span>.now() - start)))
+        }, x * <span class="hljs-number">20</span> )
+      )(y)
+    }
+
+ <span class="hljs-comment">/** stdout
+    x= 0 value= 5 delay= 103
+    x= 1 value= 5 delay= 94
+    x= 2 value= 5 delay= 72
+    x= 3 value= 5 delay= 58
+    x= 4 value= 5 delay= 35
+    x= 5 value= 5 delay= 19
+    x= 6 value= 9 delay= 103
+    x= 7 value= 9 delay= 85
+    x= 8 value= 9 delay= 66
+    x= 9 value= 9 delay= 48
+  */</span></code></pre>
+				<a href="#repeat" id="repeat" style="color: inherit; text-decoration: none;">
+					<h4><code>repeat</code></h4>
+				</a>
+				<p><a href="https://github.com/antongolub/repeater">Repeater</a> makes a function to be autocallable. It stores the last call params and uses them for further invocations.</p>
+				<pre><code class="language-javascript">    <span class="hljs-keyword">import</span> {repeat} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@antongolub/push-it-to-the-limit&#x27;</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span> (<span class="hljs-params">step</span>) </span>{ <span class="hljs-built_in">this</span>.i += step }
+    <span class="hljs-keyword">const</span> context = { <span class="hljs-attr">i</span>: <span class="hljs-number">0</span> }
+    <span class="hljs-keyword">const</span> delay = <span class="hljs-number">1000</span>
+    <span class="hljs-keyword">const</span> rep = repeater(fn, delay, context)
+
+    rep(<span class="hljs-number">2</span>)
+
+    <span class="hljs-comment">// Imagine, 5 seconds later new &#x27;manual&#x27; call occurs</span>
+    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> rep(<span class="hljs-number">1</span>), <span class="hljs-number">5000</span>)
+
+    <span class="hljs-comment">// ~10 seconds after start: </span>
+    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(context.i), <span class="hljs-number">10000</span>) <span class="hljs-comment">// 15</span></code></pre>
+				<a href="#notes-and-refs" id="notes-and-refs" style="color: inherit; text-decoration: none;">
+					<h4>Notes and refs</h4>
+				</a>
+				<ul>
+					<li><a href="https://css-tricks.com/debouncing-throttling-explained-examples/">The differences between <code>throttle</code> and <code>debounce</code></a>.</li>
+					<li><a href="https://github.com/wankdanker/node-function-rate-limit">wankdanker/node-function-rate-limit</a></li>
+					<li><a href="https://github.com/SGrondin/bottleneck">SGrondin/bottleneck</a></li>
+					<li><a href="https://github.com/jmperez/promise-throttle">jmperez/promise-throttle</a></li>
+					<li><a href="https://github.com/bjoerge/debounce-promise">bjoerge/debounce-promise</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-not-exported">
+						<a href="modules/reflection-231.html">&lt;em&gt;<wbr>Module&lt;/em&gt;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/wrappers.html">wrappers</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer>
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

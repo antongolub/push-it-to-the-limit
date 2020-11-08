@@ -1,0 +1,396 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>wrappers | push-it-to-the-limit</title>
+	<meta name="description" content="Documentation for push-it-to-the-limit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">push-it-to-the-limit</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="wrappers.html">wrappers</a>
+				</li>
+			</ul>
+			<h1>Module wrappers</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="wrappers.html#iprocessor" class="tsd-kind-icon">IProcessor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Variables</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="wrappers.html#debounce" class="tsd-kind-icon">debounce</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="wrappers.html#delay" class="tsd-kind-icon">delay</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="wrappers.html#ratelimit" class="tsd-kind-icon">ratelimit</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="wrappers.html#repeat" class="tsd-kind-icon">repeat</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="wrappers.html#stabilize" class="tsd-kind-icon">stabilize</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="wrappers.html#throttle" class="tsd-kind-icon">throttle</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="wrappers.html#invoketothelimit" class="tsd-kind-icon">invoke<wbr>ToThe<wbr>Limit</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="wrappers.html#processtimeouts" class="tsd-kind-icon">process<wbr>Timeouts</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="wrappers.html#refreshtimeouts" class="tsd-kind-icon">refresh<wbr>Timeouts</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Object literals</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="wrappers.html#default_opts" class="tsd-kind-icon">DEFAULT_<wbr>OPTS</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="iprocessor" class="tsd-anchor"></a>
+					<h3>IProcessor</h3>
+					<div class="tsd-signature tsd-kind-icon">IProcessor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>calls<span class="tsd-signature-symbol">: </span><a href="reflection-231.reflection-1.html#icallstack-1" class="tsd-signature-type">ICallStack</a>, limiter<span class="tsd-signature-symbol">: </span><a href="../interfaces/reflection-231.reflection-1.ilimiter-1.html" class="tsd-signature-type">ILimiter</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/antongolub/push-it-to-the-limit/blob/a1de6c7/src/main/ts/wrappers/ratelimit.ts#L14">wrappers/ratelimit.ts:14</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>calls<span class="tsd-signature-symbol">: </span><a href="reflection-231.reflection-1.html#icallstack-1" class="tsd-signature-type">ICallStack</a>, limiter<span class="tsd-signature-symbol">: </span><a href="../interfaces/reflection-231.reflection-1.ilimiter-1.html" class="tsd-signature-type">ILimiter</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>calls: <a href="reflection-231.reflection-1.html#icallstack-1" class="tsd-signature-type">ICallStack</a></h5>
+											</li>
+											<li>
+												<h5>limiter: <a href="../interfaces/reflection-231.reflection-1.ilimiter-1.html" class="tsd-signature-type">ILimiter</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Variables</h2>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="debounce" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> debounce</h3>
+					<div class="tsd-signature tsd-kind-icon">debounce<span class="tsd-signature-symbol">:</span> <a href="reflection-231.reflection-1.html#iexposedwrapper-1" class="tsd-signature-type">IExposedWrapper</a><span class="tsd-signature-symbol"> = adapter((fn: ITarget, opts: IWrapperOpts): IControlled &#x3D;&gt; {const { delay, limit, context, rejectOnCancel, maxWait, leading, order, limiter: _limiter } &#x3D; ({ ...DEFAULT_OPTS, ...opts } as IWrapperOpts)const limiter &#x3D; _limiter || new Limiter(normalizeDelay(limit || delay))const args: any[] &#x3D; []const calls: ICallStack &#x3D; []const completeCalls &#x3D; () &#x3D;&gt; {calls.forEach(call &#x3D;&gt; call.complete())calls.length &#x3D; 0}let timeout: Optional&lt;TimeoutID&gt;let maxTimeout: Optional&lt;TimeoutID&gt;let promise: NotAlwaysDefined&lt;Promise&lt;IAny&gt;&gt;let queueLimit: NotAlwaysDefined&lt;number&gt;const res &#x3D; (..._args: IAny[]): Promise&lt;IAny&gt; &#x3D;&gt; {dropTimeout(timeout)args.push(_args)if (queueLimit &#x3D;&#x3D;&#x3D; undefined) {limiter.reset()queueLimit &#x3D; limiter.getNextQueueSize()}// NOTE &#x60;leading&#x60; option has priorityconst shouldRun &#x3D; leading &amp;&amp; queueLimit &gt; 0if (queueLimit &gt; 0 || promise &#x3D;&#x3D;&#x3D; undefined) {limiter.decrease()queueLimit -&#x3D; 1promise &#x3D; new Promise((resolve: IResolve, reject: IReject) &#x3D;&gt; {calls.push({complete: () &#x3D;&gt; complete(resolve, fn, order &#x3D;&#x3D;&#x3D; &#x27;fifo&#x27; ? args.shift() : args.pop(), context),fail: failOnCancel.bind(undefined, reject)})})}limiter.resetTtl()timeout &#x3D; setTimeout(res.flush, limiter.getNextDelay())if (shouldRun) {const _p &#x3D; promisepromise &#x3D; undefinedcompleteCalls()return _p}if (maxWait &amp;&amp; !maxTimeout) {maxTimeout &#x3D; setTimeout(res.flush, maxWait)}return promise}res.flush &#x3D; () &#x3D;&gt; {limiter.reset()promise &#x3D; undefinedqueueLimit &#x3D; undefinedcompleteCalls()res.cancel()}res.cancel &#x3D; () &#x3D;&gt; {dropTimeout(timeout)dropTimeout(maxTimeout)queueLimit &#x3D; undefinedpromise &#x3D; undefinedtimeout &#x3D; undefinedmaxTimeout &#x3D; undefinedargs.length &#x3D; 0if (rejectOnCancel) {calls.forEach(call &#x3D;&gt; call.fail())}calls.length &#x3D; 0}return res})</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/antongolub/push-it-to-the-limit/blob/a1de6c7/src/main/ts/wrappers/debounce.ts#L22">wrappers/debounce.ts:22</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="delay" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> delay</h3>
+					<div class="tsd-signature tsd-kind-icon">delay<span class="tsd-signature-symbol">:</span> <a href="reflection-231.reflection-1.html#iexposedwrapper-1" class="tsd-signature-type">IExposedWrapper</a><span class="tsd-signature-symbol"> = adapter((fn: ITarget, opts: IWrapperOpts): IControlled &#x3D;&gt; {const delay &#x3D; typeof opts.delay &#x3D;&#x3D;&#x3D; &#x27;number&#x27;? { period: opts.delay, count: Infinity }: opts.delayconst maxWait &#x3D; typeof opts.delay &#x3D;&#x3D;&#x3D; &#x27;number&#x27;? opts.delay: undefinedreturn debounce(fn, { maxWait, ...opts, delay, order: &#x27;fifo&#x27; })})</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/antongolub/push-it-to-the-limit/blob/a1de6c7/src/main/ts/wrappers/delay.ts#L10">wrappers/delay.ts:10</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="ratelimit" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> ratelimit</h3>
+					<div class="tsd-signature tsd-kind-icon">ratelimit<span class="tsd-signature-symbol">:</span> <a href="reflection-231.reflection-1.html#iexposedwrapper-1" class="tsd-signature-type">IExposedWrapper</a><span class="tsd-signature-symbol"> = adapter((fn: ITarget, opts: IWrapperOpts): IControlled &#x3D;&gt; {let timeout: TimeoutID | undefinedconst { delay, limit, context, rejectOnCancel, limiter } &#x3D; optsconst _limiter &#x3D; limiter || new Limiter(normalizeDelay(limit || delay))const calls: ICallStack &#x3D; []const processCalls: IProcessor &#x3D; (calls: ICallStack, limiter: ILimiter): void &#x3D;&gt; {dropTimeout(timeout)limiter.reset()invokeToTheLimit(calls, limiter)timeout &#x3D; processTimeouts(calls, limiter, processCalls)}const res &#x3D; (...args: IAny[]): Promise&lt;IAny&gt; &#x3D;&gt; new Promise((resolve, reject) &#x3D;&gt; {calls.push({complete: complete.bind(undefined, resolve, fn, args, context),fail: failOnCancel.bind(undefined, reject)})processCalls(calls, _limiter)})res.flush &#x3D; () &#x3D;&gt; {calls.forEach(call &#x3D;&gt; call.complete())res.cancel()}res.cancel &#x3D; () &#x3D;&gt; {if (rejectOnCancel) {calls.forEach(call &#x3D;&gt; call.fail())}calls.length &#x3D; 0dropTimeout(timeout)}return res})</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/antongolub/push-it-to-the-limit/blob/a1de6c7/src/main/ts/wrappers/ratelimit.ts#L16">wrappers/ratelimit.ts:16</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="repeat" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> repeat</h3>
+					<div class="tsd-signature tsd-kind-icon">repeat<span class="tsd-signature-symbol">:</span> <a href="reflection-231.reflection-1.html#iexposedwrapper-1" class="tsd-signature-type">IExposedWrapper</a><span class="tsd-signature-symbol"> = adapter((fn: ITarget, opts: IWrapperOpts): IControlled &#x3D;&gt; {const repeaterOpts &#x3D; {...opts,target: fn,delay: typeof opts.delay &#x3D;&#x3D;&#x3D; &#x27;number&#x27; ? opts.delay : opts.delay.period,limit: Array.isArray(opts.limit) ? opts.limit[0].period : opts.limit?.period}const repeater &#x3D; createRepeater(repeaterOpts) as anyrepeater.cancel &#x3D; () &#x3D;&gt; {dropTimeout(repeater.timeout)}repeater.flush &#x3D; () &#x3D;&gt; {fn.call(repeater.context, repeater.args)dropTimeout(repeater.timeout)}return repeater})</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/antongolub/push-it-to-the-limit/blob/a1de6c7/src/main/ts/wrappers/repeat.ts#L6">wrappers/repeat.ts:6</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="stabilize" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> stabilize</h3>
+					<div class="tsd-signature tsd-kind-icon">stabilize<span class="tsd-signature-symbol">:</span> <a href="reflection-231.reflection-1.html#iexposedwrapper-1" class="tsd-signature-type">IExposedWrapper</a><span class="tsd-signature-symbol"> = adapter((fn: ITarget, opts: IWrapperOpts): IControlled &#x3D;&gt; {const maxWait &#x3D; typeof opts.delay &#x3D;&#x3D;&#x3D; &#x27;number&#x27;? opts.delay: undefinedreturn debounce(fn, { maxWait, ...opts })})</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/antongolub/push-it-to-the-limit/blob/a1de6c7/src/main/ts/wrappers/stabilize.ts#L5">wrappers/stabilize.ts:5</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="throttle" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> throttle</h3>
+					<div class="tsd-signature tsd-kind-icon">throttle<span class="tsd-signature-symbol">:</span> <a href="reflection-231.reflection-1.html#iexposedwrapper-1" class="tsd-signature-type">IExposedWrapper</a><span class="tsd-signature-symbol"> = adapter((fn: ITarget, opts: IWrapperOpts): IControlled &#x3D;&gt; {const maxWait &#x3D; typeof opts.delay &#x3D;&#x3D;&#x3D; &#x27;number&#x27;? opts.delay: undefinedreturn debounce(fn, { leading: true, maxWait, ...opts })})</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/antongolub/push-it-to-the-limit/blob/a1de6c7/src/main/ts/wrappers/throttle.ts#L5">wrappers/throttle.ts:5</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="invoketothelimit" class="tsd-anchor"></a>
+					<h3>invoke<wbr>ToThe<wbr>Limit</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">invoke<wbr>ToThe<wbr>Limit<span class="tsd-signature-symbol">(</span>calls<span class="tsd-signature-symbol">: </span><a href="reflection-231.reflection-1.html#icallstack-1" class="tsd-signature-type">ICallStack</a>, limiter<span class="tsd-signature-symbol">: </span><a href="../interfaces/reflection-231.reflection-1.ilimiter-1.html" class="tsd-signature-type">ILimiter</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/antongolub/push-it-to-the-limit/blob/a1de6c7/src/main/ts/wrappers/ratelimit.ts#L53">wrappers/ratelimit.ts:53</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>calls: <a href="reflection-231.reflection-1.html#icallstack-1" class="tsd-signature-type">ICallStack</a></h5>
+								</li>
+								<li>
+									<h5>limiter: <a href="../interfaces/reflection-231.reflection-1.ilimiter-1.html" class="tsd-signature-type">ILimiter</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="processtimeouts" class="tsd-anchor"></a>
+					<h3>process<wbr>Timeouts</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">process<wbr>Timeouts<span class="tsd-signature-symbol">(</span>calls<span class="tsd-signature-symbol">: </span><a href="reflection-231.reflection-1.html#icallstack-1" class="tsd-signature-type">ICallStack</a>, limiter<span class="tsd-signature-symbol">: </span><a href="../interfaces/reflection-231.reflection-1.ilimiter-1.html" class="tsd-signature-type">ILimiter</a>, handler<span class="tsd-signature-symbol">: </span><a href="wrappers.html#iprocessor" class="tsd-signature-type">IProcessor</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="reflection-231.reflection-1.html#timeoutid-1" class="tsd-signature-type">TimeoutID</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/antongolub/push-it-to-the-limit/blob/a1de6c7/src/main/ts/wrappers/ratelimit.ts#L65">wrappers/ratelimit.ts:65</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>calls: <a href="reflection-231.reflection-1.html#icallstack-1" class="tsd-signature-type">ICallStack</a></h5>
+								</li>
+								<li>
+									<h5>limiter: <a href="../interfaces/reflection-231.reflection-1.ilimiter-1.html" class="tsd-signature-type">ILimiter</a></h5>
+								</li>
+								<li>
+									<h5>handler: <a href="wrappers.html#iprocessor" class="tsd-signature-type">IProcessor</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="reflection-231.reflection-1.html#timeoutid-1" class="tsd-signature-type">TimeoutID</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="refreshtimeouts" class="tsd-anchor"></a>
+					<h3>refresh<wbr>Timeouts</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">refresh<wbr>Timeouts<span class="tsd-signature-symbol">(</span>calls<span class="tsd-signature-symbol">: </span><a href="reflection-231.reflection-1.html#icallstack-1" class="tsd-signature-type">ICallStack</a>, limiter<span class="tsd-signature-symbol">: </span><a href="../interfaces/reflection-231.reflection-1.ilimiter-1.html" class="tsd-signature-type">ILimiter</a>, handler<span class="tsd-signature-symbol">: </span><a href="wrappers.html#iprocessor" class="tsd-signature-type">IProcessor</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="reflection-231.reflection-1.html#timeoutid-1" class="tsd-signature-type">TimeoutID</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/antongolub/push-it-to-the-limit/blob/a1de6c7/src/main/ts/wrappers/ratelimit.ts#L61">wrappers/ratelimit.ts:61</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>calls: <a href="reflection-231.reflection-1.html#icallstack-1" class="tsd-signature-type">ICallStack</a></h5>
+								</li>
+								<li>
+									<h5>limiter: <a href="../interfaces/reflection-231.reflection-1.ilimiter-1.html" class="tsd-signature-type">ILimiter</a></h5>
+								</li>
+								<li>
+									<h5>handler: <a href="wrappers.html#iprocessor" class="tsd-signature-type">IProcessor</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="reflection-231.reflection-1.html#timeoutid-1" class="tsd-signature-type">TimeoutID</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Object literals</h2>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="default_opts" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> DEFAULT_<wbr>OPTS</h3>
+					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>OPTS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/antongolub/push-it-to-the-limit/blob/a1de6c7/src/main/ts/wrappers/debounce.ts#L17">wrappers/debounce.ts:17</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="default_opts.leading" class="tsd-anchor"></a>
+						<h3>leading</h3>
+						<div class="tsd-signature tsd-kind-icon">leading<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/antongolub/push-it-to-the-limit/blob/a1de6c7/src/main/ts/wrappers/debounce.ts#L18">wrappers/debounce.ts:18</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="default_opts.trailing" class="tsd-anchor"></a>
+						<h3>trailing</h3>
+						<div class="tsd-signature tsd-kind-icon">trailing<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/antongolub/push-it-to-the-limit/blob/a1de6c7/src/main/ts/wrappers/debounce.ts#L19">wrappers/debounce.ts:19</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-not-exported">
+						<a href="reflection-231.html">&lt;em&gt;<wbr>Module&lt;/em&gt;</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="wrappers.html">wrappers</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="wrappers.html#iprocessor" class="tsd-kind-icon">IProcessor</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="wrappers.html#debounce" class="tsd-kind-icon">debounce</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="wrappers.html#delay" class="tsd-kind-icon">delay</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="wrappers.html#ratelimit" class="tsd-kind-icon">ratelimit</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="wrappers.html#repeat" class="tsd-kind-icon">repeat</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="wrappers.html#stabilize" class="tsd-kind-icon">stabilize</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="wrappers.html#throttle" class="tsd-kind-icon">throttle</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="wrappers.html#invoketothelimit" class="tsd-kind-icon">invoke<wbr>ToThe<wbr>Limit</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="wrappers.html#processtimeouts" class="tsd-kind-icon">process<wbr>Timeouts</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="wrappers.html#refreshtimeouts" class="tsd-kind-icon">refresh<wbr>Timeouts</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+						<a href="wrappers.html#default_opts" class="tsd-kind-icon">DEFAULT_<wbr>OPTS</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer>
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
