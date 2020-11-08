@@ -1,12 +1,13 @@
 import { repeat } from '../../../main/ts'
 
+// NOTE rest of tests are placed in other repo: https://github.com/antongolub/repeater/tree/master/src/test
 describe('repeat', () => {
   it('looks to be working', done => {
-    // rest of tests are placed in other repo: https://github.com/antongolub/repeater/tree/master/test
+    const delay = 10
     const context = {
       i: 0
     }
-    const delay = 10
+    // eslint-disable-next-line
     const target = function (step: number) {
       // @ts-ignore
       this.i += step
