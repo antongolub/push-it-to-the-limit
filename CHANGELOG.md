@@ -1,3 +1,10 @@
+## [1.17.2](https://github.com/antongolub/push-it-to-the-limit/compare/v1.17.1...v1.17.2) (2021-04-17)
+
+
+### Bug Fixes
+
+* **pkg:** up deps, fix vuls ([420618f](https://github.com/antongolub/push-it-to-the-limit/commit/420618fd96ae0faee8f73d79d0540b2bc402fcf2))
+
 ## [1.17.1](https://github.com/antongolub/push-it-to-the-limit/compare/v1.17.0...v1.17.1) (2020-11-08)
 
 
