@@ -2,6 +2,8 @@ module.exports = {
     extends: [
         'eslint-config-qiwi',
         'prettier',
-        'prettier/@typescript-eslint',
     ],
+    rules: {
+        'unicorn/prefer-spread': 'off'
+    }
 };
