@@ -2,11 +2,8 @@
 
 [![Build Status](https://travis-ci.com/antongolub/push-it-to-the-limit.svg?branch=master)](https://travis-ci.com/antongolub/push-it-to-the-limit)
 [![npm (tag)](https://img.shields.io/npm/v/push-it-to-the-limit/latest.svg)](https://www.npmjs.com/package/push-it-to-the-limit)
-[![dependencyStatus](https://img.shields.io/david/antongolub/push-it-to-the-limit.svg?maxAge=3600)](https://david-dm.org/antongolub/push-it-to-the-limit)
-[![devDependencyStatus](https://img.shields.io/david/dev/antongolub/push-it-to-the-limit.svg?maxAge=3600)](https://david-dm.org/antongolub/push-it-to-the-limit)
 [![Maintainability](https://api.codeclimate.com/v1/badges/d751b0eb18e737f8694b/maintainability)](https://codeclimate.com/github/antongolub/push-it-to-the-limit/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/d751b0eb18e737f8694b/test_coverage)](https://codeclimate.com/github/antongolub/push-it-to-the-limit/test_coverage)
-[![CodeStyle](https://img.shields.io/badge/code%20style-eslint--config--qiwi-brightgreen.svg)](https://github.com/qiwi/lint-config-qiwi)
 
 Delay wrappers for common purposes. <s>Fast and simple</s> with promises.
 #### Main features
@@ -204,3 +201,6 @@ const throttled3 = throttle(fn3, {limiter: l1})
 * [SGrondin/bottleneck](https://github.com/SGrondin/bottleneck)
 * [jmperez/promise-throttle](https://github.com/jmperez/promise-throttle)
 * [bjoerge/debounce-promise](https://github.com/bjoerge/debounce-promise)
+
+#### License
+[MIT](./LICENSE)
