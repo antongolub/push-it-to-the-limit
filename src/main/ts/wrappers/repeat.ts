@@ -1,4 +1,4 @@
-import {createRepeater} from '@antongolub/repeater'
+import createRepeater from '@antongolub/repeater'
 
 import { adapter, dropTimeout } from '../common'
 import type { IControlled, IExposedWrapper, ITarget, IWrapperOpts } from '../interface'
@@ -10,7 +10,8 @@ export const repeat: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpts)
     delay: typeof opts.delay === 'number' ? opts.delay : opts.delay.period,
     limit: Array.isArray(opts.limit) ? opts.limit[0].period : opts.limit?.period
   }
-  const repeater = createRepeater(repeaterOpts) as any
+  // @ts-ignore
+  const repeater = (createRepeater?.default || createRepeater)(repeaterOpts) as any
   repeater.cancel = () => {
     dropTimeout(repeater.timeout)
   }

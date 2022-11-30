@@ -18,7 +18,8 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": false,
     "declaration": true,
-    "esModuleInterop": true,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": false,
 
     "incremental": true,
     "tsBuildInfoFile": "./buildcache/.tsbuildinfo"
