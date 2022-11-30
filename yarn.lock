@@ -10,10 +10,10 @@
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@antongolub/repeater@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@antongolub/repeater/-/repeater-1.4.1.tgz#7b4903e1dc640ed0cef0b0b214bfe4522bafef71"
-  integrity sha512-jdznWsX7Fxp8VUKEUc2cRXHWmwTMKqA8uun3Vh94V4FNTboekeeBwHv/qRFcErR5dkVGAqAijSfIZJcFzPuBIQ==
+"@antongolub/repeater@^1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@antongolub/repeater/-/repeater-1.5.1.tgz#892549d050f9a978b20e9c1309017ac7e7185414"
+  integrity sha512-OrHspu/EVAs4SQkfAdYn3Axn3kUSvqvXIABI9pAwNdvR1rKbYlB+e7wMv1CkvzES3OFNx5O5SNDjWLioOiaPjg==
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.16.7", "@babel/code-frame@^7.18.6":
   version "7.18.6"

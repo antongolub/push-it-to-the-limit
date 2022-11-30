@@ -55,7 +55,7 @@
   },
   "homepage": "https://github.com/antongolub/push-it-to-the-limit#readme",
   "dependencies": {
-    "@antongolub/repeater": "^1.4.1"
+    "@antongolub/repeater": "^1.5.1"
   },
   "devDependencies": {
     "@qiwi/libdefkit": "^4.0.8",
