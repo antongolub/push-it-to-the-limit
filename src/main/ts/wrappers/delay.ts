@@ -9,7 +9,7 @@ import { debounce } from './debounce'
 
 export const delay: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpts): IControlled => {
   const delay = typeof opts.delay === 'number'
-    ? { period: opts.delay, count: Infinity }
+    ? { period: opts.delay, count: Number.POSITIVE_INFINITY }
     : opts.delay
 
   const maxWait = typeof opts.delay === 'number'

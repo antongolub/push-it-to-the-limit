@@ -28,7 +28,7 @@ export class Limiter implements ILimiter {
   }
 
   isAllowed (): boolean {
-    return !this.limits.find(({ rest }) => rest < 1)
+    return !this.limits.some(({ rest }) => rest < 1)
   }
 
   getNextDelay (): number {

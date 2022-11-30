@@ -55,7 +55,7 @@ describe('ratelimit', () => {
   })
 
   it('`flush` invokes all delayed calls immediately', done => {
-    const fn = ratelimit((x: number) => x, { period: 10000000, count: 1 })
+    const fn = ratelimit((x: number) => x, { period: 10_000_000, count: 1 })
     const result = Promise.all([fn('foo'), fn('bar'), fn('baz')])
     result
       .then(([foo, bar, baz]) => {

@@ -14,7 +14,7 @@ describe('delay', () => {
   })
 
   it('returns a promise', done => {
-    let foo: any
+    let foo: string | undefined
 
     expect(delay(() => { foo = 'bar' }, 10)()).toEqual(expect.any(Promise))
     setTimeout(() => {
@@ -36,7 +36,7 @@ describe('delay', () => {
 
   it('`flush` invokes all delayed calls immediately', done => {
     const fn = jest.fn(echo)
-    const delayed = delay(fn, 1000000000)
+    const delayed = delay(fn, 1_000_000_000)
 
     const result = Promise.all([delayed('foo'), delayed('bar')])
     result

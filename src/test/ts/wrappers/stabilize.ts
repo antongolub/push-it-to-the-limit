@@ -42,7 +42,7 @@ describe('stabilize', () => {
 
   it('`flush` invokes target function immediately', done => {
     const fn = jest.fn(echo)
-    const stable = stabilize(fn, { delay: 10000 })
+    const stable = stabilize(fn, { delay: 10_000 })
 
     stable('foo').then(v => expect(v).toBe('bar'))
     stable('bar').then(v => expect(v).toBe('bar'))

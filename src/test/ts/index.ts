@@ -1,5 +1,5 @@
 // @ts-ignore
-import { debounce, delay, ratelimit, repeat,stabilize, throttle } from '../../../target/es5/bundle'
+import { debounce, delay, ratelimit, repeat,stabilize, throttle } from '../../../target/es5/index'
 
 describe('index', () => {
   it('exposes factories', () => {

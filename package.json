@@ -2,7 +2,13 @@
   "name": "push-it-to-the-limit",
   "version": "1.17.3",
   "description": "Delay function wrappers for common purposes. Throttle, debounce and ratelimit with promises",
-  "main": "target/es5/bundle.js",
+  "main": "./target/es5/index.js",
+  "exports": {
+    ".": {
+      "import": "./target/es6/index.js",
+      "require": "./target/es5/index.js"
+    }
+  },
   "types": "target/es5/index.d.ts",
   "typescript": {
     "definition": "target/es5/index.d.ts"
@@ -20,9 +26,7 @@
     "build:ts": "cp -r src/main/ts/ target/ts/",
     "build:libdef": "libdefkit --tsconfig=tsconfig.es5.json --tsconfig=tsconfig.es6.json",
     "build:esmfix": "yarn tsc-esm-fix --target=target/es6",
-    "build": "yarn clean && yarn build:es5 && yarn build:es6 && yarn build:esmfix && yarn build:ts && yarn build:libdef && yarn docs && yarn build:rollup && yarn uglify",
-    "build:rollup": "rollup -c",
-    "bundle:min": "BABEL_ENV=production babel target/es5/bundle.js --out-file target/es5/bundle.min.js",
+    "build": "yarn clean && yarn build:es5 && yarn build:es6 && yarn build:esmfix && yarn build:ts && yarn build:libdef && yarn docs && yarn uglify",
     "uglify": "for f in $(find target -name '*.js'); do short=${f%.js}; terser -c -m -o $short.js -- $f; done",
     "docs": "typedoc",
     "postupdate": "yarn && npm_config_yes=true npx yarn-audit-fix && yarn build && yarn test"
@@ -55,22 +59,18 @@
   },
   "devDependencies": {
     "@qiwi/libdefkit": "^4.0.8",
-    "@qiwi/substrate": "^1.20.15",
+    "@qiwi/substrate": "^1.20.16",
     "@swissquote/crafty-preset-jest": "^1.20.0",
-    "@types/jest": "^29.2.2",
+    "@types/jest": "^29.2.3",
     "coveralls": "^3.1.1",
-    "eslint": "^8.27.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-config-qiwi": "^1.17.8",
+    "eslint": "^8.28.0",
+    "eslint-config-qiwi": "^2.0.1",
     "jest": "29.3.1",
-    "rollup": "^2.79.1",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "terser": "^5.15.1",
+    "terser": "^5.16.0",
     "ts-jest": "^29.0.3",
-    "tsc-esm-fix": "^2.20.5",
-    "typedoc": "^0.23.20",
-    "typescript": "^4.8.4"
+    "tsc-esm-fix": "^2.20.7",
+    "typedoc": "^0.23.21",
+    "typescript": "^4.9.3"
   },
   "files": [
     "README.md",

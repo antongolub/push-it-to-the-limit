@@ -80,7 +80,7 @@ describe('debounce', () => {
 
   it('supports `maxWait` option', done => {
     const fn = jest.fn(echo)
-    const debounced = debounce(fn, 100000, { maxWait: 15 })
+    const debounced = debounce(fn, 100_000, { maxWait: 15 })
 
     debounced('foo')
     setTimeout(() => debounced('bar'), 4)
@@ -151,7 +151,7 @@ describe('debounce', () => {
 
   it('`flush` invokes target function immediately', done => {
     const fn = jest.fn(echo)
-    const debounced = debounce(fn, { delay: 10000 })
+    const debounced = debounce(fn, { delay: 10_000 })
 
     debounced('foo').then(v => expect(v).toBe('bar'))
     debounced('bar').then(v => expect(v).toBe('bar'))
