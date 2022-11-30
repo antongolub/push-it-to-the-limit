@@ -1,6 +1,6 @@
 # Push it to the limit
 
-[![Build Status](https://travis-ci.com/antongolub/push-it-to-the-limit.svg?branch=master)](https://travis-ci.com/antongolub/push-it-to-the-limit)
+[![Build Status](https://app.travis-ci.com/antongolub/push-it-to-the-limit.svg?branch=master)](https://app.travis-ci.com/antongolub/push-it-to-the-limit)
 [![npm (tag)](https://img.shields.io/npm/v/push-it-to-the-limit/latest.svg)](https://www.npmjs.com/package/push-it-to-the-limit)
 [![Maintainability](https://api.codeclimate.com/v1/badges/d751b0eb18e737f8694b/maintainability)](https://codeclimate.com/github/antongolub/push-it-to-the-limit/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/d751b0eb18e737f8694b/test_coverage)](https://codeclimate.com/github/antongolub/push-it-to-the-limit/test_coverage)
