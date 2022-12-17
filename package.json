@@ -58,7 +58,7 @@
     "@antongolub/repeater": "^1.5.1"
   },
   "devDependencies": {
-    "@qiwi/libdefkit": "^4.0.8",
+    "@qiwi/libdefkit": "^5.0.0",
     "@qiwi/substrate": "^1.20.16",
     "@swissquote/crafty-preset-jest": "^1.20.0",
     "@types/jest": "^29.2.3",
