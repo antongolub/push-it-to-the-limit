@@ -10,6 +10,7 @@ export const repeat: IExposedWrapper = adapter((fn: ITarget, opts: IWrapperOpts)
     delay: typeof opts.delay === 'number' ? opts.delay : opts.delay.period,
     limit: Array.isArray(opts.limit) ? opts.limit[0].period : opts.limit?.period
   }
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const repeater = (createRepeater?.default || createRepeater)(repeaterOpts) as any
   repeater.cancel = () => {

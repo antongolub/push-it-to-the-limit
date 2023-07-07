@@ -9,6 +9,7 @@ describe('repeat', () => {
       i: 0
     }
 
+    // eslint-disable-next-line unicorn/consistent-function-scoping
     const target = function (step: number) {
       // eslint-disable-next-line
       // @ts-ignore
