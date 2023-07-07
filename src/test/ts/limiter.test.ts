@@ -1,4 +1,5 @@
 import { Limiter } from '../../main/ts/limiter'
+import { expect, it, describe } from '@abstractest/core'
 
 describe('limiter', () => {
   const delays = [{ period: 10, count: 5 }, { period: 50, count: 10 }]

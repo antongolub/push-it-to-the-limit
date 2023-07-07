@@ -1,5 +1,5 @@
-// @ts-ignore
-import { debounce, delay, ratelimit, repeat, stabilize, throttle } from '../../../target/es5/index.js'
+import { debounce, delay, ratelimit, repeat, stabilize, throttle } from '../../../target/esm/index.mjs'
+import { expect, it, describe } from '@abstractest/core'
 
 describe('index', () => {
   it('exposes factories', () => {

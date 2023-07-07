@@ -1,4 +1,4 @@
-import createRepeater from '@antongolub/repeater'
+import { createRepeater } from '../repeater'
 
 import { adapter, dropTimeout } from '../common'
 import type { IControlled, IExposedWrapper, ITarget, IWrapperOpts } from '../interface'

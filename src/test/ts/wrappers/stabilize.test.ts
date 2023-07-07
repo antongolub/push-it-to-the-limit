@@ -1,5 +1,6 @@
 import { REJECTED_ON_CANCEL, stabilize } from '../../../main/ts'
 import { ITarget, IWrapperOpts } from '../../../main/ts/interface'
+import { expect, it, describe, mock } from '@abstractest/core'
 
 const noop = () => { /* noop */ }
 const echo = <T>(v: T): T => v
@@ -14,7 +15,7 @@ describe('stabilize', () => {
   })
 
   it('groups multiple sequential calls in a single one per period', done => {
-    const fn = jest.fn(echo)
+    const fn = mock.fn(echo)
     const stable = stabilize(fn, 100)
 
     for (let y = 0; y < 10; y++) {
@@ -41,7 +42,7 @@ describe('stabilize', () => {
   })
 
   it('`flush` invokes target function immediately', done => {
-    const fn = jest.fn(echo)
+    const fn = mock.fn(echo)
     const stable = stabilize(fn, { delay: 10_000 })
 
     stable('foo').then(v => expect(v).toBe('bar'))
@@ -60,7 +61,7 @@ describe('stabilize', () => {
   })
 
   it('`cancel` removes delayed call and timers', done => {
-    const fn = jest.fn(echo)
+    const fn = mock.fn(echo)
     const stable = stabilize(fn, {
       delay: 10,
       rejectOnCancel: false

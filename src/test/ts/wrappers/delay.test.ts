@@ -1,5 +1,6 @@
 import { delay, REJECTED_ON_CANCEL } from '../../../main/ts'
 import { ITarget, IWrapperOpts } from '../../../main/ts/interface'
+import { expect, it, describe, mock } from '@abstractest/core'
 
 const noop = () => { /* noop */ }
 const echo = <T>(v: T): T => v
@@ -26,16 +27,16 @@ describe('delay', () => {
   })
 
   it('passes args to origin fn', async () => {
-    const fn = jest.fn(echo)
+    const fn = mock.fn(echo)
     const delayed = delay(fn, 10)
     const bar = await delayed('foo')
 
     expect(bar).toBe('foo')
-    expect(fn).toBeCalledWith('foo')
+    expect(fn).toHaveBeenCalledWith('foo')
   })
 
   it('`flush` invokes all delayed calls immediately', done => {
-    const fn = jest.fn(echo)
+    const fn = mock.fn(echo)
     const delayed = delay(fn, 1_000_000_000)
 
     const result = Promise.all([delayed('foo'), delayed('bar')])
@@ -43,15 +44,15 @@ describe('delay', () => {
       .then(([foo, bar]) => {
         expect(foo).toBe('foo')
         expect(bar).toBe('bar')
-        expect(fn).toBeCalledWith('foo')
-        expect(fn).toBeCalledWith('bar')
+        expect(fn).toHaveBeenCalledWith('foo')
+        expect(fn).toHaveBeenCalledWith('bar')
         done()
       })
     delayed.flush()
   })
 
   it('`cancel` removes delayed calls stack and timers', done => {
-    const fn = jest.fn(echo)
+    const fn = mock.fn(echo)
     const delayed = delay(fn, {
       delay: 10,
       rejectOnCancel: false
