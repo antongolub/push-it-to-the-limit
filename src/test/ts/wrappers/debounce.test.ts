@@ -17,7 +17,7 @@ describe('debounce', () => {
 
   it('groups multiple sequential calls in a single one', done => {
     const fn = mock.fn(echo)
-    const debounced = debounce(fn, 20)
+    const debounced = debounce(fn, 200)
 
     const foo = debounced('bar')
     const baz = debounced('qux')
@@ -31,12 +31,12 @@ describe('debounce', () => {
       expect(fn).toHaveBeenCalledTimes(1)
       expect(fn).toHaveBeenCalledWith('qux')
       done()
-    }, 25)
+    }, 250)
   })
 
   it('defers the call', done => {
     const fn = mock.fn(echo)
-    const debounced = debounce(fn, 10)
+    const debounced = debounce(fn, 100)
 
     for (let i = 0; i < 5; i++) {
       (v => setTimeout(() => debounced(v), v * 5))(i)
@@ -46,12 +46,12 @@ describe('debounce', () => {
       expect(fn).toHaveBeenCalledTimes(1)
       expect(fn).toHaveBeenCalledWith(4)
       done()
-    }, 50)
+    }, 550)
   })
 
   it('handles `complex delays`', done => {
     const fn = mock.fn(echo)
-    const delay = { period: 15, count: 2 }
+    const delay = { period: 150, count: 2 }
     const debounced = debounce(fn, delay)
 
     const foo = debounced('foo')
@@ -68,7 +68,7 @@ describe('debounce', () => {
       expect(fn).toHaveBeenCalledWith('baz')
       expect(fn).toHaveBeenCalledWith('qux')
       done()
-    }, 20)
+    }, 200)
   })
 
   it('passes same promise as a result', async () => {
@@ -81,23 +81,23 @@ describe('debounce', () => {
 
   it('supports `maxWait` option', done => {
     const fn = mock.fn(echo)
-    const debounced = debounce(fn, 100_000, { maxWait: 15 })
+    const debounced = debounce(fn, 100_000, { maxWait: 150 })
 
     debounced('foo')
-    setTimeout(() => debounced('bar'), 4)
-    setTimeout(() => debounced('baz'), 8)
+    setTimeout(() => debounced('bar'), 40)
+    setTimeout(() => debounced('baz'), 80)
 
     setTimeout(() => {
       expect(fn).toHaveBeenCalledTimes(1)
       expect(fn).toHaveBeenCalledWith('baz')
 
       done()
-    }, 20)
+    }, 200)
   })
 
   it('properly handles `leading` option', done => {
     const fn = mock.fn(echo)
-    const debounced = debounce(fn, 10, { leading: true })
+    const debounced = debounce(fn, 100, { leading: true })
 
     debounced('foo').then(v => expect(v).toBe('foo'))
     debounced('bar').then(v => expect(v).toBe('qux'))
@@ -108,7 +108,7 @@ describe('debounce', () => {
       debounced('quxx').then(v => expect(v).toBe('quxx'))
       debounced('barr').then(v => expect(v).toBe('bazz'))
       debounced('bazz').then(v => expect(v).toBe('bazz'))
-    }, 15)
+    }, 150)
 
     setTimeout(() => {
       expect(fn).toHaveBeenCalledTimes(4)
@@ -118,12 +118,12 @@ describe('debounce', () => {
       expect(fn).toHaveBeenCalledWith('bazz')
 
       done()
-    }, 35)
+    }, 350)
   })
 
   it('handles `leading` with complex delays', done => {
     const fn = mock.fn(echo)
-    const debounced = debounce(fn, { period: 10, count: 2 }, { leading: true })
+    const debounced = debounce(fn, { period: 100, count: 2 }, { leading: true })
 
     debounced('foo').then(v => expect(v).toBe('foo'))
     debounced('bar').then(v => expect(v).toBe('bar'))
@@ -135,7 +135,7 @@ describe('debounce', () => {
       debounced('barr').then(v => expect(v).toBe('barr'))
       debounced('bazz').then(v => expect(v).toBe('quxx'))
       debounced('quxx').then(v => expect(v).toBe('quxx'))
-    }, 12)
+    }, 120)
 
     setTimeout(() => {
       expect(fn).toHaveBeenCalledTimes(6)
@@ -147,7 +147,7 @@ describe('debounce', () => {
       expect(fn).toHaveBeenCalledWith('quxx')
 
       done()
-    }, 29)
+    }, 290)
   })
 
   it('`flush` invokes target function immediately', done => {
@@ -163,7 +163,7 @@ describe('debounce', () => {
       expect(fn).toHaveBeenCalledWith('bar')
 
       done()
-    }, 10)
+    }, 100)
 
     debounced.flush()
     debounced.flush()
@@ -172,11 +172,11 @@ describe('debounce', () => {
   it('`cancel` removes delayed call and timers', done => {
     const fn = mock.fn(echo)
     const delayed = debounce(fn, {
-      delay: 10,
+      delay: 100,
       rejectOnCancel: false
     })
     const delayedWithReject = debounce(fn, {
-      delay: 10,
+      delay: 100,
       rejectOnCancel: true
     })
     const resultWithReject = Promise.all([delayedWithReject('foo'), delayedWithReject('bar')])
@@ -196,16 +196,16 @@ describe('debounce', () => {
     setTimeout(() => {
       expect(fn).not.toHaveBeenCalled()
       done()
-    }, 15)
+    }, 150)
   })
 
   it('uses injected limiter', async () => {
-    const limiter = new Limiter([{ period: 10, count: 1 }])
+    const limiter = new Limiter([{ period: 100, count: 1 }])
     const getNextDelaySpy = mock.spyOn(limiter, 'getNextDelay')
 
     const fn = debounce(
       mock.fn(echo),
-      { delay: 10, limiter }
+      { delay: 100, limiter }
     )
     await fn()
     expect(getNextDelaySpy).toHaveBeenCalled()
