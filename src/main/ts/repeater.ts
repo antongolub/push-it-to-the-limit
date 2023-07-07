@@ -75,11 +75,11 @@ export function createRepeater (target: ITarget, delay: number, context?: IAny, 
 
 function assert (target: ITarget, delay: number): void {
   if (typeof target !== 'function') {
-    throw new Error('repeater: target must be callable')
+    throw new TypeError('repeater: target must be callable')
   }
 
   if (!delay) {
-    throw new Error('repeater: delay must not be empty')
+    throw new TypeError('repeater: delay must not be empty')
   }
 }
 

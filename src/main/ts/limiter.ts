@@ -6,6 +6,7 @@ export class Limiter implements ILimiter {
   constructor (items: Array<Limiter | IComplexDelay>) {
     this.limits = items.reduce<ILimitStack>((acc, item) => {
       if (item instanceof Limiter) {
+        // eslint-disable-next-line unicorn/prefer-spread
         return acc.concat(item.limits)
       }
       return [...acc, { ...item, rest: item.count, ttl: 0 }]
