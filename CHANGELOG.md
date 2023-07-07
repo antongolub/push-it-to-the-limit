@@ -1,3 +1,11 @@
+## [2.0.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.18.5...v2.0.0) (2023-07-07)
+
+### Fixes & improvements
+* refactor: varios code and infra improvements ([96d33db](https://github.com/antongolub/push-it-to-the-limit/commit/96d33db05b6a58ae7437021427a30f30947d7d3a))
+
+### BREAKING CHANGES
+* repacked as ESM ([96d33db](https://github.com/antongolub/push-it-to-the-limit/commit/96d33db05b6a58ae7437021427a30f30947d7d3a))
+
 ## [1.17.3](https://github.com/antongolub/push-it-to-the-limit/compare/v1.17.2...v1.17.3) (2021-08-20)
 
 
