@@ -1,3 +1,8 @@
+## [2.0.1](https://github.com/antongolub/push-it-to-the-limit/compare/v2.0.0...v2.0.1) (2023-07-07)
+
+### Fixes & improvements
+* docs: update CI badge ([2e27f5c](https://github.com/antongolub/push-it-to-the-limit/commit/2e27f5cb4085bca74c44afd5ed4e2cc0a80ae436))
+
 ## [2.0.0](https://github.com/antongolub/push-it-to-the-limit/compare/v1.18.5...v2.0.0) (2023-07-07)
 
 ### Fixes & improvements
