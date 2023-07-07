@@ -1,4 +1,5 @@
 import { repeat } from '../../../main/ts'
+import { expect, it, describe, mock } from '@abstractest/core'
 
 // NOTE rest of tests are placed in other repo: https://github.com/antongolub/repeater/tree/master/src/test
 describe('repeat', () => {
@@ -7,8 +8,9 @@ describe('repeat', () => {
     const context = {
       i: 0
     }
-    // eslint-disable-next-line
+
     const target = function (step: number) {
+      // eslint-disable-next-line
       // @ts-ignore
       this.i += step
     }
@@ -25,7 +27,7 @@ describe('repeat', () => {
   })
 
   it('`flush` invokes target fn immediately', () => {
-    const fn = jest.fn(v => v)
+    const fn = mock.fn(v => v)
     const rep = repeat(fn, { delay: 100 })
 
     rep(1)
@@ -36,7 +38,7 @@ describe('repeat', () => {
   })
 
   it('`cancel` breaks auto-invocation loop', done => {
-    const fn = jest.fn(v => v)
+    const fn = mock.fn(v => v)
     const rep = repeat(fn, { delay: 5 })
 
     rep(1)

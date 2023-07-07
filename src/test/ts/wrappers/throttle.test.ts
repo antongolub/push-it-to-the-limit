@@ -1,5 +1,6 @@
 import { throttle } from '../../../main/ts'
 import { ITarget, IWrapperOpts } from '../../../main/ts/interface'
+import { expect, it, describe, mock } from '@abstractest/core'
 
 const noop = () => { /* noop */ }
 const echo = <T>(v: T): T => v
@@ -14,7 +15,7 @@ describe('throttle', () => {
   })
 
   it('returns first result for all invokes in period', done => {
-    const fn = jest.fn(echo)
+    const fn = mock.fn(echo)
     const throttled = throttle(fn, { period: 10, count: 1 })
 
     throttled(1).then(v => expect(v).toBe(1))

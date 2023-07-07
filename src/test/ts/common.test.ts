@@ -1,4 +1,5 @@
 import {ICallable} from '@qiwi/substrate'
+import { expect, it, describe, mock } from '@abstractest/core'
 
 import {
   adapter,
@@ -86,7 +87,7 @@ describe('failOnCancel', () => {
 
 describe('adapter', () => {
   const fn = echo
-  const wrapper = jest.fn(noop)
+  const wrapper = mock.fn(noop)
   const adapted = adapter(wrapper as any)
 
   afterEach(wrapper.mockClear)

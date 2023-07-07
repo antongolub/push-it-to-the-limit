@@ -17,7 +17,6 @@ Delay wrappers for common purposes. <s>Fast and simple</s> with promises.
     npm i push-it-to-the-limit
     yarn add push-it-to-the-limit
 ```
-Dist contains cjs-formatted `bundle.es5.js` and its parts as es5-modules, so you may use them directly.
 
 ## API
 [The interface](./src/interface.js) is dumb: each wrapper gets at least one argument — `target` function. The second param is `opt`, which may be a numeric `delay` or a `IWrapperOpts` object. Also the scheme with three arguments is supported as in lodash. Wrapper returns `IControlled` function: it's a functor with a pair exposed util methods: `cancel` and `flush`.  
@@ -179,7 +178,7 @@ const throttled3 = throttle(fn3, {limiter: l1})
 [Repeater](https://github.com/antongolub/repeater) makes a function to be autocallable. It stores the last call params and uses them for further invocations.
 
 ```javascript
-    import {repeat} from '@antongolub/push-it-to-the-limit'
+    import {repeat} from 'push-it-to-the-limit'
     
     function fn (step) { this.i += step }
     const context = { i: 0 }
