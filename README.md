@@ -1,6 +1,6 @@
 # Push it to the limit
 
-[![Build Status](https://app.travis-ci.com/antongolub/push-it-to-the-limit.svg?branch=master)](https://app.travis-ci.com/antongolub/push-it-to-the-limit)
+[![CI](https://github.com/antongolub/push-it-to-the-limit/actions/workflows/ci.yaml/badge.svg?branch=master)](https://github.com/antongolub/push-it-to-the-limit/actions/workflows/ci.yaml)
 [![npm (tag)](https://img.shields.io/npm/v/push-it-to-the-limit/latest.svg)](https://www.npmjs.com/package/push-it-to-the-limit)
 [![Maintainability](https://api.codeclimate.com/v1/badges/d751b0eb18e737f8694b/maintainability)](https://codeclimate.com/github/antongolub/push-it-to-the-limit/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/d751b0eb18e737f8694b/test_coverage)](https://codeclimate.com/github/antongolub/push-it-to-the-limit/test_coverage)
@@ -10,7 +10,6 @@ Delay wrappers for common purposes. <s>Fast and simple</s> with promises.
 * `Promise` as a result
 * [Lodash](https://lodash.com)-compatible API
 * Interrelated delays support
-* Exposed `Flow` libdefs
 
 ## Install
 ```bash
@@ -194,12 +193,12 @@ const throttled3 = throttle(fn3, {limiter: l1})
     setTimeout(() => console.log(context.i), 10000) // 15
 ```
 
-#### Notes and refs
+## Notes and refs
 * [The differences between `throttle` and `debounce`](https://css-tricks.com/debouncing-throttling-explained-examples/).
 * [wankdanker/node-function-rate-limit](https://github.com/wankdanker/node-function-rate-limit)
 * [SGrondin/bottleneck](https://github.com/SGrondin/bottleneck)
 * [jmperez/promise-throttle](https://github.com/jmperez/promise-throttle)
 * [bjoerge/debounce-promise](https://github.com/bjoerge/debounce-promise)
 
-#### License
+## License
 [MIT](./LICENSE)
