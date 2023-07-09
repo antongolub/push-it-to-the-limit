@@ -14,30 +14,37 @@
   dependencies:
     "@abstractest/types" "0.4.1"
 
-"@abstractest/expect@0.1.3":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@abstractest/expect/-/expect-0.1.3.tgz#587745c1239cd5719fac395f0d744db12ca3d150"
-  integrity sha512-d8q8BXcCRUo3L5JUN/y4i1IYQ2kaVwysdBHl+DpHMRFXUEZxnrcYd8x6iBGtPz7ggk9kbgAsWM9jGfjdnaWAKg==
+"@abstractest/core@0.4.3":
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@abstractest/core/-/core-0.4.3.tgz#f9aa60c22f5158d8846a7d5804da7120d7475d80"
+  integrity sha512-ikhnqSHcGjT+XDhIxPMqZyv6CNHeX6zLGn6ryYxgt35eQ96MCAgT6fnQpQugahWmgPErkL6YTqxps+HMOb9UYQ==
   dependencies:
-    "@abstractest/types" "0.4.1"
+    "@abstractest/types" "0.5.0"
+
+"@abstractest/expect@0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@abstractest/expect/-/expect-0.1.4.tgz#eed23a9c552072b4b21d8b0cb344b469df7bb5a8"
+  integrity sha512-So8JcjIssAaWgXjblddk8oWeGJOonA6jvNrb0ACy/17QiW7BNU0ByQvtOg11vFYi6Um6sll2uwTD/euKwLa6eQ==
+  dependencies:
+    "@abstractest/types" "0.5.0"
     expect "^29.6.1"
     jest-snapshot "^29.6.1"
 
-"@abstractest/mock@0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@abstractest/mock/-/mock-0.0.1.tgz#f9b61655aaf7eb61ba7a802f6a31e961344abc8c"
-  integrity sha512-8nRbrna/mFNQyBlr/lsD0PYTeZwBQ7tD6Q65zz6U76U+0o0L0KH7su+35Ucb/kwrPTsF6jMQuGfWlpMPWfSuuA==
+"@abstractest/mock@0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@abstractest/mock/-/mock-0.0.2.tgz#2b0ab0ebc92dc50306b9d6c2968e7b9e2676e60c"
+  integrity sha512-peXOmJq+5J3twz5BQQnHzxeamF1x6R4OixaT/rZBLzz42niPqzw4Mzhmc8v2V/wru2948k6waEVgV9Ap1SkjCg==
   dependencies:
     jest-mock "^29.6.1"
 
-"@abstractest/native@^0.3.4":
-  version "0.3.4"
-  resolved "https://registry.yarnpkg.com/@abstractest/native/-/native-0.3.4.tgz#7a3456b47f780c1d37d28bd13265246897a788f8"
-  integrity sha512-sCYJvKxUJCEAG+RhLCWRKTZHqYYoy7BKHG4ZO+8EE+uOPQcpqiNx54qugSXRqdE/uHBi/+rlQuXYaFBhkKjvzg==
+"@abstractest/native@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@abstractest/native/-/native-0.4.0.tgz#c281c32b98b9fcd5180a7a74ec795bc4df629bb9"
+  integrity sha512-PXTMvTuIOPbtkJepaXdxG2/JgwNDy92NKdHNf9goiITfbkfG2usOZW/V5c7S322wCpdRCQz3zcSWsE1kxg1X4g==
   dependencies:
-    "@abstractest/core" "0.4.2"
-    "@abstractest/expect" "0.1.3"
-    "@abstractest/mock" "0.0.1"
+    "@abstractest/core" "0.4.3"
+    "@abstractest/expect" "0.1.4"
+    "@abstractest/mock" "0.0.2"
     c8 "^8.0.0"
     fast-glob "^3.3.0"
     ts-node "^10.9.1"
@@ -46,6 +53,11 @@
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/@abstractest/types/-/types-0.4.1.tgz#4310ef49518966b56bfcc9067800e399ef6e31c6"
   integrity sha512-Xv+DElY+OyPTkfHG1BtjQ6J3zOtVJPnZVQWqy0HqZlGfQjR8allk7C+c1lmdmogwY+IQmk+f/1Psv7wUSFF+Fg==
+
+"@abstractest/types@0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@abstractest/types/-/types-0.5.0.tgz#ee9ae63faf984e0306d0cf76c10e42428bd1dc8e"
+  integrity sha512-i9/bvCBi9SxHR+7VssJqp4tKxIYdAYz2y4Z5QkfHwg6AYstVg234FMY/bBF1TUk23dftliCS2tv0YePSAae3Vw==
 
 "@ampproject/remapping@^2.1.0":
   version "2.2.0"
